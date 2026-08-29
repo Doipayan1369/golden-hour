@@ -74,7 +74,17 @@ export const TacticalHeader: React.FC = () => {
               title="Open Official's Walkthrough & Guide"
             >
               <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
-              <span className="hidden md:inline">How It Works</span>
+              <span className="hidden md:inline">Quick Tour</span>
+            </button>
+
+            {/* Help & FAQ Button */}
+            <button
+              onClick={() => setActiveTab('help')}
+              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
+              title="Open Help Center, FAQs & SOPs"
+            >
+              <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
+              <span className="hidden md:inline">Help & FAQs</span>
             </button>
 
             {/* Role Switcher */}

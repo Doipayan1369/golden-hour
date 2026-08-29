@@ -285,13 +285,24 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose, onStartCase 
                 </div>
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   onClick={handleFinish}
                   className="w-full sm:w-auto pill-btn-lime px-8 py-3.5 text-sm font-extrabold shadow-xl inline-flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] transition-transform"
                 >
                   <span>Launch Live Investigation (Case 041)</span>
                   <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('golden_hour_onboarded', 'true');
+                    setActiveTab('help');
+                    onClose();
+                  }}
+                  className="w-full sm:w-auto pill-btn border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 px-5 py-3.5 text-xs font-bold shadow-sm inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <HelpCircle className="w-4 h-4 text-slate-500" />
+                  <span>Browse FAQs & SOPs</span>
                 </button>
               </div>
             </div>
