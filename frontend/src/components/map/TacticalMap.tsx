@@ -398,7 +398,7 @@ export const TacticalMap: React.FC = () => {
   }, [atms, stations, showAtms, showStations, replayState, drawHeatmap]);
 
   return (
-    <div className="neu-card p-8 space-y-6">
+    <div className="neu-card p-4 sm:p-8 space-y-4 sm:space-y-6">
       {/* Top Header: Controls & Status */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-5">
         <div className="flex items-center gap-3">
@@ -476,10 +476,10 @@ export const TacticalMap: React.FC = () => {
 
       {/* Map Canvas with Floating Thermal Spectrum HUD */}
       <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-inner">
-        <div ref={mapContainerRef} className="w-full h-[660px]" />
+        <div ref={mapContainerRef} className="w-full h-[380px] sm:h-[520px] md:h-[660px]" />
 
         {/* Floating Reference-Style Thermal Spectrum HUD */}
-        <div className="absolute bottom-6 left-6 z-20 bg-white/95 border border-slate-200/90 p-4 rounded-2xl text-xs space-y-3 backdrop-blur-lg shadow-2xl max-w-xs text-slate-900">
+        <div className="absolute bottom-3 left-3 right-3 sm:right-auto sm:bottom-6 sm:left-6 z-20 bg-white/95 border border-slate-200/90 p-3 sm:p-4 rounded-2xl text-xs space-y-2.5 sm:space-y-3 backdrop-blur-lg shadow-2xl max-w-full sm:max-w-xs text-slate-900">
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Thermal Density Spectrum</span>
             <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full font-bold">KDE Density</span>

@@ -106,7 +106,7 @@ export const App: React.FC = () => {
     <AppProvider>
       <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
         <TacticalHeader />
-        <div className="max-w-[1540px] w-full mx-auto flex-1 flex gap-8 px-6 lg:px-10 py-4">
+        <div className="max-w-[1540px] w-full mx-auto flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 px-3 sm:px-6 lg:px-10 py-2 sm:py-4">
           <SidebarNav />
           <MainContent />
         </div>
