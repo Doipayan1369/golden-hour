@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F0F2F6;
+    color: #1E293B;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Modern Neumorphic & Soft UI Shadows with Generous Padding */
+.neu-card {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-card:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.07), 0 6px 16px -4px rgba(0, 0, 0, 0.03);
+}
+
+.neu-inset {
+  background: #F8FAFC;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03), inset 0 -1px 2px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.neu-dark {
+  background: #111317;
+  color: #F8FAFC;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.35);
+}
+
+.neu-lime {
+  background: #D4FF00;
+  color: #0F172A;
+  box-shadow: 0 12px 28px -6px rgba(212, 255, 0, 0.35);
+}
+
+/* Pill Buttons with Generous Touch Targets */
+.pill-btn {
+  border-radius: 9999px;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-btn-dark {
+  background: #111317;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pill-btn-dark:hover {
+  background: #1E2229;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.pill-btn-lime {
+  background: #D4FF00;
+  color: #111317;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 6px 18px rgba(212, 255, 0, 0.35);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.pill-btn-lime:hover {
+  background: #C4F000;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(212, 255, 0, 0.45);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.font-mono-data {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Silky Smooth Leaflet Map & Zoom Transitions */
+.leaflet-fade-anim .leaflet-tile {
+  will-change: opacity, transform;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.leaflet-zoom-animated {
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.leaflet-tile-container {
+  will-change: transform;
+}
+
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+  background-color: #f8fafc !important;
+}
+
+.leaflet-bar {
+  border-radius: 9999px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+}
+
+.leaflet-bar a {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  transition: background-color 0.15s ease, transform 0.15s ease !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Silky Smooth Keyframe Page Transitions & Micro-Interactions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(212, 255, 0, 0.85);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.glow-pulse {
+  animation: pulseGlow 2.2s infinite ease-in-out;
+}
+
+/* 360-Degree Tactical Radar Sweep Keyframe */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.radar-flir-filter .leaflet-tile-pane {
+  filter: contrast(120%) brightness(95%) saturate(110%);
+}
+
+.radar-nvg-filter .leaflet-tile-pane {
+  filter: contrast(135%) brightness(85%) hue-rotate(95deg) saturate(180%);
+}
+
