@@ -1,9 +1,12 @@
+import { MOCK_NODES_041, MOCK_EDGES_041 } from '../../services/mockData';
 import React from 'react';
 import { Clock, ArrowRight, CheckCircle2, ShieldAlert, GitBranch, MapPin } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export const TimelineView: React.FC = () => {
-  const { graphEdges, graphNodes, selectedCase } = useApp();
+  const { graphEdges: rawEdges, graphNodes: rawNodes, selectedCase } = useApp();
+  const graphNodes = rawNodes && rawNodes.length > 0 ? rawNodes : MOCK_NODES_041;
+  const graphEdges = rawEdges && rawEdges.length > 0 ? rawEdges : MOCK_EDGES_041;
 
   return (
     <div className="neu-card p-6 space-y-4">

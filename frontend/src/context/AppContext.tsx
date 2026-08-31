@@ -1,3 +1,7 @@
+import { 
+  MOCK_CASE_041, MOCK_NODES_041, MOCK_EDGES_041, 
+  MOCK_FORECAST_041, MOCK_REPLAY_041 
+} from '../services/mockData';
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { 
   UserRole, Case, ForecastResponse, ReplayState, 
@@ -49,12 +53,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [role, setRole] = useState<UserRole>('I4C_STATE_ANALYST');
   const [activeTab, setActiveTab] = useState<NavTab>('dashboard');
   const [selectedCaseId, setSelectedCaseId] = useState<string>('CASE-2026-041');
-  const [selectedCase, setSelectedCase] = useState<Case | null>(null);
-  const [cases, setCases] = useState<Case[]>([]);
-  const [replayState, setReplayState] = useState<ReplayState | null>(null);
-  const [forecast, setForecast] = useState<ForecastResponse | null>(null);
-  const [graphNodes, setGraphNodes] = useState<AccountNode[]>([]);
-  const [graphEdges, setGraphEdges] = useState<TransactionEdge[]>([]);
+  const [selectedCase, setSelectedCase] = useState<Case | null>(MOCK_CASE_041);
+  const [cases, setCases] = useState<Case[]>([MOCK_CASE_041]);
+  const [replayState, setReplayState] = useState<ReplayState | null>(MOCK_REPLAY_041);
+  const [forecast, setForecast] = useState<ForecastResponse | null>(MOCK_FORECAST_041);
+  const [graphNodes, setGraphNodes] = useState<AccountNode[]>(MOCK_NODES_041);
+  const [graphEdges, setGraphEdges] = useState<TransactionEdge[]>(MOCK_EDGES_041);
   const [graphMetrics, setGraphMetrics] = useState<any>(null);
   const [auditVerification, setAuditVerification] = useState<AuditVerification | null>(null);
   const [loading, setLoading] = useState<boolean>(true);

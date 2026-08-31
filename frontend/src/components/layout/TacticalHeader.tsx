@@ -6,13 +6,13 @@ import {
 import { useApp } from '../../context/AppContext';
 import { UserRole } from '../../types';
 import { OnboardingModal } from '../onboarding/OnboardingModal';
-import { SidebarNav } from './SidebarNav';
 
-export const TacticalHeader: React.FC = () => {
+
+export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ onToggleMobileMenu }) => {
   const { role, setRole, resetAll, auditVerification, alertBanner, selectCase, setActiveTab } = useApp();
   const [timeStr, setTimeStr] = useState('');
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
 
   useEffect(() => {
     const hasSeen = localStorage.getItem('golden_hour_onboarded');
@@ -39,7 +39,7 @@ export const TacticalHeader: React.FC = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Hamburger Button for Mobile */}
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={() => onToggleMobileMenu && onToggleMobileMenu()}
               className="lg:hidden p-2 rounded-xl bg-slate-100 text-slate-800 hover:bg-slate-200 transition-all cursor-pointer"
               title="Open Navigation Menu"
             >
@@ -121,11 +121,7 @@ export const TacticalHeader: React.FC = () => {
         )}
       </header>
 
-      {/* Mobile Drawer */}
-      <SidebarNav
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-      />
+
 
       {/* Interactive Modal Guide */}
       <OnboardingModal

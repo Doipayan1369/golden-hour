@@ -17,7 +17,7 @@ const MainContent: React.FC = () => {
   const { activeTab, setActiveTab, selectCase } = useApp();
 
   return (
-    <main className="flex-1 space-y-8 min-w-0 pb-12">
+    <main className="flex-1 space-y-6 min-w-0 pb-12">
       {/* 1. Guided Step-by-Step Workflow Pipeline (Master Experience) */}
       {(activeTab === 'workflow' || activeTab === 'dashboard' || activeTab === 'workspace') && (
         <StepWorkflowContainer />
@@ -41,7 +41,7 @@ const MainContent: React.FC = () => {
 
       {/* 4. Standalone Geospatial Thermal Radar Map */}
       {activeTab === 'map' && (
-        <div className="space-y-8 animate-fadeIn">
+        <div className="space-y-6 animate-fadeIn">
           <TacticalMap />
         </div>
       )}
@@ -69,7 +69,7 @@ const MainContent: React.FC = () => {
 
       {/* 8. Standalone Cryptographic Audit Ledger */}
       {activeTab === 'audit' && (
-        <div className="space-y-8 animate-fadeIn">
+        <div className="space-y-6 animate-fadeIn">
           <HashChainViewer />
         </div>
       )}
@@ -91,6 +91,20 @@ const MainContent: React.FC = () => {
   );
 };
 
+export const AppContent: React.FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
+      <TacticalHeader onToggleMobileMenu={() => setIsMobileMenuOpen(true)} />
+      <div className="max-w-[1540px] w-full mx-auto flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 px-3 sm:px-6 lg:px-10 py-3 sm:py-5">
+        <SidebarNav isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+        <MainContent />
+      </div>
+    </div>
+  );
+};
+
 export const App: React.FC = () => {
   const [authenticated, setAuthenticated] = useState(true);
 
@@ -104,13 +118,7 @@ export const App: React.FC = () => {
 
   return (
     <AppProvider>
-      <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
-        <TacticalHeader />
-        <div className="max-w-[1540px] w-full mx-auto flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 px-3 sm:px-6 lg:px-10 py-2 sm:py-4">
-          <SidebarNav />
-          <MainContent />
-        </div>
-      </div>
+      <AppContent />
     </AppProvider>
   );
 };

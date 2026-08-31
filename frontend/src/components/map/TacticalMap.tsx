@@ -1,3 +1,4 @@
+import { MOCK_ATMS, MOCK_POLICE_STATIONS } from '../../services/mockData';
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import L from 'leaflet';
 import { 
@@ -16,8 +17,8 @@ export const TacticalMap: React.FC = () => {
   const mapInstanceRef = useRef<L.Map | null>(null);
   const markersRef = useRef<{ [key: string]: L.Marker }>({});
   
-  const [atms, setAtms] = useState<ATM[]>([]);
-  const [stations, setStations] = useState<PoliceStation[]>([]);
+  const [atms, setAtms] = useState<ATM[]>(MOCK_ATMS);
+  const [stations, setStations] = useState<PoliceStation[]>(MOCK_POLICE_STATIONS);
   const [showThermal, setShowThermal] = useState(true);
   const [showAtms, setShowAtms] = useState(true);
   const [showStations, setShowStations] = useState(true);

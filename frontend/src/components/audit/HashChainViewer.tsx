@@ -20,7 +20,7 @@ export const HashChainViewer: React.FC = () => {
   const fetchAuditData = async () => {
     try {
       const [evts, v] = await Promise.all([
-        api.getAuditTrail(),
+        api.getAuditEvents(),
         api.verifyAuditChain()
       ]);
       setEvents(evts);

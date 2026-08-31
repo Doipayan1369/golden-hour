@@ -1,3 +1,4 @@
+import { MOCK_NODES_041, MOCK_EDGES_041 } from '../../services/mockData';
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Network, ArrowRight, ArrowLeft, ShieldCheck, 
@@ -10,7 +11,9 @@ import { MaskedToken } from '../common/MaskedToken';
 import { NodeType, AccountNode, TransactionEdge } from '../../types';
 
 export const TransactionGraph: React.FC = () => {
-  const { graphNodes, graphEdges, selectedCase } = useApp();
+  const { graphNodes: rawNodes, graphEdges: rawEdges, selectedCase } = useApp();
+  const graphNodes = rawNodes && rawNodes.length > 0 ? rawNodes : MOCK_NODES_041;
+  const graphEdges = rawEdges && rawEdges.length > 0 ? rawEdges : MOCK_EDGES_041;
   
   // 15-Hop Live Trace Playback State
   const [currentHopIndex, setCurrentHopIndex] = useState<number>(1);
