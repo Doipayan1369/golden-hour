@@ -500,9 +500,7 @@ export const TacticalMap: React.FC = () => {
                 TOP 15 ATMS RANKED
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Live moving KDE heatmap across Pune City • Dynamically follows scrolling, zooming, and panning
-            </p>
+<p className="text-xs text-slate-500 mt-0.5">Live Moving Thermal Radar • Pune City Corridor</p>
           </div>
         </div>
 
@@ -608,27 +606,27 @@ export const TacticalMap: React.FC = () => {
                       : 'bg-white/60 border-slate-200/60 hover:bg-white'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <div className="flex items-center gap-2">
-                      <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black font-mono ${
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <span className={`w-5 h-5 shrink-0 rounded-full flex items-center justify-center text-[10px] font-black font-mono ${
                         isTop3 ? 'bg-[#111317] text-[#D4FF00]' : 'bg-slate-200 text-slate-700'
                       }`}>
                         #{atm.rank}
                       </span>
-                      <b className="text-xs text-slate-900 font-extrabold truncate max-w-[140px] sm:max-w-[180px]">
+                      <b className="text-xs text-slate-900 font-extrabold truncate min-w-0 flex-1">
                         {atm.bank_name}
                       </b>
                     </div>
-                    <span className={`text-xs font-mono font-black ${
+                    <span className={`shrink-0 text-xs font-mono font-black ${
                       isTop3 ? 'text-rose-600' : 'text-slate-700'
                     }`}>
                       {atm.probability}%
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-500 font-medium pt-1 border-t border-slate-100">
-                    <span className="truncate max-w-[160px]">📍 {atm.locality}</span>
-                    <span className="font-mono text-slate-400">{atm.distanceM}m away</span>
+                  <div className="flex items-center justify-between gap-2 text-[10px] text-slate-500 font-medium pt-1 border-t border-slate-100">
+                    <span className="truncate min-w-0 flex-1">📍 {atm.locality}</span>
+                    <span className="shrink-0 font-mono text-slate-400">{atm.distanceM}m</span>
                   </div>
                 </div>
               );

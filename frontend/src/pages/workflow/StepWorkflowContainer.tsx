@@ -1,63 +1,131 @@
 import React, { useState } from 'react';
+import { 
+  ArrowRight, ArrowLeft, ShieldAlert, GitBranch, Flame, 
+  Send, RotateCcw, FileText, CheckCircle2, ChevronRight,
+  Sparkles, Radio, Eye, Clock, ShieldCheck
+} from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-import { WorkflowProgressBar, WORKFLOW_STEPS } from '../../components/workflow/WorkflowProgressBar';
-import { LiveTelemetryBar } from '../../components/dashboard/LiveTelemetryBar';
 import { UrgentQueueTable } from '../../components/dashboard/UrgentQueueTable';
+import { LiveTelemetryBar } from '../../components/dashboard/LiveTelemetryBar';
 import { CaseHeader } from '../../components/workspace/CaseHeader';
 import { TransactionGraph } from '../../components/workspace/TransactionGraph';
 import { TimelineView } from '../../components/workspace/TimelineView';
-import { ForecastCard } from '../../components/workspace/ForecastCard';
 import { TacticalMap } from '../../components/map/TacticalMap';
-import { HashChainViewer } from '../../components/audit/HashChainViewer';
+import { ForecastCard } from '../../components/workspace/ForecastCard';
 import { InterventionsPage } from '../InterventionsPage';
 import { ReplayPage } from '../ReplayPage';
 import { ReportsPage } from '../ReportsPage';
-import { 
-  ArrowRight, ArrowLeft, ShieldAlert, GitBranch, Flame, 
-  Send, PlayCircle, FileCheck, CheckCircle2, AlertTriangle, Sparkles, 
-  Info, HelpCircle, MapPin, Check 
-} from 'lucide-react';
 
-export const StepWorkflowContainer: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState<number>(1);
-  const { selectedCaseId, selectCase } = useApp();
+interface StepWorkflowContainerProps {
+  initialStep?: number;
+}
+
+export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ initialStep = 1 }) => {
+  const [currentStep, setCurrentStep] = useState<number>(initialStep);
+  const { selectedCaseId, selectedCase, selectCase } = useApp();
+
+  const steps = [
+    { num: 1, label: '01. Intake', title: 'Incident Intake & Triage', icon: ShieldAlert },
+    { num: 2, label: '02. Mule Trace', title: '15-Hop Multi-Bank Trace', icon: GitBranch },
+    { num: 3, label: '03. Thermal Radar', title: 'Cash-Out Radar & ATMs', icon: Flame },
+    { num: 4, label: '04. Dispatch', title: 'Authorize Police Dispatch', icon: Send },
+    { num: 5, label: '05. Live Replay', title: '5-Minute Replay Simulator', icon: RotateCcw },
+    { num: 6, label: '06. Legal Audit', title: 'Certified Evidentiary PDF', icon: FileText },
+  ];
 
   const handleNext = () => {
-    setCurrentStep((prev) => Math.min(WORKFLOW_STEPS.length, prev + 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (currentStep < 6) setCurrentStep(currentStep + 1);
   };
 
   const handlePrev = () => {
-    setCurrentStep((prev) => Math.max(1, prev - 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
   return (
-    <div className="space-y-10 animate-fadeIn">
-      {/* 1. Global Step Progression Navigation Bar */}
-      <WorkflowProgressBar 
-        currentStep={currentStep} 
-        onStepChange={(step) => {
-          setCurrentStep(step);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }} 
-      />
+    <div className="space-y-6 pb-12">
+      {/* 1. Global Tactical Workflow Progress Navigation */}
+      <div className="neu-card p-4 sm:p-5">
+        <div className="flex items-center justify-between gap-3 border-b border-slate-100 pb-3.5 mb-3.5">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs font-mono font-bold text-slate-800">
+              ACTIVE CASE: <span className="text-slate-900 font-black">{selectedCaseId || 'CASE-2026-041'}</span>
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handlePrev}
+              disabled={currentStep === 1}
+              className={`p-2 rounded-full border text-xs font-bold transition-all ${
+                currentStep === 1 ? 'opacity-40 cursor-not-allowed text-slate-400 border-slate-200' : 'hover:bg-slate-100 text-slate-700 border-slate-200 cursor-pointer'
+              }`}
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <span className="text-xs font-mono font-black text-slate-700 px-1">
+              Step {currentStep} of 6
+            </span>
+            <button
+              onClick={handleNext}
+              disabled={currentStep === 6}
+              className={`p-2 rounded-full border text-xs font-bold transition-all ${
+                currentStep === 6 ? 'opacity-40 cursor-not-allowed text-slate-400 border-slate-200' : 'bg-[#111317] text-[#D4FF00] border-[#111317] hover:bg-slate-800 cursor-pointer'
+              }`}
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Responsive Step Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+          {steps.map((s) => {
+            const isCurrent = currentStep === s.num;
+            const isCompleted = currentStep > s.num;
+            const Icon = s.icon;
+
+            return (
+              <button
+                key={s.num}
+                onClick={() => setCurrentStep(s.num)}
+                className={`p-3 rounded-2xl text-left transition-all border cursor-pointer flex flex-col justify-between ${
+                  isCurrent
+                    ? 'bg-[#111317] text-white border-[#111317] shadow-md ring-2 ring-[#D4FF00]/40'
+                    : isCompleted
+                    ? 'bg-white border-emerald-300 text-slate-800 hover:bg-emerald-50/40'
+                    : 'bg-white/70 border-slate-200/80 text-slate-500 hover:bg-white'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className={`text-[11px] font-black font-mono ${isCurrent ? 'text-[#D4FF00]' : isCompleted ? 'text-emerald-700' : 'text-slate-700'}`}>
+                    {s.label}
+                  </span>
+                  {isCompleted ? (
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  ) : isCurrent ? (
+                    <span className="w-2 h-2 rounded-full bg-[#D4FF00] animate-ping" />
+                  ) : null}
+                </div>
+                <div className="text-[11px] font-semibold truncate leading-tight opacity-90">
+                  {s.title}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* 2. Step 1: Intake & Triage */}
       {currentStep === 1 && (
-        <div className="space-y-8 animate-slideUp">
-          {/* Officer's Clear Mission Briefing Card */}
-          <div className="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold">
-                <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
-                <span>Stage 1 of 6 • Incident Triage</span>
-              </div>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Review & Select High-Priority 1930 Cyber Fraud
+        <div className="space-y-6 animate-fadeIn">
+          <div className="neu-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-black text-slate-900 tracking-tight">
+                Review & Select Active Cyber Fraud Case
               </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Cases are automatically ranked by <b>freshness</b> and <b>loss urgency</b>. Select preloaded case <b>CASE-2026-041</b> (₹4,50,000 fraud in Pune) or pick any complaint from the triage matrix below.
+              <p className="text-xs text-slate-500 mt-1">
+                Priority-ranked complaints ingested via 1930 National Helpline.
               </p>
             </div>
             <button
@@ -65,10 +133,10 @@ export const StepWorkflowContainer: React.FC = () => {
                 selectCase('CASE-2026-041');
                 handleNext();
               }}
-              className="pill-btn-dark px-8 py-4 text-xs font-extrabold flex items-center justify-center gap-3 shrink-0 shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
+              className="pill-btn-lime px-6 py-2.5 text-xs font-black flex items-center justify-center gap-2 shrink-0 shadow-md cursor-pointer hover:scale-[1.02] transition-transform"
             >
-              <span>Investigate Case CASE-2026-041</span>
-              <ArrowRight className="w-4 h-4 text-[#D4FF00]" />
+              <span>Investigate CASE-2026-041</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
@@ -78,12 +146,12 @@ export const StepWorkflowContainer: React.FC = () => {
             handleNext();
           }} />
 
-          <div className="flex justify-end pt-4">
+          <div className="flex justify-end pt-2">
             <button
               onClick={handleNext}
-              className="pill-btn-lime flex items-center gap-3 px-8 py-3.5 text-sm font-extrabold shadow-lg cursor-pointer"
+              className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer"
             >
-              <span>Proceed to Step 2: Multi-Hop Mule Trace</span>
+              <span>Proceed to 15-Hop Mule Trace</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -92,99 +160,40 @@ export const StepWorkflowContainer: React.FC = () => {
 
       {/* 3. Step 2: Multi-Hop Mule Trace */}
       {currentStep === 2 && (
-        <div className="space-y-8 animate-slideUp">
-          {/* Officer's Clear Mission Briefing Card */}
-          <div className="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold">
-                <GitBranch className="w-3.5 h-3.5 text-cyan-600" />
-                <span>Stage 2 of 6 • Banking Switch Trace</span>
-              </div>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Trace Banking Switches & Mule Accounts
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                See exactly where the victim's money hopped across beneficiary accounts. Identify rapid pass-through velocity and find the terminal ATM card account.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 cursor-pointer">
-                ← Back
-              </button>
-              <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-6 py-3 text-xs font-extrabold shadow-md cursor-pointer">
-                <span>View Cash-Out Radar</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
+        <div className="space-y-6 animate-fadeIn">
           <CaseHeader />
-          <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
-            <div className="xl:col-span-8 space-y-8">
-              <TransactionGraph />
-            </div>
-            <div className="xl:col-span-4 space-y-8">
-              <TimelineView />
-            </div>
+
+          <div className="space-y-6">
+            <TransactionGraph />
+            <TimelineView />
           </div>
 
-          <div className="flex justify-between pt-6 border-t border-slate-200">
-            <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Intake & Triage</span>
+              <span>Back: Intake</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-3 px-8 py-3.5 text-sm font-extrabold shadow-lg cursor-pointer">
-              <span>Proceed to Step 3: Geospatial Thermal Radar</span>
+            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Cash-Out Radar</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       )}
 
-      {/* 4. Step 3: Geospatial Thermal Radar */}
+      {/* 4. Step 3: Geospatial Thermal Radar & Forecast */}
       {currentStep === 3 && (
-        <div className="space-y-8 animate-slideUp">
-          {/* Officer's Clear Mission Briefing Card */}
-          <div className="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold">
-                <Flame className="w-3.5 h-3.5 text-amber-600" />
-                <span>Stage 3 of 6 • Spatial Cash-Out Radar</span>
-              </div>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Locate Predicted ATM Cash-Out Hotspots in Pune
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                The AI model correlates mule card issuance, transit speed, and 24x7 ATM density to pinpoint the exact withdrawal corridor (<b>FC Road Goodluck Chowk</b>).
-              </p>
-            </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 cursor-pointer">
-                ← Back
-              </button>
-              <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-6 py-3 text-xs font-extrabold shadow-md cursor-pointer">
-                <span>Compose Action Order</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+        <div className="space-y-6 animate-fadeIn">
+          <TacticalMap />
+          <ForecastCard />
 
-          <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
-            <div className="xl:col-span-8 space-y-8">
-              <TacticalMap />
-            </div>
-            <div className="xl:col-span-4 space-y-8">
-              <ForecastCard />
-            </div>
-          </div>
-
-          <div className="flex justify-between pt-6 border-t border-slate-200">
-            <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Multi-Hop Trace</span>
+              <span>Back: Mule Trace</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-3 px-8 py-3.5 text-sm font-extrabold shadow-lg cursor-pointer">
-              <span>Proceed to Step 4: Dispatch Tactical Action</span>
+            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Police Dispatch</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -193,142 +202,55 @@ export const StepWorkflowContainer: React.FC = () => {
 
       {/* 5. Step 4: Tactical Action & Dispatch */}
       {currentStep === 4 && (
-        <div className="space-y-8 animate-slideUp">
-          {/* Officer's Clear Mission Briefing Card */}
-          <div className="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold">
-                <Send className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Stage 4 of 6 • Tactical Interception Dispatch</span>
-              </div>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Authorize Police Alert & Bank Account Hold
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Transmit real-time GPS dispatch packet to <b>Deccan Beat Patrol Unit 3</b> and place an immediate Section 91 CrPC hold request with the nodal bank.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 cursor-pointer">
-                ← Back
-              </button>
-              <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-6 py-3 text-xs font-extrabold shadow-md cursor-pointer">
-                <span>Start Live Simulator</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
+        <div className="space-y-6 animate-fadeIn">
           <InterventionsPage />
 
-          <div className="flex justify-between pt-6 border-t border-slate-200">
-            <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Thermal Radar</span>
+              <span>Back: Cash-Out Radar</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-3 px-8 py-3.5 text-sm font-extrabold shadow-lg cursor-pointer">
-              <span>Proceed to Step 5: Live Interception Replay</span>
+            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Incident Replay</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       )}
 
-      {/* 6. Step 5: Live Interception & Replay */}
+      {/* 6. Step 5: Incident Replay Simulator */}
       {currentStep === 5 && (
-        <div className="space-y-8 animate-slideUp">
-          {/* Officer's Clear Mission Briefing Card */}
-          <div className="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold">
-                <PlayCircle className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Stage 5 of 6 • 5-Minute Incident Simulator</span>
-              </div>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Simulate Ground-Truth Withdrawal Interception
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Step through the chronological event timeline to confirm that police beat patrols arrived at the FC Road ATM <b>15 minutes before the mule attempted withdrawal</b>.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 cursor-pointer">
-                ← Back
-              </button>
-              <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-6 py-3 text-xs font-extrabold shadow-md cursor-pointer">
-                <span>View Legal Audit</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
+        <div className="space-y-6 animate-fadeIn">
           <ReplayPage />
 
-          <div className="flex justify-between pt-6 border-t border-slate-200">
-            <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Tactical Dispatch</span>
+              <span>Back: Dispatch</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-3 px-8 py-3.5 text-sm font-extrabold shadow-lg cursor-pointer">
-              <span>Proceed to Step 6: Evidentiary Audit & Export</span>
+            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Legal Audit & PDF Export</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       )}
 
-      {/* 7. Step 6: Legal Audit & Case Export */}
+      {/* 7. Step 6: Legal Evidence Dossier & Reports */}
       {currentStep === 6 && (
-        <div className="space-y-8 animate-slideUp">
-          {/* Officer's Clear Mission Briefing Card */}
-          <div className="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold">
-                <FileCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Stage 6 of 6 • Court-Admissible Evidence</span>
-              </div>
-              <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                Cryptographic SHA-256 Audit Trail & 1-Click Export
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Verify the tamper-evident hash ledger, submit officer feedback, and export certified PDF evidence for court prosecution.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 cursor-pointer">
-                ← Back
-              </button>
-              <button 
-                onClick={() => {
-                  setCurrentStep(1);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }} 
-                className="pill-btn-dark flex items-center gap-2 text-xs font-bold cursor-pointer"
-              >
-                <span>Start New Case ↺</span>
-              </button>
-            </div>
-          </div>
+        <div className="space-y-6 animate-fadeIn">
+          <ReportsPage />
 
-          <div className="space-y-8">
-            <HashChainViewer />
-            <ReportsPage />
-          </div>
-
-          <div className="flex justify-between pt-6 border-t border-slate-200">
-            <button onClick={handlePrev} className="pill-btn border border-slate-200 text-xs font-bold text-slate-700 bg-white flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Live Simulator</span>
+              <span>Back: Incident Replay</span>
             </button>
-            <button 
-              onClick={() => {
-                setCurrentStep(1);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }} 
-              className="pill-btn-lime flex items-center gap-3 px-8 py-3.5 text-sm font-extrabold shadow-lg cursor-pointer"
+            <button
+              onClick={() => setCurrentStep(1)}
+              className="px-6 py-2.5 rounded-full bg-[#111317] text-white text-xs font-black hover:bg-slate-800 transition-colors cursor-pointer"
             >
-              <CheckCircle2 className="w-4 h-4" />
-              <span>Investigation Complete • Start Next Case</span>
+              Start New Investigation
             </button>
           </div>
         </div>
