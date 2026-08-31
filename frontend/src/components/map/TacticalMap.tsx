@@ -1,4 +1,3 @@
-import { MOCK_ATMS, MOCK_POLICE_STATIONS } from '../../services/mockData';
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import L from 'leaflet';
 import { 
@@ -9,6 +8,7 @@ import {
 import { useApp } from '../../context/AppContext';
 import { api } from '../../services/api';
 import { ATM, PoliceStation } from '../../types';
+import { MOCK_ATMS, MOCK_POLICE_STATIONS } from '../../services/mockData';
 
 export const TacticalMap: React.FC = () => {
   const { forecast, replayState } = useApp();
@@ -16,6 +16,7 @@ export const TacticalMap: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const markersRef = useRef<{ [key: string]: L.Marker }>({});
+  const animFrameRef = useRef<number | null>(null);
   
   const [atms, setAtms] = useState<ATM[]>(MOCK_ATMS);
   const [stations, setStations] = useState<PoliceStation[]>(MOCK_POLICE_STATIONS);
@@ -32,8 +33,8 @@ export const TacticalMap: React.FC = () => {
   useEffect(() => {
     Promise.all([api.getATMs(), api.getPoliceStations()])
       .then(([atmData, stationData]) => {
-        setAtms(atmData);
-        setStations(stationData);
+        if (atmData && atmData.length > 0) setAtms(atmData);
+        if (stationData && stationData.length > 0) setStations(stationData);
       })
       .catch(console.error);
   }, []);
@@ -187,7 +188,7 @@ export const TacticalMap: React.FC = () => {
     return pts;
   }, [rankedAtms]);
 
-  // Real-Time Canvas Heatmap Loop (Moves with pan/drag/zoom/scroll)
+  // Synchronized LayerPoint Canvas Heatmap Loop (Glued to Leaflet layer coordinates during scroll, swipe & zoom)
   const drawHeatmap = useCallback(() => {
     const map = mapInstanceRef.current;
     const canvas = canvasRef.current;
@@ -199,41 +200,61 @@ export const TacticalMap: React.FC = () => {
       return;
     }
 
-    const size = map.getSize();
-    if (canvas.width !== size.x || canvas.height !== size.y) {
-      canvas.width = size.x;
-      canvas.height = size.y;
-    }
+    // Extended bounds with 40% padding buffer for silky seamless panning
+    const bounds = map.getBounds();
+    const sw = bounds.getSouthWest();
+    const ne = bounds.getNorthEast();
+    const latSpan = ne.lat - sw.lat;
+    const lonSpan = ne.lng - sw.lng;
+    const pad = 0.4;
+
+    const extendedBounds = L.latLngBounds(
+      [sw.lat - latSpan * pad, sw.lng - lonSpan * pad],
+      [ne.lat + latSpan * pad, ne.lng + lonSpan * pad]
+    );
+
+    const topLeft = map.latLngToLayerPoint(extendedBounds.getNorthWest());
+    const bottomRight = map.latLngToLayerPoint(extendedBounds.getSouthEast());
+    const width = Math.max(10, Math.round(bottomRight.x - topLeft.x));
+    const height = Math.max(10, Math.round(bottomRight.y - topLeft.y));
+
+    // Position canvas relative to overlayPane origin
+    L.DomUtil.setPosition(canvas, topLeft);
+    canvas.width = width;
+    canvas.height = height;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    ctx.clearRect(0, 0, size.x, size.y);
+    ctx.clearRect(0, 0, width, height);
 
     const lut = createThermalLUT();
     if (!lut) return;
 
     const currentZoom = map.getZoom();
-    const zoomScale = Math.pow(1.35, currentZoom - 14);
-    const rad = Math.max(22, Math.min(95, heatRadius * zoomScale));
+    const zoomScale = Math.pow(1.32, currentZoom - 14.5);
+    const rad = Math.max(24, Math.min(100, heatRadius * zoomScale));
     const blur = rad * 0.75;
     const brush = createBrush(rad, blur);
     const brushOffset = (rad + blur);
 
     const points = getThermalDataPoints();
 
-    // 1. Accumulate Grayscale Alpha Stamps
+    // 1. Accumulate Grayscale Alpha Stamps in LayerPoint Space
     points.forEach((pt) => {
-      const p = map.latLngToContainerPoint([pt.lat, pt.lon]);
-      if (p.x < -brushOffset * 2 || p.x > size.x + brushOffset * 2 || p.y < -brushOffset * 2 || p.y > size.y + brushOffset * 2) {
+      const ptLayer = map.latLngToLayerPoint([pt.lat, pt.lon]);
+      const px = ptLayer.x - topLeft.x;
+      const py = ptLayer.y - topLeft.y;
+
+      if (px < -brushOffset * 2 || px > width + brushOffset * 2 || py < -brushOffset * 2 || py > height + brushOffset * 2) {
         return;
       }
-      ctx.globalAlpha = pt.intensity * heatIntensity * 0.72;
-      ctx.drawImage(brush, p.x - brushOffset, p.y - brushOffset);
+      ctx.globalAlpha = pt.intensity * heatIntensity * 0.75;
+      ctx.drawImage(brush, px - brushOffset, py - brushOffset);
     });
 
     // 2. Colorize with Magma Thermal LUT
-    const imgData = ctx.getImageData(0, 0, size.x, size.y);
+    const imgData = ctx.getImageData(0, 0, width, height);
     const data = imgData.data;
     const len = data.length;
 
@@ -251,6 +272,16 @@ export const TacticalMap: React.FC = () => {
     ctx.globalAlpha = 1.0;
     ctx.putImageData(imgData, 0, 0);
   }, [showThermal, heatRadius, heatIntensity, createThermalLUT, createBrush, getThermalDataPoints]);
+
+  const scheduleDraw = useCallback(() => {
+    if (animFrameRef.current !== null) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+    animFrameRef.current = requestAnimationFrame(() => {
+      drawHeatmap();
+      animFrameRef.current = null;
+    });
+  }, [drawHeatmap]);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -283,26 +314,24 @@ export const TacticalMap: React.FC = () => {
         updateWhenZooming: true,
       }).addTo(map);
 
-      // Real-Time Canvas Layer Synchronized to Map Movements
+      // Real-Time Canvas Layer Synchronized to Map Coordinates
       const HeatCanvasLayer = L.Layer.extend({
         onAdd: function (leafletMap: L.Map) {
           const pane = leafletMap.getPane('overlayPane');
           const canvas = L.DomUtil.create('canvas', 'leaflet-thermal-kde-canvas') as HTMLCanvasElement;
           canvas.style.position = 'absolute';
-          canvas.style.top = '0';
-          canvas.style.left = '0';
           canvas.style.pointerEvents = 'none';
           canvas.style.mixBlendMode = 'multiply';
           canvas.style.opacity = '0.92';
           pane?.appendChild(canvas);
           canvasRef.current = canvas;
 
-          // Attach real-time movement listeners so heatmap moves during drag, swipe & zoom!
-          leafletMap.on('move moveend viewreset zoom zoomstart zoomend', drawHeatmap);
-          drawHeatmap();
+          // Attach listeners to synchronize canvas continuously on swipe, drag, wheel & zoom
+          leafletMap.on('move viewreset zoom moveend zoomend resize', scheduleDraw);
+          scheduleDraw();
         },
         onRemove: function (leafletMap: L.Map) {
-          leafletMap.off('move moveend viewreset zoom zoomstart zoomend', drawHeatmap);
+          leafletMap.off('move viewreset zoom moveend zoomend resize', scheduleDraw);
           if (canvasRef.current) {
             L.DomUtil.remove(canvasRef.current);
             canvasRef.current = null;
@@ -451,8 +480,8 @@ export const TacticalMap: React.FC = () => {
       `).openPopup();
     }
 
-    drawHeatmap();
-  }, [rankedAtms, stations, showAtms, showStations, replayState, selectedAtmId, drawHeatmap]);
+    scheduleDraw();
+  }, [rankedAtms, stations, showAtms, showStations, replayState, selectedAtmId, scheduleDraw]);
 
   return (
     <div className="neu-card p-4 sm:p-8 space-y-6">
@@ -472,7 +501,7 @@ export const TacticalMap: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Live moving KDE heatmap across Pune City • Ranked by multi-hop terminal pass-through probability
+              Live moving KDE heatmap across Pune City • Dynamically follows scrolling, zooming, and panning
             </p>
           </div>
         </div>
