@@ -95,9 +95,9 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
                 onChange={(e) => setRole(e.target.value as UserRole)}
                 className="bg-transparent text-[11px] sm:text-xs font-bold text-slate-800 focus:outline-none cursor-pointer"
               >
-                <option value="I4C_STATE_ANALYST">State Analyst</option>
-                <option value="LOCAL_BEAT_OFFICER">Beat Patrol</option>
-                <option value="BANK_NODAL_INVESTIGATOR">Bank Nodal</option>
+                <option value="LOCAL_BEAT_OFFICER">Local Patrol</option>
+                <option value="BANK_NODAL_INVESTIGATOR">Bank Official</option>
+                <option value="I4C_STATE_ANALYST">Cyber Cell</option>
               </select>
             </div>
 

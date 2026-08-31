@@ -69,9 +69,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onEnter }) => {
                 onChange={(e) => setRole(e.target.value as UserRole)}
                 className="w-full bg-[#F8FAFC] border border-slate-200/90 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:border-slate-400 shadow-inner"
               >
-                <option value="I4C_STATE_ANALYST">I4C State Cyber Analyst (Full Triage & Forecast)</option>
-                <option value="LOCAL_BEAT_OFFICER">Local Cyber Beat Officer (Dispatch & Acknowledge)</option>
-                <option value="BANK_NODAL_INVESTIGATOR">Bank Nodal Investigator (Trace & Hold Responses)</option>
+                <option value="LOCAL_BEAT_OFFICER">Local Patrol (Dispatch & Acknowledge)</option>
+                <option value="BANK_NODAL_INVESTIGATOR">Bank Official (Trace & Hold Responses)</option>
+                <option value="I4C_STATE_ANALYST">Cyber Cell (Full Triage & Forecast)</option>
               </select>
             </div>
 
