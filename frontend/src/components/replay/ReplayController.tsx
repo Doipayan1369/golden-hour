@@ -1,3 +1,4 @@
+import { ReplayLiveLogFeed } from './ReplayLiveLogFeed';
 import React, { useState, useEffect } from 'react';
 import { 
   Play, Pause, RotateCcw, CheckCircle2, 
@@ -134,6 +135,12 @@ export const ReplayController: React.FC = () => {
           })}
         </div>
       </div>
+
+      {/* Live Log View with Moving Steps */}
+      <ReplayLiveLogFeed 
+        currentStep={currentStep} 
+        onSelectStep={(step) => handleStep(step)} 
+      />
 
       {/* Current Step Focus Box */}
       <div className="bg-[#F8FAFC] border border-slate-200/90 p-6 rounded-3xl space-y-4">
