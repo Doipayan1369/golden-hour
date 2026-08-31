@@ -89,26 +89,37 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
               <button
                 key={s.num}
                 onClick={() => setCurrentStep(s.num)}
-                className={`p-3 rounded-2xl text-left transition-all border cursor-pointer flex flex-col justify-between ${
+                className={`py-3 px-3.5 rounded-2xl text-left transition-all border cursor-pointer flex items-center justify-between gap-2 ${
                   isCurrent
                     ? 'bg-[#111317] text-white border-[#111317] shadow-md ring-2 ring-[#D4FF00]/40'
                     : isCompleted
-                    ? 'bg-white border-emerald-300 text-slate-800 hover:bg-emerald-50/40'
-                    : 'bg-white/70 border-slate-200/80 text-slate-500 hover:bg-white'
+                    ? 'bg-white border-emerald-300 text-slate-800 hover:bg-emerald-50/40 shadow-sm'
+                    : 'bg-white/80 border-slate-200/80 text-slate-600 hover:bg-white'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className={`text-[11px] font-black font-mono ${isCurrent ? 'text-[#D4FF00]' : isCompleted ? 'text-emerald-700' : 'text-slate-700'}`}>
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className={`p-2 rounded-xl flex items-center justify-center shrink-0 ${
+                    isCurrent 
+                      ? 'bg-white/15 text-[#D4FF00]' 
+                      : isCompleted 
+                      ? 'bg-emerald-100 text-emerald-800' 
+                      : 'bg-slate-100 text-slate-600'
+                  }`}>
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <span className={`text-xs font-black font-mono tracking-tight truncate ${
+                    isCurrent ? 'text-white' : isCompleted ? 'text-slate-900' : 'text-slate-700'
+                  }`}>
                     {s.label}
                   </span>
-                  {isCompleted ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  ) : isCurrent ? (
-                    <span className="w-2 h-2 rounded-full bg-[#D4FF00] animate-ping" />
-                  ) : null}
                 </div>
-                <div className="text-[11px] font-semibold truncate leading-tight opacity-90">
-                  {s.title}
+
+                <div className="shrink-0">
+                  {isCompleted ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  ) : isCurrent ? (
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#D4FF00] inline-block animate-pulse" />
+                  ) : null}
                 </div>
               </button>
             );
