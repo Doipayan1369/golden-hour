@@ -238,88 +238,82 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: LIVE INCIDENT INTERCEPTION FEED: CASE-2026-041 (PUNE) */}
+          {/* Right Column: Interactive Live Incident Preview */}
           <div className="lg:col-span-6 perspective-1000">
             <div className="neu-glass-panel rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
               
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+              {/* Card Header: Live Telemetry Indicator */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+                  <div className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                   </div>
                   <div>
-                    <b className="text-xs sm:text-sm font-black font-mono text-white tracking-wide block">
-                      LIVE INCIDENT INTERCEPTION FEED
-                    </b>
-                    <span className="text-[11px] text-[#D4FF00] font-mono font-bold">
-                      CASE-2026-041 (PUNE CITY)
+                    <span className="text-xs font-mono font-black text-white tracking-wide block">
+                      LIVE INCIDENT RADAR
+                    </span>
+                    <span className="text-[10px] text-[#D4FF00] font-mono">
+                      CASE-2026-041 • PUNE CITY
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 font-mono text-xs">
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold text-[11px]">
-                    ✓ 100% SECURED
-                  </span>
-                  <span className="text-slate-400 text-[11px]">10:14 IST</span>
+                <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#D4FF00]/15 text-[#D4FF00] border border-[#D4FF00]/30">
+                  INTERCEPTED
+                </span>
+              </div>
+
+              {/* 3 Clean Interactive Feature Teasers (Less text, high curiosity) */}
+              <div className="grid grid-cols-3 gap-2.5">
+                <div 
+                  onClick={handleExploreLiveDemo}
+                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-1.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-[#111317] text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <GitBranch className="w-4 h-4" />
+                  </div>
+                  <b className="text-[11px] font-bold text-white block">15-Hop Trace</b>
+                  <span className="text-[9px] text-slate-400 font-mono block">Multi-Bank Map</span>
+                </div>
+
+                <div 
+                  onClick={handleExploreLiveDemo}
+                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-1.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <Flame className="w-4 h-4" />
+                  </div>
+                  <b className="text-[11px] font-bold text-white block">ATM Radar</b>
+                  <span className="text-[9px] text-slate-400 font-mono block">Spatial AI</span>
+                </div>
+
+                <div 
+                  onClick={handleExploreLiveDemo}
+                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-1.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <b className="text-[11px] font-bold text-white block">Digital FIR</b>
+                  <span className="text-[9px] text-slate-400 font-mono block">Sec 154 CrPC</span>
                 </div>
               </div>
 
-              {/* Loss vs Recovery Summary */}
-              <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                  <span className="text-slate-400 text-[10px] uppercase font-bold block">Victim Loss Debited</span>
-                  <b className="text-rose-400 text-base font-black">₹4,50,000</b>
-                  <span className="text-[10px] text-slate-500 block">SBI Camp Branch</span>
-                </div>
-                <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-1">
-                  <span className="text-emerald-400 text-[10px] uppercase font-bold block">Secured Prior to Cashout</span>
-                  <b className="text-emerald-400 text-base font-black">₹4,50,000 (100%)</b>
-                  <span className="text-[10px] text-emerald-300/80 block">FC Road Goodluck Kiosk</span>
-                </div>
-              </div>
-
-              {/* 3 Telemetry Pillars */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>15-Hop Trace</span>
-                    <GitBranch className="w-3.5 h-3.5 text-[#D4FF00]" />
+              {/* Clean, High-Impact Summary Bar */}
+              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <span className="text-[10px] text-slate-400 uppercase font-mono block">Lead Time to Intercept</span>
+                  <div className="text-sm font-black text-white font-mono flex items-center gap-1.5">
+                    <span className="text-[#D4FF00]">&lt; 15 Mins</span>
+                    <span className="text-slate-500 text-xs hidden sm:inline">vs 48h standard</span>
                   </div>
-                  <b className="text-white text-xs block font-bold">16 Nodes • 7 Banks</b>
-                  <p className="text-slate-400 text-[10px]">SBI &rarr; ICICI &rarr; HDFC &rarr; Axis</p>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>Thermal Radar</span>
-                    <Flame className="w-3.5 h-3.5 text-rose-500" />
-                  </div>
-                  <b className="text-rose-400 text-xs block font-bold">FC Road (94%)</b>
-                  <p className="text-slate-400 text-[10px]">Goodluck Chowk ATM</p>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>Section 91 Hold</span>
-                    <Send className="w-3.5 h-3.5 text-emerald-400" />
-                  </div>
-                  <b className="text-emerald-400 text-xs block font-bold">PCR Beat 3 Lock</b>
-                  <p className="text-slate-400 text-[10px]">Instant statutory hold</p>
-                </div>
-              </div>
-
-              {/* Live Status Bar */}
-              <div className="p-3 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#D4FF00] animate-pulse" />
-                  <span>Lead Time: <b className="text-white">15 Mins Advance Interception</b></span>
                 </div>
                 <button
                   onClick={handleExploreLiveDemo}
-                  className="text-[#D4FF00] hover:text-lime-300 font-bold underline cursor-pointer text-[11px]"
+                  className="neu-btn-lime px-4 py-2 text-xs font-black flex items-center gap-1.5 shrink-0 shadow-md"
                 >
-                  View Case 041 &rarr;
+                  <span>Explore Case</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
 
