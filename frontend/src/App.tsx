@@ -119,7 +119,7 @@ export const AppContent: React.FC = () => {
     return (
       <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
         <TacticalHeader onToggleMobileMenu={() => setIsMobileMenuOpen(true)} />
-        <div className="max-w-[1540px] w-full mx-auto flex-1 px-3 sm:px-6 lg:px-10 py-3 sm:py-5">
+        <div className="max-w-7xl w-full mx-auto flex-1 px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
           <CitizenDashboard />
         </div>
 
@@ -146,7 +146,7 @@ export const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
       <TacticalHeader onToggleMobileMenu={() => setIsMobileMenuOpen(true)} />
-      <div className="max-w-[1540px] w-full mx-auto flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 px-3 sm:px-6 lg:px-10 py-3 sm:py-5">
+      <div className="max-w-7xl w-full mx-auto flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 px-3 sm:px-6 lg:px-8 py-3 sm:py-5">
         <SidebarNav isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
         <MainContent />
       </div>

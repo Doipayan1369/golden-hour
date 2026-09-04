@@ -27,7 +27,7 @@ export const CitizenDashboard: React.FC = () => {
   }
 
   return (
-    <div className="space-y-6 pb-12 animate-fadeIn max-w-[1600px] mx-auto">
+    <div className="space-y-6 pb-12 animate-fadeIn max-w-7xl mx-auto">
       
       {/* Top Quick Navigation Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/90 shadow-sm">

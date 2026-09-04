@@ -28,7 +28,7 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
     <>
       <header className="w-full pt-3 sm:pt-4 pb-2 px-3 sm:px-6 lg:px-10 sticky top-0 z-40">
         {/* Main Spacious Navbar */}
-        <div className="max-w-[1540px] mx-auto bg-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-200/80 px-4 sm:px-8 py-3 sm:py-4 shadow-sm flex items-center justify-between transition-all">
+        <div className="max-w-7xl mx-auto bg-white/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-200/80 px-4 sm:px-8 py-3 sm:py-4 shadow-sm flex items-center justify-between transition-all">
           
           {/* Left: Mobile Menu Toggle & Clean Identity */}
           <div className="flex items-center gap-3 sm:gap-4">
@@ -140,7 +140,7 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
 
         {/* Global Alert Notification Banner */}
         {alertBanner && (
-          <div className="max-w-[1540px] mx-auto mt-2.5 bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-2xl text-xs font-semibold text-center shadow-lg flex items-center justify-center gap-2 animate-slideUp">
+          <div className="max-w-7xl mx-auto mt-2.5 bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-2xl text-xs font-semibold text-center shadow-lg flex items-center justify-center gap-2 animate-slideUp">
             <CheckCircle2 className="w-4 h-4 shrink-0" />
             <span className="truncate">{alertBanner}</span>
           </div>
