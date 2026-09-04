@@ -29,12 +29,18 @@ export const SidebarNav: React.FC<Props> = ({ isOpen, onClose }) => {
   };
 
   const navContent = (
-    <div className="flex flex-col justify-between h-full space-y-6">
-      {/* Navigation Card */}
-      <div className="neu-card p-4 space-y-2">
-        <div className="flex items-center justify-between px-3 py-2">
-          <span className="text-[11px] uppercase tracking-wider text-slate-400 font-bold">
-            Command Modules
+    <div className="neu-card p-4 sm:p-5 flex flex-col justify-between h-full space-y-4 shadow-sm border border-slate-200/90 rounded-3xl">
+      {/* Top: Header & Main Navigation Modules */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between px-3 pt-1 pb-2 border-b border-slate-100">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#111317] inline-block" />
+            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-extrabold font-mono">
+              Command Modules
+            </span>
+          </div>
+          <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+            LIVE
           </span>
           {onClose && (
             <button onClick={onClose} className="lg:hidden p-1 text-slate-400 hover:text-slate-700">
@@ -42,6 +48,8 @@ export const SidebarNav: React.FC<Props> = ({ isOpen, onClose }) => {
             </button>
           )}
         </div>
+
+        {/* Primary Navigation List */}
         <div className="space-y-1.5">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -69,9 +77,11 @@ export const SidebarNav: React.FC<Props> = ({ isOpen, onClose }) => {
             );
           })}
         </div>
+      </div>
 
-        {/* Secondary Links */}
-        <div className="pt-2 border-t border-slate-100 space-y-1">
+      {/* Bottom: Settings, Help & System Identity */}
+      <div className="space-y-3 pt-3 border-t border-slate-100">
+        <div className="space-y-1">
           <button
             onClick={() => handleNavClick('settings')}
             className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-xs font-medium transition-all text-left cursor-pointer ${
@@ -95,23 +105,14 @@ export const SidebarNav: React.FC<Props> = ({ isOpen, onClose }) => {
             </div>
           </button>
         </div>
-      </div>
 
-      {/* Active Case Hero Card */}
-      <div className="neu-dark p-5 sm:p-6 rounded-3xl space-y-4 relative overflow-hidden">
-        <div className="flex items-center justify-between text-xs">
-          <span className="text-slate-400 uppercase text-[10px] font-bold tracking-wider">Active Priority Case</span>
-          <span className="px-2.5 py-0.5 bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-full text-[10px] font-bold">
-            CRITICAL
-          </span>
-        </div>
-        <div className="text-base sm:text-lg font-extrabold text-white font-mono">{selectedCaseId}</div>
-        <div className="text-xs text-slate-300 flex items-center justify-between pt-1 border-t border-white/10">
-          <span className="text-slate-400">Target Window:</span>
-          <span className="text-[#D4FF00] font-bold font-mono">10:25 - 10:40 IST</span>
-        </div>
-        <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-          <div className="bg-[#D4FF00] h-full w-4/5 rounded-full"></div>
+        {/* Minimal System Telemetry Footer */}
+        <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-2xl flex items-center justify-between text-[10px] font-mono text-slate-500">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-bold text-slate-700">1930 INGESTION</span>
+          </div>
+          <span className="text-slate-400">SEC-65B</span>
         </div>
       </div>
     </div>
@@ -120,7 +121,7 @@ export const SidebarNav: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <>
       {/* Desktop Persistent Sidebar */}
-      <aside className="hidden lg:flex w-72 flex-col justify-between shrink-0 space-y-6">
+      <aside className="hidden lg:flex w-72 flex-col shrink-0 self-stretch min-h-full">
         {navContent}
       </aside>
 
