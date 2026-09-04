@@ -8,10 +8,12 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import GhostFibers from '../components/common/GhostFibers';
+import { EmergencyHelpModal } from '../components/modals/EmergencyHelpModal';
 
 export const LandingPage: React.FC = () => {
   const { openAuthModal, selectCase, setShowLandingPage, setActiveTab } = useApp();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [isEmergencyHelpOpen, setIsEmergencyHelpOpen] = useState(false);
 
   const faqs = [
     {
@@ -139,22 +141,31 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3.5">
+            <button
+              onClick={() => setIsEmergencyHelpOpen(true)}
+              className="px-3 sm:px-4 py-2 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-xs font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-transform hover:scale-105 animate-pulse"
+              title="Emergency 1930 Cyber Fraud Helpline"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span className="hidden xs:inline">1930 Helpline</span>
+            </button>
+
             <button
               onClick={() => openAuthModal('LOGIN', 'CITIZEN')}
-              className="text-xs font-bold text-slate-300 hover:text-white px-3 py-2 transition-colors cursor-pointer hidden sm:block"
+              className="text-xs font-bold text-slate-300 hover:text-white px-3 py-2 transition-colors cursor-pointer hidden md:block"
             >
               Sign In
             </button>
             <button
               onClick={handleCitizenQuickStart}
-              className="px-4 py-2 rounded-full border border-[#D4FF00]/40 text-[#D4FF00] hover:bg-[#D4FF00]/10 text-xs font-bold transition-all cursor-pointer shadow-sm"
+              className="px-3.5 sm:px-4 py-2 rounded-full border border-[#D4FF00]/40 text-[#D4FF00] hover:bg-[#D4FF00]/10 text-xs font-bold transition-all cursor-pointer shadow-sm"
             >
               Citizen Portal
             </button>
             <button
               onClick={handleOfficialQuickStart}
-              className="px-4 sm:px-5 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black transition-all hover:bg-lime-400 hover:scale-105 cursor-pointer shadow-lg shadow-[#D4FF00]/25"
+              className="px-3.5 sm:px-5 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black transition-all hover:bg-lime-400 hover:scale-105 cursor-pointer shadow-lg shadow-[#D4FF00]/25"
             >
               Official Access
             </button>
@@ -556,6 +567,12 @@ export const LandingPage: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* Emergency 1930 Helpline Modal */}
+      <EmergencyHelpModal
+        isOpen={isEmergencyHelpOpen}
+        onClose={() => setIsEmergencyHelpOpen(false)}
+      />
 
     </div>
   );

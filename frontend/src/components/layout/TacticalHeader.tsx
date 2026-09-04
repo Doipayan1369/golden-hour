@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Shield, RefreshCw, UserCheck, Activity, 
-  HelpCircle, CheckCircle2, Clock, BookOpen, Sparkles, Menu, LogOut, Home, FileText
+  HelpCircle, CheckCircle2, Clock, BookOpen, Sparkles, Menu, LogOut, Home, FileText, PhoneCall
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { UserRole } from '../../types';
 import { OnboardingModal } from '../onboarding/OnboardingModal';
+import { EmergencyHelpModal } from '../modals/EmergencyHelpModal';
 
 export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ onToggleMobileMenu }) => {
   const { 
@@ -13,6 +14,15 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
     setActiveTab, currentUser, logout, setShowLandingPage, userType, setCitizenStage 
   } = useApp();
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
+  const [isEmergencyHelpOpen, setIsEmergencyHelpOpen] = useState(false);
+
+  const handleHelpClick = () => {
+    if (userType === 'CITIZEN') {
+      setCitizenStage('ONBOARDING_FAQ');
+    } else {
+      setActiveTab('help');
+    }
+  };
 
   return (
     <>
@@ -61,6 +71,16 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
           {/* Right: Helpful Actions, Role Indicator & Sign Out */}
           <div className="flex items-center gap-2 sm:gap-3">
             
+            {/* Emergency Helpline Trigger */}
+            <button
+              onClick={() => setIsEmergencyHelpOpen(true)}
+              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-xs font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-transform hover:scale-105 animate-pulse"
+              title="Emergency 1930 Cyber Fraud Helpline"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span className="hidden xs:inline">1930 Helpline</span>
+            </button>
+
             {/* Citizen FIR Shortcut (if citizen) */}
             {userType === 'CITIZEN' && (
               <button
@@ -68,23 +88,25 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
                 className="px-3 sm:px-4 py-2 rounded-full bg-[#111317] text-[#D4FF00] text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-sm hover:bg-slate-800"
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">My Digital FIR</span>
+                <span className="hidden sm:inline">Digital FIR</span>
               </button>
             )}
 
-            {/* Quick Tour Guide */}
-            <button
-              onClick={() => setIsOnboardingOpen(true)}
-              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
-              title="Open Official's Walkthrough & Guide"
-            >
-              <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
-              <span className="hidden md:inline">Quick Tour</span>
-            </button>
+            {/* Quick Tour Guide (for officials) */}
+            {userType !== 'CITIZEN' && (
+              <button
+                onClick={() => setIsOnboardingOpen(true)}
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
+                title="Open Official's Walkthrough & Guide"
+              >
+                <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
+                <span className="hidden md:inline">Quick Tour</span>
+              </button>
+            )}
 
             {/* Help & FAQ Button */}
             <button
-              onClick={() => setActiveTab('help')}
+              onClick={handleHelpClick}
               className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
               title="Open Help Center, FAQs & SOPs"
             >
@@ -136,6 +158,12 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
           selectCase(cid);
           setActiveTab('workflow');
         }}
+      />
+
+      {/* Emergency 1930 Helpline Modal */}
+      <EmergencyHelpModal
+        isOpen={isEmergencyHelpOpen}
+        onClose={() => setIsEmergencyHelpOpen(false)}
       />
     </>
   );

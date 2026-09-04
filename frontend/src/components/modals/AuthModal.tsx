@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { 
   X, Mail, Lock, Shield, ArrowRight, 
-  CheckCircle2, Users, ShieldCheck, AlertCircle, Sparkles
+  CheckCircle2, Users, ShieldCheck, AlertCircle, Sparkles, Building2
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { UserType } from '../../types';
+
+const GENERIC_PUBLIC_DOMAINS = [
+  'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.in', 'hotmail.com', 
+  'outlook.com', 'live.com', 'icloud.com', 'aol.com', 'msn.com',
+  'mail.com', 'zoho.com', 'proton.me', 'protonmail.com', 'yandex.com', 
+  'gmx.com', 'rediffmail.com', 'inbox.com', 'yopmail.com', 'tempmail.com'
+];
 
 export const AuthModal: React.FC = () => {
   const { 
@@ -20,15 +27,46 @@ export const AuthModal: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  if (!showAuthModal) return null;
+  // Synchronize internal state with AppContext whenever modal opens
+  React.useEffect(() => {
+    if (showAuthModal) {
+      setMode(authModalMode);
+      setRole(authModalRole);
+      setErrorMsg(null);
+      setStep('EMAIL_ENTRY');
+    }
+  }, [showAuthModal, authModalMode, authModalRole]);
+
+  const validateEmailForRole = (emailInput: string, roleType: UserType): boolean => {
+    const trimmed = emailInput.trim().toLowerCase();
+    if (!trimmed || !trimmed.includes('@')) {
+      setErrorMsg('Please enter a valid email address.');
+      return false;
+    }
+
+    const domain = trimmed.split('@')[1];
+    if (roleType === 'OFFICIAL') {
+      const isGeneric = GENERIC_PUBLIC_DOMAINS.some(
+        d => domain === d || domain.endsWith('.' + d)
+      );
+      if (isGeneric) {
+        setErrorMsg(
+          'Official law enforcement and banking access strictly prohibits public email domains (@' + domain + '). Please use your authorized administrative email (e.g. @police.gov.in, @i4c.gov.in, @mahapolice.gov.in, @sbi.co.in, @hdfcbank.com).'
+        );
+        return false;
+      }
+    }
+    return true;
+  };
 
   const handleSubmitEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes('@')) {
-      setErrorMsg('Please enter a valid email address.');
+    setErrorMsg(null);
+
+    if (!validateEmailForRole(email, role)) {
       return;
     }
-    setErrorMsg(null);
+
     setLoading(true);
 
     setTimeout(() => {
@@ -39,7 +77,7 @@ export const AuthModal: React.FC = () => {
       } else {
         loginUser(email, role);
       }
-    }, 600);
+    }, 500);
   };
 
   const handleVerifyOtp = (e: React.FormEvent) => {
@@ -54,7 +92,7 @@ export const AuthModal: React.FC = () => {
     setTimeout(() => {
       setLoading(false);
       verifyEmail(otpCode);
-    }, 500);
+    }, 400);
   };
 
   return (
@@ -69,7 +107,7 @@ export const AuthModal: React.FC = () => {
             </div>
             <div>
               <h3 className="text-base font-black text-white">
-                {step === 'OTP_VERIFICATION' ? 'Verify Your Email' : mode === 'LOGIN' ? 'Sign In to Golden Hour' : 'Create Free Account'}
+                {step === 'OTP_VERIFICATION' ? 'Verify Your Email' : mode === 'LOGIN' ? 'Sign In to Golden Hour' : 'Create Account'}
               </h3>
               <p className="text-xs text-slate-400 font-mono">
                 {role === 'CITIZEN' ? 'Citizen Victim Portal' : 'Law Enforcement & Bank Portal'}
@@ -89,7 +127,10 @@ export const AuthModal: React.FC = () => {
           <div className="grid grid-cols-2 gap-2 p-1 bg-white/5 rounded-2xl border border-white/10 text-xs font-bold">
             <button
               type="button"
-              onClick={() => setRole('CITIZEN')}
+              onClick={() => {
+                setRole('CITIZEN');
+                setErrorMsg(null);
+              }}
               className={`py-2 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 ${
                 role === 'CITIZEN' ? 'bg-[#D4FF00] text-[#111317] shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
@@ -99,7 +140,10 @@ export const AuthModal: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => setRole('OFFICIAL')}
+              onClick={() => {
+                setRole('OFFICIAL');
+                setErrorMsg(null);
+              }}
               className={`py-2 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 ${
                 role === 'OFFICIAL' ? 'bg-white text-slate-950 shadow-sm' : 'text-slate-400 hover:text-white'
               }`}
@@ -111,8 +155,8 @@ export const AuthModal: React.FC = () => {
         )}
 
         {errorMsg && (
-          <div className="p-3 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+          <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-start gap-2.5 leading-relaxed">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-400 mt-0.5" />
             <span>{errorMsg}</span>
           </div>
         )}
@@ -122,7 +166,7 @@ export const AuthModal: React.FC = () => {
           <form onSubmit={handleSubmitEmail} className="space-y-4">
             <div className="space-y-1.5 text-xs">
               <label className="text-slate-300 font-bold uppercase tracking-wider font-mono">
-                {role === 'OFFICIAL' ? 'Official Email Address:' : 'Your Email Address:'}
+                {role === 'OFFICIAL' ? 'Official Institutional Email:' : 'Your Email Address:'}
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -135,10 +179,10 @@ export const AuthModal: React.FC = () => {
                   className="w-full bg-white/5 border border-white/10 rounded-2xl pl-10 pr-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#D4FF00]"
                 />
               </div>
-              <p className="text-[11px] text-slate-500 font-mono">
+              <p className="text-[11px] text-slate-400 font-mono">
                 {role === 'CITIZEN' 
-                  ? 'No phone number or password required. Zero PII stored.' 
-                  : 'Official government/bank email address required.'}
+                  ? 'Citizens can use any personal email address. Zero PII stored.' 
+                  : 'Official government (@gov.in, @nic.in, @police.gov.in) or nodal bank email required.'}
               </p>
             </div>
 
@@ -149,7 +193,7 @@ export const AuthModal: React.FC = () => {
                 role === 'CITIZEN' ? 'bg-[#D4FF00] text-[#111317] hover:bg-lime-400' : 'bg-white text-slate-950 hover:bg-slate-200'
               }`}
             >
-              <span>{loading ? 'Sending Code...' : mode === 'SIGNUP' ? 'Continue with Email' : 'Sign In Now'}</span>
+              <span>{loading ? 'Validating Domain...' : mode === 'SIGNUP' ? 'Continue with Email' : 'Sign In Now'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 

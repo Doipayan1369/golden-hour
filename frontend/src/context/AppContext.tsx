@@ -25,7 +25,7 @@ export type NavTab =
   | 'citizen_tracking'
   | 'fir_view';
 
-export type CitizenWorkflowStage = 'ONBOARDING_FAQ' | 'CASE_LOOKUP' | 'FIR_VIEW' | 'DASHBOARD';
+export type CitizenWorkflowStage = 'ONBOARDING_FAQ' | 'CASE_LOOKUP' | 'FIR_VIEW' | 'DASHBOARD' | 'PROFILE';
 
 interface AppContextType {
   // Auth & Roles

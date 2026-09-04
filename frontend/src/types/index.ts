@@ -288,3 +288,26 @@ export interface DigitalFIR {
   qr_code_hash: string;
   digital_seal: string;
 }
+
+
+export interface UserProfile {
+  name: string;
+  email: string;
+  age: number;
+  phone_masked: string;
+  city: string;
+  state: string;
+  aadhaar_last_four?: string;
+  registered_at: string;
+}
+
+export interface UserConcern {
+  ticket_id: string;
+  case_id: string;
+  category: string;
+  subject: string;
+  message: string;
+  submitted_at: string;
+  status: 'PENDING_REVIEW' | 'ACKNOWLEDGED' | 'OFFICER_ASSIGNED' | 'RESOLVED';
+  officer_response?: string;
+}

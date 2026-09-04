@@ -84,25 +84,15 @@ export const CitizenCaseLookupModal: React.FC = () => {
             </p>
           </div>
 
-          {/* Quick Preload Demo Case Button */}
-          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2 text-xs">
-            <div className="flex items-center justify-between">
-              <span className="text-slate-400 font-mono text-[10px] uppercase font-bold">Active Pune Benchmark Case</span>
-              <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold">
-                100% Intercepted
-              </span>
+          {/* Privacy & Demo Notice */}
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 text-xs">
+            <div className="flex items-center gap-2 text-emerald-400 font-bold">
+              <CheckCircle2 className="w-4 h-4 shrink-0" />
+              <span>Personalized Victim Privacy Vault</span>
             </div>
-            <button
-              type="button"
-              onClick={() => handleQuickSelect('CASE-2026-041')}
-              className="w-full p-2.5 rounded-xl bg-[#111317] hover:bg-black text-left border border-white/10 transition-all cursor-pointer flex items-center justify-between"
-            >
-              <div>
-                <b className="text-white font-mono text-xs">CASE-2026-041</b>
-                <span className="text-slate-400 block text-[11px]">Ramesh Patil • Pune Camp • ₹4,50,000</span>
-              </div>
-              <span className="text-xs text-[#D4FF00] font-bold font-mono">Select &rarr;</span>
-            </button>
+            <p className="text-slate-400 text-[11px] leading-relaxed">
+              Your case details are strictly isolated and never exposed to other users. To test the live 15-hop trace and Section 91 CrPC recovery in this demonstration, enter <code className="text-[#D4FF00] font-mono font-bold bg-black/40 px-1.5 py-0.5 rounded">CASE-2026-041</code> above.
+            </p>
           </div>
 
           <button
