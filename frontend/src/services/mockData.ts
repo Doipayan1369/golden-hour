@@ -151,3 +151,41 @@ export const MOCK_REPLAY_041: ReplayState = {
   },
   status: "FORECAST_READY" as CaseStatus
 };
+
+import { DigitalFIR } from '../types';
+
+export const MOCK_FIR_041: DigitalFIR = {
+  fir_number: "FIR-PUN-CYBER-2026-00418",
+  case_id: "CASE-2026-041",
+  police_station: "Deccan Gymkhana Cyber Police Station",
+  district: "Pune City Commissionerate",
+  state: "Maharashtra",
+  acts_and_sections: [
+    "Section 419 IPC (Cheating by Personation)",
+    "Section 420 IPC (Cheating & Dishonestly Inducing Delivery)",
+    "Section 66D IT Act 2000 (Cheating by Personation using Computer Resource)",
+    "Section 91 CrPC (Production of Banking Switch Telemetry)"
+  ],
+  complainant_name: "Ramesh Patil",
+  complainant_phone_masked: "+91-98XXX-44129",
+  incident_date_time: "29-08-2026 09:42:00 IST",
+  reported_date_time: "29-08-2026 09:55:12 IST (1930 National Cyber Portal)",
+  amount_defrauded: 450000.0,
+  amount_recovered: 450000.0,
+  recovery_status: "INTERCEPTED",
+  mod_operandi: "Digital Arrest extortion scam impersonating CBI / Telecom officers. Immediate 15-hop fund layering across Pune Deccan corridor followed by ATM cashout attempt.",
+  initial_mule_account: "acct_mule_01",
+  initial_mule_bank: "ICICI Bank (Deccan Gymkhana)",
+  investigating_officer: "Insp. Rajeshwar Deshmukh",
+  officer_rank: "Police Inspector (Cyber Crime Cell, Pune)",
+  qr_code_hash: "SHA256:7f89b1c20e4a5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e",
+  digital_seal: "MHA_I4C_MAHARASHTRA_POLICE_CYBER_DIVISION"
+};
+
+export function getFIRForCase(caseId: string): DigitalFIR {
+  return {
+    ...MOCK_FIR_041,
+    case_id: caseId || "CASE-2026-041",
+    fir_number: `FIR-PUN-CYBER-2026-${Math.floor(1000 + Math.random() * 9000)}`
+  };
+}

@@ -1,33 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Shield, RefreshCw, UserCheck, Activity, 
-  HelpCircle, CheckCircle2, Clock, BookOpen, Sparkles, Menu
+  HelpCircle, CheckCircle2, Clock, BookOpen, Sparkles, Menu, LogOut, Home, FileText
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { UserRole } from '../../types';
 import { OnboardingModal } from '../onboarding/OnboardingModal';
 
-
 export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ onToggleMobileMenu }) => {
-  const { role, setRole, resetAll, auditVerification, alertBanner, selectCase, setActiveTab } = useApp();
-  const [timeStr, setTimeStr] = useState('');
+  const { 
+    role, setRole, resetAll, alertBanner, selectCase, 
+    setActiveTab, currentUser, logout, setShowLandingPage, userType, setCitizenStage 
+  } = useApp();
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
-  
-
-  useEffect(() => {
-    const hasSeen = localStorage.getItem('golden_hour_onboarded');
-    if (!hasSeen) {
-      setIsOnboardingOpen(true);
-    }
-
-    const updateTime = () => {
-      const now = new Date();
-      setTimeStr(now.toTimeString().split(' ')[0] + ' IST');
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -38,24 +23,33 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
           {/* Left: Mobile Menu Toggle & Clean Identity */}
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Hamburger Button for Mobile */}
-            <button
-              onClick={() => onToggleMobileMenu && onToggleMobileMenu()}
-              className="lg:hidden p-2 rounded-xl bg-slate-100 text-slate-800 hover:bg-slate-200 transition-all cursor-pointer"
-              title="Open Navigation Menu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+            {onToggleMobileMenu && (
+              <button
+                onClick={() => onToggleMobileMenu()}
+                className="lg:hidden p-2 rounded-xl bg-slate-100 text-slate-800 hover:bg-slate-200 transition-all cursor-pointer"
+                title="Open Navigation Menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            )}
 
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#111317] text-[#D4FF00] flex items-center justify-center shadow-md shrink-0">
+            <div 
+              onClick={() => setShowLandingPage(true)}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#111317] text-[#D4FF00] flex items-center justify-center shadow-md shrink-0 cursor-pointer hover:scale-105 transition-transform"
+              title="Return to Golden Hour Homepage"
+            >
               <Shield className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">
+                <button 
+                  onClick={() => setShowLandingPage(true)}
+                  className="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight hover:text-slate-700 cursor-pointer text-left"
+                >
                   Golden Hour
-                </h1>
+                </button>
                 <span className="hidden xs:inline px-2 sm:px-2.5 py-0.5 bg-[#111317] text-[#D4FF00] text-[9px] sm:text-[10px] font-extrabold rounded-full tracking-wider">
-                  1930 RAPID
+                  {userType === 'CITIZEN' ? 'CITIZEN PORTAL' : 'OFFICIAL SUITE'}
                 </span>
               </div>
               <p className="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 hidden sm:block">
@@ -64,10 +58,21 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
             </div>
           </div>
 
-          {/* Right: Helpful Actions, Role Selector & Guidance */}
+          {/* Right: Helpful Actions, Role Indicator & Sign Out */}
           <div className="flex items-center gap-2 sm:gap-3">
             
-            {/* Guide & Onboarding Button */}
+            {/* Citizen FIR Shortcut (if citizen) */}
+            {userType === 'CITIZEN' && (
+              <button
+                onClick={() => setCitizenStage('FIR_VIEW')}
+                className="px-3 sm:px-4 py-2 rounded-full bg-[#111317] text-[#D4FF00] text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-sm hover:bg-slate-800"
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">My Digital FIR</span>
+              </button>
+            )}
+
+            {/* Quick Tour Guide */}
             <button
               onClick={() => setIsOnboardingOpen(true)}
               className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
@@ -87,27 +92,29 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
               <span className="hidden md:inline">Help & FAQs</span>
             </button>
 
-            {/* Role Switcher */}
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-[#F8FAFC] border border-slate-200/90 rounded-full px-2.5 sm:px-3.5 py-1.5 shadow-inner">
-              <UserCheck className="w-3.5 h-3.5 text-slate-500 hidden sm:block" />
-              <select
-                value={role}
-                onChange={(e) => setRole(e.target.value as UserRole)}
-                className="bg-transparent text-[11px] sm:text-xs font-bold text-slate-800 focus:outline-none cursor-pointer"
-              >
-                <option value="LOCAL_BEAT_OFFICER">Local Patrol</option>
-                <option value="BANK_NODAL_INVESTIGATOR">Bank Official</option>
-                <option value="I4C_STATE_ANALYST">Cyber Cell</option>
-              </select>
-            </div>
+            {/* Officer Role Indicator (if official) */}
+            {userType !== 'CITIZEN' && (
+              <div className="flex items-center gap-1.5 sm:gap-2 bg-[#F8FAFC] border border-slate-200/90 rounded-full px-2.5 sm:px-3.5 py-1.5 shadow-inner">
+                <UserCheck className="w-3.5 h-3.5 text-slate-500 hidden sm:block" />
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value as UserRole)}
+                  className="bg-transparent text-[11px] sm:text-xs font-bold text-slate-800 focus:outline-none cursor-pointer"
+                >
+                  <option value="LOCAL_BEAT_OFFICER">Local Patrol</option>
+                  <option value="BANK_NODAL_INVESTIGATOR">Bank Official</option>
+                  <option value="I4C_STATE_ANALYST">Cyber Cell</option>
+                </select>
+              </div>
+            )}
 
-            {/* Reset Database */}
+            {/* Sign Out Button */}
             <button
-              onClick={() => resetAll()}
-              className="p-2 sm:p-2.5 rounded-full bg-[#F8FAFC] border border-slate-200/90 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer shadow-inner"
-              title="Reset System Simulation State"
+              onClick={logout}
+              className="p-2 sm:p-2.5 rounded-full bg-slate-100 text-slate-600 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer shadow-inner"
+              title="Sign Out to Public Homepage"
             >
-              <RefreshCw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
         </div>
@@ -120,8 +127,6 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
           </div>
         )}
       </header>
-
-
 
       {/* Interactive Modal Guide */}
       <OnboardingModal

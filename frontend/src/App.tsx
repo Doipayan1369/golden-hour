@@ -11,7 +11,13 @@ import { ReplayPage } from './pages/ReplayPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { HashChainViewer } from './components/audit/HashChainViewer';
 import { SettingsPage, HelpPage } from './pages/SettingsHelpPages';
-import { LoginPage } from './pages/LoginPage';
+import { LandingPage } from './pages/LandingPage';
+import { AuthModal } from './components/modals/AuthModal';
+import { CitizenOnboardingModal } from './pages/citizen/CitizenOnboardingModal';
+import { CitizenCaseLookupModal } from './pages/citizen/CitizenCaseLookupModal';
+import { DigitalFIRModal } from './pages/citizen/DigitalFIRModal';
+import { CitizenDashboard } from './pages/citizen/CitizenDashboard';
+import { OfficialVerificationWall } from './pages/official/OfficialVerificationWall';
 
 const MainContent: React.FC = () => {
   const { activeTab, setActiveTab, selectCase } = useApp();
@@ -92,8 +98,51 @@ const MainContent: React.FC = () => {
 };
 
 export const AppContent: React.FC = () => {
+  const { 
+    showLandingPage, userType, 
+    isOfficialVerified, citizenStage 
+  } = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // 1. If on Marketing / Public Landing Page
+  if (showLandingPage) {
+    return (
+      <>
+        <LandingPage />
+        <AuthModal />
+      </>
+    );
+  }
+
+  // 2. If signed up / logged in as Citizen / Victim
+  if (userType === 'CITIZEN') {
+    return (
+      <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
+        <TacticalHeader onToggleMobileMenu={() => setIsMobileMenuOpen(true)} />
+        <div className="max-w-[1540px] w-full mx-auto flex-1 px-3 sm:px-6 lg:px-10 py-3 sm:py-5">
+          <CitizenDashboard />
+        </div>
+
+        {/* Citizen Step Modals */}
+        <CitizenOnboardingModal />
+        <CitizenCaseLookupModal />
+        <DigitalFIRModal />
+        <AuthModal />
+      </div>
+    );
+  }
+
+  // 3. If signed up as Police / Bank Official but NOT YET Verified -> Verification Wall
+  if (userType === 'OFFICIAL' && !isOfficialVerified) {
+    return (
+      <>
+        <OfficialVerificationWall />
+        <AuthModal />
+      </>
+    );
+  }
+
+  // 4. If Verified Law Enforcement Officer / Bank Nodal Official -> Full Advanced Tactical Command Suite
   return (
     <div className="min-h-screen bg-[#F0F2F6] text-slate-800 flex flex-col font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
       <TacticalHeader onToggleMobileMenu={() => setIsMobileMenuOpen(true)} />
@@ -101,21 +150,13 @@ export const AppContent: React.FC = () => {
         <SidebarNav isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
         <MainContent />
       </div>
+
+      <AuthModal />
     </div>
   );
 };
 
 export const App: React.FC = () => {
-  const [authenticated, setAuthenticated] = useState(true);
-
-  if (!authenticated) {
-    return (
-      <AppProvider>
-        <LoginPage onEnter={() => setAuthenticated(true)} />
-      </AppProvider>
-    );
-  }
-
   return (
     <AppProvider>
       <AppContent />

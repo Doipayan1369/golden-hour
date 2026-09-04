@@ -251,3 +251,40 @@ export interface ReplayState {
   withdrawal_revealed?: WithdrawalEvent | null;
   status: CaseStatus;
 }
+
+
+export type UserType = 'CITIZEN' | 'OFFICIAL';
+
+export interface AuthUser {
+  email: string;
+  role: UserType;
+  isEmailVerified: boolean;
+  isOfficialVerified?: boolean;
+  badgeNumber?: string;
+  department?: string;
+  stationOrBranch?: string;
+  createdAt: string;
+}
+
+export interface DigitalFIR {
+  fir_number: string;
+  case_id: string;
+  police_station: string;
+  district: string;
+  state: string;
+  acts_and_sections: string[];
+  complainant_name: string;
+  complainant_phone_masked: string;
+  incident_date_time: string;
+  reported_date_time: string;
+  amount_defrauded: number;
+  amount_recovered: number;
+  recovery_status: 'INTERCEPTED' | 'FROZEN' | 'IN_RECOVERY';
+  mod_operandi: string;
+  initial_mule_account: string;
+  initial_mule_bank: string;
+  investigating_officer: string;
+  officer_rank: string;
+  qr_code_hash: string;
+  digital_seal: string;
+}
