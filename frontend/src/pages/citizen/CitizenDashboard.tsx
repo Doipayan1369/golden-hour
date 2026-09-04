@@ -51,7 +51,7 @@ export const CitizenDashboard: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsEmergencyHelpOpen(true)}
-            className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md animate-pulse"
+            className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
           >
             <PhoneCall className="w-3.5 h-3.5" />
             <span>Call 1930</span>

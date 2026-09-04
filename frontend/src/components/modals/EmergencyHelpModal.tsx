@@ -19,7 +19,7 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
         {/* Header */}
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-2xl bg-rose-600 text-white shadow-lg animate-pulse">
+            <div className="p-3 rounded-2xl bg-rose-600 text-white shadow-lg">
               <PhoneCall className="w-6 h-6" />
             </div>
             <div>

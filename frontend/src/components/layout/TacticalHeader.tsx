@@ -74,7 +74,7 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
             {/* Emergency Helpline Trigger */}
             <button
               onClick={() => setIsEmergencyHelpOpen(true)}
-              className="neu-btn-red text-xs px-3 sm:px-4 py-2 flex items-center gap-1.5 shadow-md animate-pulse"
+              className="neu-btn-red text-xs px-3 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />

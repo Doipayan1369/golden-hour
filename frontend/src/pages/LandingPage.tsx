@@ -144,7 +144,7 @@ export const LandingPage: React.FC = () => {
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setIsEmergencyHelpOpen(true)}
-              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md animate-pulse"
+              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
@@ -263,39 +263,45 @@ export const LandingPage: React.FC = () => {
                 </span>
               </div>
 
-              {/* 3 Clean Interactive Feature Teasers (Less text, high curiosity) */}
-              <div className="grid grid-cols-3 gap-2.5">
+              {/* 3 Clean Interactive Feature Teasers (Large symbols, Monotone Theme) */}
+              <div className="grid grid-cols-3 gap-3">
                 <div 
                   onClick={handleExploreLiveDemo}
-                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-1.5"
+                  className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-[#111317] text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                    <GitBranch className="w-4 h-4" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-inner">
+                    <GitBranch className="w-7 h-7" />
                   </div>
-                  <b className="text-[11px] font-bold text-white block">15-Hop Trace</b>
-                  <span className="text-[9px] text-slate-400 font-mono block">Multi-Bank Map</span>
+                  <div>
+                    <b className="text-xs sm:text-sm font-bold text-white block tracking-tight">15-Hop Trace</b>
+                    <span className="text-[10px] text-slate-400 font-mono block mt-0.5">Multi-Bank Map</span>
+                  </div>
                 </div>
 
                 <div 
                   onClick={handleExploreLiveDemo}
-                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-1.5"
+                  className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                    <Flame className="w-4 h-4" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-inner">
+                    <Flame className="w-7 h-7" />
                   </div>
-                  <b className="text-[11px] font-bold text-white block">ATM Radar</b>
-                  <span className="text-[9px] text-slate-400 font-mono block">Spatial AI</span>
+                  <div>
+                    <b className="text-xs sm:text-sm font-bold text-white block tracking-tight">ATM Radar</b>
+                    <span className="text-[10px] text-slate-400 font-mono block mt-0.5">Spatial AI</span>
+                  </div>
                 </div>
 
                 <div 
                   onClick={handleExploreLiveDemo}
-                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-1.5"
+                  className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                    <ShieldCheck className="w-4 h-4" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-inner">
+                    <ShieldCheck className="w-7 h-7" />
                   </div>
-                  <b className="text-[11px] font-bold text-white block">Digital FIR</b>
-                  <span className="text-[9px] text-slate-400 font-mono block">Sec 154 CrPC</span>
+                  <div>
+                    <b className="text-xs sm:text-sm font-bold text-white block tracking-tight">Digital FIR</b>
+                    <span className="text-[10px] text-slate-400 font-mono block mt-0.5">Sec 154 CrPC</span>
+                  </div>
                 </div>
               </div>
 
@@ -363,8 +369,8 @@ export const LandingPage: React.FC = () => {
           
           {/* Card 1 */}
           <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
-            <div className="w-12 h-12 rounded-2xl bg-[#D4FF00]/10 text-[#D4FF00] flex items-center justify-center font-black">
-              <GitBranch className="w-6 h-6" />
+            <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
+              <GitBranch className="w-7 h-7" />
             </div>
             <h4 className="text-lg font-black text-white">15-Hop Multi-Bank Trace</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
@@ -378,14 +384,14 @@ export const LandingPage: React.FC = () => {
 
           {/* Card 2 */}
           <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-black">
-              <Flame className="w-6 h-6" />
+            <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
+              <Flame className="w-7 h-7" />
             </div>
             <h4 className="text-lg font-black text-white">Continuous Thermal Radar</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
               Spatial AI Kernel Density Estimation (KDE) maps candidate ATM withdrawal clusters and pinpoints the highest-probability kiosks with 94% precision.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-rose-400">
+            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
               <span>Top 15 Candidate ATMs Ranked</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
@@ -393,14 +399,14 @@ export const LandingPage: React.FC = () => {
 
           {/* Card 3 */}
           <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-black">
-              <Send className="w-6 h-6" />
+            <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
+              <Send className="w-7 h-7" />
             </div>
             <h4 className="text-lg font-black text-white">Section 91 CrPC Freezing</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
               1-click statutory hold orders dispatched directly to bank nodal desks and GPS intercept coordinates routed to the nearest PCR Beat Patrol unit.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-emerald-400">
+            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
               <span>Instant Legal Action Dispatch</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
@@ -440,8 +446,8 @@ export const LandingPage: React.FC = () => {
           <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-6 flex flex-col justify-between shadow-2xl border border-white/10">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="p-3 rounded-2xl bg-[#D4FF00] text-[#0A0C10] font-black">
-                  <Users className="w-6 h-6" />
+                <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
+                  <Users className="w-7 h-7" />
                 </div>
                 <span className="text-[10px] font-mono bg-white/10 text-slate-300 px-3 py-1 rounded-full font-bold">
                   PUBLIC / CITIZEN
@@ -488,8 +494,8 @@ export const LandingPage: React.FC = () => {
           <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card border border-[#D4FF00]/30 space-y-6 flex flex-col justify-between shadow-2xl relative overflow-hidden">
             <div className="space-y-4 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="p-3 rounded-2xl bg-[#0E1118] text-[#D4FF00] border border-[#D4FF00]/40 shadow-md">
-                  <ShieldCheck className="w-6 h-6" />
+                <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
+                  <ShieldCheck className="w-7 h-7" />
                 </div>
                 <span className="text-[10px] font-mono bg-[#D4FF00]/20 text-[#D4FF00] px-3 py-1 rounded-full font-bold border border-[#D4FF00]/30">
                   LAW ENFORCEMENT & BANKS
