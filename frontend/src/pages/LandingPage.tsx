@@ -115,30 +115,25 @@ export const LandingPage: React.FC = () => {
       </div>
 
       {/* 3. Sticky Main Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-[#08090C]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-3.5">
+      <header className="sticky top-0 z-40 bg-[#08090C]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-4 sm:py-5">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#D4FF00] text-[#0A0C10] flex items-center justify-center font-black shadow-[0_0_20px_rgba(212,255,0,0.35)]">
-              <Shield className="w-5 h-5" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#D4FF00] text-[#0A0C10] flex items-center justify-center font-black shadow-[0_0_22px_rgba(212,255,0,0.35)]">
+              <Shield className="w-6 h-6" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-black text-lg tracking-tight text-white">Golden Hour</span>
-                <span className="text-[10px] bg-[#D4FF00]/15 text-[#D4FF00] px-2.5 py-0.5 rounded-full font-mono font-bold border border-[#D4FF00]/30">
-                  DEFENSE PORTAL
-                </span>
-              </div>
-              <p className="text-[10px] text-slate-400 font-medium hidden sm:block">
-                Ministry of Home Affairs • Indian Cyber Crime Coordination Centre (I4C)
-              </p>
+            <div className="flex items-center gap-2.5">
+              <span className="font-black text-xl sm:text-2xl tracking-tight text-white">Golden Hour</span>
+              <span className="text-[10px] sm:text-xs bg-[#D4FF00]/15 text-[#D4FF00] px-3 py-1 rounded-full font-mono font-extrabold border border-[#D4FF00]/30">
+                DEFENSE PORTAL
+              </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setIsEmergencyHelpOpen(true)}
-              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
+              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2.5 flex items-center gap-1.5 shadow-md"
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
@@ -147,19 +142,19 @@ export const LandingPage: React.FC = () => {
 
             <button
               onClick={() => openAuthModal('LOGIN', 'CITIZEN')}
-              className="neu-btn text-xs text-slate-300 hover:text-white px-3.5 py-2 transition-colors hidden md:inline-flex"
+              className="neu-btn text-xs text-slate-300 hover:text-white px-3.5 py-2.5 transition-colors hidden md:inline-flex"
             >
               Login
             </button>
             <button
               onClick={handleCitizenQuickStart}
-              className="neu-btn-outline text-xs px-3.5 sm:px-4 py-2"
+              className="neu-btn-outline text-xs px-4 sm:px-5 py-2.5"
             >
               Citizen
             </button>
             <button
               onClick={handleOfficialQuickStart}
-              className="neu-btn-lime text-xs px-3.5 sm:px-5 py-2 font-black"
+              className="neu-btn-lime text-xs px-4 sm:px-6 py-2.5 font-black"
             >
               Official
             </button>
@@ -173,15 +168,10 @@ export const LandingPage: React.FC = () => {
           
           {/* Left Column: Hero Typography, Header & Tactile CTAs */}
           <div className="lg:col-span-6 space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md shadow-inner">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4FF00]" />
-              <span>Autonomous Real-Time Cybercrime Interception</span>
-            </div>
-
             <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.12]">
-              Intercept Stolen Cyber Funds <br className="hidden sm:block" />
+              Get your illicit withdrawals <br className="hidden sm:block" />
               <span className="text-[#D4FF00]">
-                Within The Golden Hour.
+                Intercepted today.
               </span>
             </h1>
 

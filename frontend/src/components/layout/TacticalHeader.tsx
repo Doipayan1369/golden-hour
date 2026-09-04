@@ -62,9 +62,6 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
                   {userType === 'CITIZEN' ? 'CITIZEN PORTAL' : 'OFFICIAL SUITE'}
                 </span>
               </div>
-              <p className="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 hidden sm:block">
-                Ministry of Home Affairs • Indian Cyber Crime Coordination Centre (I4C)
-              </p>
             </div>
           </div>
 
