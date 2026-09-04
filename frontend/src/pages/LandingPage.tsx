@@ -115,8 +115,8 @@ export const LandingPage: React.FC = () => {
       </div>
 
       {/* 3. Sticky Main Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-[#08090C]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-4 sm:py-5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-[#08090C]/90 backdrop-blur-xl border-b border-white/10 px-6 sm:px-12 lg:px-16 py-4 sm:py-5">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           
           <div className="flex items-center gap-3.5">
             <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#D4FF00] text-[#0A0C10] flex items-center justify-center font-black shadow-[0_0_22px_rgba(212,255,0,0.35)]">
@@ -130,10 +130,10 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3.5">
             <button
               onClick={() => setIsEmergencyHelpOpen(true)}
-              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2.5 flex items-center gap-1.5 shadow-md"
+              className="neu-btn-red text-xs px-4 sm:px-5 py-2.5 flex items-center gap-1.5 shadow-md"
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
@@ -142,13 +142,13 @@ export const LandingPage: React.FC = () => {
 
             <button
               onClick={() => openAuthModal('LOGIN', 'CITIZEN')}
-              className="neu-btn text-xs text-slate-300 hover:text-white px-3.5 py-2.5 transition-colors hidden md:inline-flex"
+              className="neu-btn text-xs text-slate-300 hover:text-white px-4 py-2.5 transition-colors hidden md:inline-flex"
             >
               Login
             </button>
             <button
               onClick={handleCitizenQuickStart}
-              className="neu-btn-outline text-xs px-4 sm:px-5 py-2.5"
+              className="neu-btn-outline text-xs px-4 sm:px-6 py-2.5 font-bold"
             >
               Citizen
             </button>
@@ -163,11 +163,11 @@ export const LandingPage: React.FC = () => {
       </header>
 
       {/* 4. Hero Section: 2-Column Layout (Header on Left, Live Incident Feed on Right) */}
-      <section className="relative pt-10 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 px-4 sm:px-8 z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <section className="relative pt-12 sm:pt-16 lg:pt-24 pb-16 sm:pb-24 px-6 sm:px-12 lg:px-16 z-10">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Hero Typography, Header & Tactile CTAs */}
-          <div className="lg:col-span-6 space-y-6 text-left">
+          <div className="lg:col-span-6 space-y-7 text-left">
             <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.12]">
               Get your illicit withdrawals <br className="hidden sm:block" />
               <span className="text-[#D4FF00]">
@@ -175,12 +175,12 @@ export const LandingPage: React.FC = () => {
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-300 max-w-lg leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed font-normal">
               Trace stolen funds across banks in real time. We predict cash-out ATMs and mobilize police patrols to freeze your money before withdrawal.
             </p>
 
             {/* Primary Tactile Action Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
                 onClick={handleCitizenQuickStart}
                 className="neu-btn-lime px-8 py-3.5 text-xs font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,255,0,0.35)]"
@@ -200,7 +200,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Trust Guarantees */}
-            <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-400 font-mono">
+            <div className="pt-2 flex flex-wrap items-center gap-y-2.5 gap-x-6 text-xs text-slate-400 font-mono">
               <span className="flex items-center gap-1.5 text-emerald-400">
                 <CheckCircle2 className="w-3.5 h-3.5" /> 100% Free for Citizens
               </span>
@@ -215,10 +215,10 @@ export const LandingPage: React.FC = () => {
 
           {/* Right Column: Interactive Capabilities & Action Speed */}
           <div className="lg:col-span-6 perspective-1000">
-            <div className="neu-glass-panel rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
+            <div className="neu-glass-panel rounded-3xl p-7 sm:p-8 space-y-6 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
               
               {/* 3 Clean Interactive Feature Teasers (Large symbols, Monotone Theme) */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-3.5">
                 <div 
                   onClick={handleCitizenQuickStart}
                   className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
@@ -282,8 +282,8 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 6. Live Metrics Ticker Bar */}
-      <section className="relative z-10 border-y border-white/10 bg-[#0E1118]/90 backdrop-blur-md py-8 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="relative z-10 border-y border-white/10 bg-[#0E1118]/90 backdrop-blur-md py-10 px-6 sm:px-12 lg:px-16">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="space-y-1">
             <div className="text-2xl sm:text-4xl font-black text-[#D4FF00] font-mono">₹4.50 Cr+</div>
             <div className="text-xs text-slate-400 font-medium">Funds Intercepted Prior to Cash-Out</div>
@@ -304,7 +304,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 7. Core Features & What We Do (3D Neumorphic Cards) */}
-      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-16">
+      <section className="relative z-10 py-24 px-6 sm:px-12 lg:px-16 max-w-[1600px] mx-auto space-y-16">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
             Autonomous Cyber Defense Capabilities
@@ -317,14 +317,14 @@ export const LandingPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Card 1 */}
-          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
+          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-5 border border-white/10">
             <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
               <GitBranch className="w-7 h-7" />
             </div>
-            <h4 className="text-lg font-black text-white">15-Hop Multi-Bank Trace</h4>
+            <h4 className="text-lg sm:text-xl font-black text-white">15-Hop Multi-Bank Trace</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
               Instantly correlates IMPS, NEFT, and UPI switch logs across ICICI, HDFC, SBI, Axis, Kotak, and 10+ regional banks to expose rapid mule money fan-outs.
             </p>
@@ -335,11 +335,11 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
+          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-5 border border-white/10">
             <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
               <Flame className="w-7 h-7" />
             </div>
-            <h4 className="text-lg font-black text-white">Continuous Thermal Radar</h4>
+            <h4 className="text-lg sm:text-xl font-black text-white">Continuous Thermal Radar</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
               Spatial AI Kernel Density Estimation (KDE) maps candidate ATM withdrawal clusters and pinpoints the highest-probability kiosks with 94% precision.
             </p>
@@ -350,11 +350,11 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
+          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-5 border border-white/10">
             <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
               <Send className="w-7 h-7" />
             </div>
-            <h4 className="text-lg font-black text-white">Section 91 CrPC Freezing</h4>
+            <h4 className="text-lg sm:text-xl font-black text-white">Section 91 CrPC Freezing</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
               1-click statutory hold orders dispatched directly to bank nodal desks and GPS intercept coordinates routed to the nearest PCR Beat Patrol unit.
             </p>
@@ -379,7 +379,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 9. Dual Role Portals (Citizen vs Official) */}
-      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-12">
+      <section className="relative z-10 py-24 px-6 sm:px-12 lg:px-16 max-w-[1600px] mx-auto space-y-14">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
             Tailored User Portals
@@ -392,10 +392,10 @@ export const LandingPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           
           {/* Citizen Portal Box */}
-          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-6 flex flex-col justify-between shadow-2xl border border-white/10">
+          <div className="p-8 sm:p-12 rounded-3xl neu-glass-panel neu-3d-card space-y-7 flex flex-col justify-between shadow-2xl border border-white/10">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
@@ -434,7 +434,7 @@ export const LandingPage: React.FC = () => {
             <div className="pt-4">
               <button
                 onClick={handleCitizenQuickStart}
-                className="neu-btn-lime w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
+                className="neu-btn-lime w-full py-4 text-xs font-black flex items-center justify-center gap-2"
               >
                 <span>Citizen</span>
                 <ArrowRight className="w-4 h-4" />
@@ -443,7 +443,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Law Enforcement Portal Box */}
-          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card border border-[#D4FF00]/30 space-y-6 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+          <div className="p-8 sm:p-12 rounded-3xl neu-glass-panel neu-3d-card border border-[#D4FF00]/30 space-y-7 flex flex-col justify-between shadow-2xl relative overflow-hidden">
             <div className="space-y-4 relative z-10">
               <div className="flex items-center justify-between">
                 <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center font-black shadow-inner">
@@ -482,7 +482,7 @@ export const LandingPage: React.FC = () => {
             <div className="pt-4 relative z-10">
               <button
                 onClick={handleOfficialQuickStart}
-                className="neu-btn-white w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
+                className="neu-btn-white w-full py-4 text-xs font-black flex items-center justify-center gap-2"
               >
                 <Lock className="w-4 h-4 text-[#0A0C10]" />
                 <span>Official</span>
@@ -494,7 +494,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 10. Frequently Asked Questions */}
-      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-4xl mx-auto space-y-12">
+      <section className="relative z-10 py-24 px-6 sm:px-12 lg:px-16 max-w-5xl mx-auto space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
             Clear Answers
@@ -535,8 +535,8 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 11. Footer */}
-      <footer className="relative z-10 border-t border-white/10 bg-[#07090D] py-12 px-4 sm:px-8 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <footer className="relative z-10 border-t border-white/10 bg-[#07090D] py-14 px-6 sm:px-12 lg:px-16 text-xs text-slate-500">
+        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-xl bg-[#D4FF00] text-[#111317] flex items-center justify-center font-black">
               <Shield className="w-4 h-4" />
