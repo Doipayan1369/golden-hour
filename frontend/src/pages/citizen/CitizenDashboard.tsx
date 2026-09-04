@@ -37,14 +37,14 @@ export const CitizenDashboard: React.FC = () => {
             className="neu-btn-dark text-xs px-4 py-2 flex items-center gap-1.5"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-[#D4FF00]" />
-            <span>Live Tracker</span>
+            <span>Tracker</span>
           </button>
           <button
             onClick={() => setViewMode('PROFILE')}
             className="neu-btn text-xs px-4 py-2 text-slate-700 hover:text-slate-950 flex items-center gap-1.5"
           >
             <User className="w-3.5 h-3.5" />
-            <span>My Profile</span>
+            <span>Profile</span>
           </button>
         </div>
 
@@ -54,7 +54,7 @@ export const CitizenDashboard: React.FC = () => {
             className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
           >
             <PhoneCall className="w-3.5 h-3.5" />
-            <span>Call 1930</span>
+            <span>1930</span>
           </button>
           <button
             onClick={() => setCitizenStage('ONBOARDING_FAQ')}
@@ -94,13 +94,13 @@ export const CitizenDashboard: React.FC = () => {
               className="neu-btn-lime text-xs px-5 py-2.5 flex items-center gap-2"
             >
               <FileText className="w-4 h-4" />
-              <span>View FIR</span>
+              <span>FIR</span>
             </button>
             <button
               onClick={() => setCitizenStage('CASE_LOOKUP')}
               className="neu-btn px-4 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-700 bg-white hover:bg-slate-50"
             >
-              Change Case
+              Switch
             </button>
           </div>
         </div>

@@ -78,7 +78,7 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>Call 1930</span>
+              <span>1930</span>
             </button>
 
             {/* Citizen FIR Shortcut (if citizen) */}
@@ -88,7 +88,7 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
                 className="neu-btn-lime text-xs px-3 sm:px-4 py-2 flex items-center gap-1.5"
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span>Digital FIR</span>
+                <span>FIR</span>
               </button>
             )}
 

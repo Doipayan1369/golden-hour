@@ -62,7 +62,7 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
               className="neu-btn neu-btn-red px-5 py-2.5 text-xs font-black flex items-center gap-2 shadow-lg cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Call 1930</span>
+              <span>Call</span>
             </a>
           </div>
 

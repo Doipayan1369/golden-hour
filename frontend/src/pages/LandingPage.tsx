@@ -11,7 +11,7 @@ import GhostFibers from '../components/common/GhostFibers';
 import { EmergencyHelpModal } from '../components/modals/EmergencyHelpModal';
 
 export const LandingPage: React.FC = () => {
-  const { openAuthModal, selectCase, setShowLandingPage, setActiveTab } = useApp();
+  const { openAuthModal } = useApp();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [isEmergencyHelpOpen, setIsEmergencyHelpOpen] = useState(false);
 
@@ -44,12 +44,6 @@ export const LandingPage: React.FC = () => {
 
   const handleOfficialQuickStart = () => {
     openAuthModal('LOGIN', 'OFFICIAL');
-  };
-
-  const handleExploreLiveDemo = () => {
-    selectCase('CASE-2026-041');
-    setShowLandingPage(false);
-    setActiveTab('workflow');
   };
 
   // Marquee Live Incident Items
@@ -148,26 +142,26 @@ export const LandingPage: React.FC = () => {
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>Call 1930</span>
+              <span>1930</span>
             </button>
 
             <button
               onClick={() => openAuthModal('LOGIN', 'CITIZEN')}
-              className="neu-btn text-xs text-slate-300 hover:text-white px-3 py-2 transition-colors hidden md:inline-flex"
+              className="neu-btn text-xs text-slate-300 hover:text-white px-3.5 py-2 transition-colors hidden md:inline-flex"
             >
-              Sign In
+              Login
             </button>
             <button
               onClick={handleCitizenQuickStart}
               className="neu-btn-outline text-xs px-3.5 sm:px-4 py-2"
             >
-              Citizen Portal
+              Citizen
             </button>
             <button
               onClick={handleOfficialQuickStart}
               className="neu-btn-lime text-xs px-3.5 sm:px-5 py-2 font-black"
             >
-              Official Login
+              Official
             </button>
           </div>
         </div>
@@ -191,36 +185,27 @@ export const LandingPage: React.FC = () => {
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed font-normal">
-              When cyber fraud occurs, funds hop across 15+ mule banking switches in minutes. 
-              Golden Hour tracks multi-hop velocity, predicts the cash-out ATM using spatial AI, and coordinates police beat patrols to secure 100% of your funds before withdrawal.
+            <p className="text-sm sm:text-base text-slate-300 max-w-lg leading-relaxed font-normal">
+              Trace stolen funds across banks in real time. We predict cash-out ATMs and mobilize police patrols to freeze your money before withdrawal.
             </p>
 
             {/* Primary Tactile Action Buttons */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <button
                 onClick={handleCitizenQuickStart}
-                className="neu-btn-lime px-7 py-3.5 text-xs font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,255,0,0.35)]"
+                className="neu-btn-lime px-8 py-3.5 text-xs font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,255,0,0.35)]"
               >
                 <FileText className="w-4 h-4" />
-                <span>Track Funds</span>
+                <span>Track</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
                 onClick={handleOfficialQuickStart}
-                className="neu-btn-dark px-6 py-3.5 text-xs font-bold flex items-center justify-center gap-2 border border-white/20"
+                className="neu-btn-dark px-7 py-3.5 text-xs font-bold flex items-center justify-center gap-2 border border-white/20"
               >
                 <ShieldCheck className="w-4 h-4 text-[#D4FF00]" />
-                <span>Official Login</span>
-              </button>
-
-              <button
-                onClick={handleExploreLiveDemo}
-                className="neu-btn-white px-6 py-3.5 text-xs font-bold flex items-center justify-center gap-2 shadow-md"
-              >
-                <span>Launch Demo</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-600" />
+                <span>Official</span>
               </button>
             </div>
 
@@ -266,7 +251,7 @@ export const LandingPage: React.FC = () => {
               {/* 3 Clean Interactive Feature Teasers (Large symbols, Monotone Theme) */}
               <div className="grid grid-cols-3 gap-3">
                 <div 
-                  onClick={handleExploreLiveDemo}
+                  onClick={handleCitizenQuickStart}
                   className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-inner">
@@ -279,7 +264,7 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div 
-                  onClick={handleExploreLiveDemo}
+                  onClick={handleCitizenQuickStart}
                   className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-inner">
@@ -292,7 +277,7 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div 
-                  onClick={handleExploreLiveDemo}
+                  onClick={handleCitizenQuickStart}
                   className="p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer group text-center space-y-3 shadow-sm"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-[#111317] border border-white/15 text-[#D4FF00] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-inner">
@@ -314,13 +299,12 @@ export const LandingPage: React.FC = () => {
                     <span className="text-slate-500 text-xs hidden sm:inline">vs 48h standard</span>
                   </div>
                 </div>
-                <button
-                  onClick={handleExploreLiveDemo}
-                  className="neu-btn-lime px-4 py-2 text-xs font-black flex items-center gap-1.5 shrink-0 shadow-md"
-                >
-                  <span>Explore Case</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                <div className="text-right font-mono">
+                  <span className="text-[10px] text-slate-400 uppercase block">Status</span>
+                  <span className="text-xs font-bold text-emerald-400 flex items-center gap-1 justify-end">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Intercepted
+                  </span>
+                </div>
               </div>
 
             </div>
@@ -377,7 +361,7 @@ export const LandingPage: React.FC = () => {
               Instantly correlates IMPS, NEFT, and UPI switch logs across ICICI, HDFC, SBI, Axis, Kotak, and 10+ regional banks to expose rapid mule money fan-outs.
             </p>
             <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
-              <span>Real-Time Velocity Telemetry</span>
+              <span>Trace</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -392,7 +376,7 @@ export const LandingPage: React.FC = () => {
               Spatial AI Kernel Density Estimation (KDE) maps candidate ATM withdrawal clusters and pinpoints the highest-probability kiosks with 94% precision.
             </p>
             <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
-              <span>Top 15 Candidate ATMs Ranked</span>
+              <span>Radar</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -407,7 +391,7 @@ export const LandingPage: React.FC = () => {
               1-click statutory hold orders dispatched directly to bank nodal desks and GPS intercept coordinates routed to the nearest PCR Beat Patrol unit.
             </p>
             <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
-              <span>Instant Legal Action Dispatch</span>
+              <span>Freeze</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -484,7 +468,7 @@ export const LandingPage: React.FC = () => {
                 onClick={handleCitizenQuickStart}
                 className="neu-btn-lime w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
               >
-                <span>Citizen Portal</span>
+                <span>Citizen</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -533,7 +517,7 @@ export const LandingPage: React.FC = () => {
                 className="neu-btn-white w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
               >
                 <Lock className="w-4 h-4 text-[#0A0C10]" />
-                <span>Official Login</span>
+                <span>Official</span>
               </button>
             </div>
           </div>
@@ -596,9 +580,8 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 font-mono text-[11px]">
-            <button onClick={handleCitizenQuickStart} className="neu-btn-outline px-3 py-1.5 text-xs">Citizen Portal</button>
-            <button onClick={handleOfficialQuickStart} className="neu-btn-outline px-3 py-1.5 text-xs">Official Login</button>
-            <button onClick={handleExploreLiveDemo} className="neu-btn-lime px-3 py-1.5 text-xs text-[#0A0C10]">Demo Case 041</button>
+            <button onClick={handleCitizenQuickStart} className="neu-btn-outline px-3.5 py-1.5 text-xs">Citizen</button>
+            <button onClick={handleOfficialQuickStart} className="neu-btn-outline px-3.5 py-1.5 text-xs">Official</button>
           </div>
 
           <div className="text-[11px] text-slate-500 font-mono">
