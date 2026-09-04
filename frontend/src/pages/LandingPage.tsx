@@ -223,31 +223,10 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Interactive Live Incident Preview */}
+          {/* Right Column: Interactive Capabilities & Action Speed */}
           <div className="lg:col-span-6 perspective-1000">
             <div className="neu-glass-panel rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
               
-              {/* Card Header: Live Telemetry Indicator */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <div className="flex items-center gap-3">
-                  <div className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono font-black text-white tracking-wide block">
-                      LIVE INCIDENT RADAR
-                    </span>
-                    <span className="text-[10px] text-[#D4FF00] font-mono">
-                      CASE-2026-041 • PUNE CITY
-                    </span>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#D4FF00]/15 text-[#D4FF00] border border-[#D4FF00]/30">
-                  INTERCEPTED
-                </span>
-              </div>
-
               {/* 3 Clean Interactive Feature Teasers (Large symbols, Monotone Theme) */}
               <div className="grid grid-cols-3 gap-3">
                 <div 
@@ -290,19 +269,18 @@ export const LandingPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Clean, High-Impact Summary Bar */}
-              <div className="p-4 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-between gap-3">
-                <div className="space-y-0.5">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">Lead Time to Intercept</span>
-                  <div className="text-sm font-black text-white font-mono flex items-center gap-1.5">
-                    <span className="text-[#D4FF00]">&lt; 15 Mins</span>
-                    <span className="text-slate-500 text-xs hidden sm:inline">vs 48h standard</span>
-                  </div>
+              {/* TIME FOR ACTION Aesthetic Panel */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#0B0D12] border border-white/10 space-y-2 shadow-inner">
+                <div className="text-[11px] sm:text-xs font-mono font-extrabold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#D4FF00]" />
+                  <span>TIME FOR ACTION</span>
                 </div>
-                <div className="text-right font-mono">
-                  <span className="text-[10px] text-slate-400 uppercase block">Status</span>
-                  <span className="text-xs font-bold text-emerald-400 flex items-center gap-1 justify-end">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Intercepted
+                <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 pt-0.5">
+                  <span className="text-2xl sm:text-4xl font-black text-[#D4FF00] font-mono tracking-tight">
+                    &lt; 10 Mins
+                  </span>
+                  <span className="text-xs sm:text-sm text-slate-400 font-mono">
+                    vs <span className="text-slate-300">48–72 hours</span> standard
                   </span>
                 </div>
               </div>
