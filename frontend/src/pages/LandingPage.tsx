@@ -9,6 +9,7 @@ import {
 import { useApp } from '../context/AppContext';
 import GhostFibers from '../components/common/GhostFibers';
 import { EmergencyHelpModal } from '../components/modals/EmergencyHelpModal';
+import { Hero2 } from '../components/blocks/Hero2';
 
 export const LandingPage: React.FC = () => {
   const { openAuthModal, selectCase, setShowLandingPage, setActiveTab } = useApp();
@@ -173,122 +174,13 @@ export const LandingPage: React.FC = () => {
         </div>
       </header>
 
-      {/* 4. Hero Section: 3D Depth, Floating UI Preview & High-Converting Headline */}
-      <section className="relative pt-12 sm:pt-20 pb-20 px-4 sm:px-8 z-10">
-        <div className="max-w-6xl mx-auto text-center space-y-8">
-          
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md shadow-inner">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4FF00]" />
-            <span>Autonomous Real-Time Cybercrime Interception Platform</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.12]">
-            Intercept Stolen Cyber Funds <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4FF00] via-lime-300 to-emerald-400">
-              Within The Critical Golden Hour.
-            </span>
-          </h1>
-
-          <p className="text-sm sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
-            When cyber fraud strikes, funds hop across 15+ mule banking switches in minutes. 
-            Golden Hour correlates multi-hop velocity, predicts the cash-out ATM using spatial AI, and dispatches police beat patrols to secure 100% of your funds before withdrawal.
-          </p>
-
-          {/* Primary Action Buttons */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
-            <button
-              onClick={handleCitizenQuickStart}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#D4FF00] text-[#111317] text-sm font-black flex items-center justify-center gap-2.5 shadow-[0_0_30px_rgba(212,255,0,0.35)] hover:bg-lime-400 hover:scale-105 transition-all cursor-pointer"
-            >
-              <FileText className="w-4 h-4" />
-              <span>Track Stolen Funds & View FIR</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={handleOfficialQuickStart}
-              className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer hover:border-white/30"
-            >
-              <ShieldCheck className="w-4 h-4 text-[#D4FF00]" />
-              <span>Law Enforcement Portal</span>
-            </button>
-
-            <button
-              onClick={handleExploreLiveDemo}
-              className="w-full sm:w-auto px-6 py-4 rounded-full bg-transparent hover:bg-white/5 text-slate-400 hover:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-            >
-              <span>Explore Live Pune Demo</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Trust Guarantees */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400 font-mono">
-            <span className="flex items-center gap-1.5 text-emerald-400">
-              <CheckCircle2 className="w-3.5 h-3.5" /> 100% Free for Citizen Victims
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-[#D4FF00]" /> Zero PII Data Masking
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-sky-400" /> Section 65B Evidence Certified
-            </span>
-          </div>
-
-          {/* 5. 3D Floating Hero Widget Preview with Neumorphic Depth */}
-          <div className="pt-10 max-w-5xl mx-auto perspective-1000">
-            <div className="neu-glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
-              
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping" />
-                  <b className="text-sm font-black font-mono text-white tracking-wide">
-                    LIVE INCIDENT INTERCEPTION FEED: CASE-2026-041 (PUNE)
-                  </b>
-                </div>
-                <div className="flex items-center gap-2 font-mono text-xs">
-                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">
-                    ✓ 100% SECURED (₹4,50,000)
-                  </span>
-                  <span className="text-slate-400">10:14 IST</span>
-                </div>
-              </div>
-
-              {/* 3-Column 3D Telemetry Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>15-Hop Trace Depth</span>
-                    <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
-                  </div>
-                  <b className="text-white text-sm block">16 Nodes • 15 Switches</b>
-                  <p className="text-slate-400 text-[11px]">SBI Camp &rarr; ICICI &rarr; HDFC &rarr; Axis &rarr; SBI FC Road</p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>KDE Thermal Radar</span>
-                    <Flame className="w-3.5 h-3.5 text-rose-500" />
-                  </div>
-                  <b className="text-rose-400 text-sm block">FC Road Epicenter (94%)</b>
-                  <p className="text-slate-400 text-[11px]">Top ATM: SBI Goodluck Chowk Kiosk #1</p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
-                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>Section 91 CrPC Action</span>
-                    <Send className="w-3.5 h-3.5 text-emerald-400" />
-                  </div>
-                  <b className="text-emerald-400 text-sm block">PCR Beat 3 On-Scene</b>
-                  <p className="text-slate-400 text-[11px]">Instant statutory bank freeze order executed</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
+      {/* 4. React Bits Pro "Hero 2": Curved Bento Grid Hero with Cursor-Following Effect */}
+      <Hero2
+        onCitizenClick={handleCitizenQuickStart}
+        onOfficialClick={handleOfficialQuickStart}
+        onDemoClick={handleExploreLiveDemo}
+        onEmergencyClick={() => setIsEmergencyHelpOpen(true)}
+      />
 
       {/* 6. Live Metrics Ticker Bar */}
       <section className="relative z-10 border-y border-white/10 bg-[#10131A]/90 backdrop-blur-md py-8 px-4 sm:px-8">
