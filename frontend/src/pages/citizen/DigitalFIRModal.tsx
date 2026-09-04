@@ -36,16 +36,16 @@ export const DigitalFIRModal: React.FC = () => {
           <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={() => window.print()}
-              className="px-4 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black flex items-center gap-2 cursor-pointer hover:bg-lime-400 transition-transform hover:scale-105 shadow-md"
+              className="neu-btn neu-btn-lime px-4 py-2 text-xs font-black flex items-center gap-2 cursor-pointer shadow-md"
             >
               <Printer className="w-4 h-4" />
-              <span>Print Official FIR</span>
+              <span>Print FIR</span>
             </button>
             <button
               onClick={() => setCitizenStage('DASHBOARD')}
-              className="px-4 sm:px-5 py-2 rounded-full bg-white text-slate-950 text-xs font-black flex items-center gap-2 cursor-pointer hover:bg-slate-200 transition-colors shadow-sm"
+              className="neu-btn neu-btn-white px-4 sm:px-5 py-2 text-xs font-black flex items-center gap-2 cursor-pointer shadow-sm"
             >
-              <span>Track Funds Live</span>
+              <span>Track Funds</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -250,16 +250,16 @@ export const DigitalFIRModal: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => window.print()}
-              className="px-4 py-2 rounded-full border border-slate-300 text-xs font-bold text-slate-700 hover:bg-white cursor-pointer flex items-center gap-1.5 transition-colors"
+              className="neu-btn neu-btn-outline px-4 py-2 text-xs font-bold cursor-pointer flex items-center gap-1.5"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Print Legal FIR</span>
+              <span>Print FIR</span>
             </button>
             <button
               onClick={() => setCitizenStage('DASHBOARD')}
-              className="px-6 py-2 rounded-full bg-[#111317] text-[#D4FF00] text-xs font-black flex items-center gap-2 hover:bg-slate-800 transition-colors cursor-pointer shadow-sm"
+              className="neu-btn neu-btn-dark px-6 py-2 text-xs font-black flex items-center gap-2 cursor-pointer shadow-sm"
             >
-              <span>Proceed to Main Dashboard</span>
+              <span>Track Funds</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

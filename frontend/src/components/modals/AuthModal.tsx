@@ -95,6 +95,8 @@ export const AuthModal: React.FC = () => {
     }, 400);
   };
 
+  if (!showAuthModal) return null;
+
   return (
     <div className="fixed inset-0 z-[99999] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
       <div className="bg-[#14171F] border border-white/15 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl animate-fadeIn relative z-[100000] text-slate-100">
