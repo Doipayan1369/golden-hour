@@ -9,8 +9,6 @@ import {
 import { useApp } from '../context/AppContext';
 import GhostFibers from '../components/common/GhostFibers';
 import { EmergencyHelpModal } from '../components/modals/EmergencyHelpModal';
-import { Hero2 } from '../components/blocks/Hero2';
-import { HowItWorks8 } from '../components/blocks/HowItWorks8';
 
 export const LandingPage: React.FC = () => {
   const { openAuthModal, selectCase, setShowLandingPage, setActiveTab } = useApp();
@@ -123,68 +121,177 @@ export const LandingPage: React.FC = () => {
       </div>
 
       {/* 3. Sticky Main Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-[#0A0C10]/85 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-3.5">
+      <header className="sticky top-0 z-40 bg-[#08090C]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-3.5">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#D4FF00] text-[#111317] flex items-center justify-center font-black shadow-[0_0_24px_rgba(212,255,0,0.4)]">
+            <div className="w-10 h-10 rounded-2xl bg-[#D4FF00] text-[#0A0C10] flex items-center justify-center font-black shadow-[0_0_20px_rgba(212,255,0,0.35)]">
               <Shield className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-black text-lg tracking-tight text-white">Golden Hour</span>
                 <span className="text-[10px] bg-[#D4FF00]/15 text-[#D4FF00] px-2.5 py-0.5 rounded-full font-mono font-bold border border-[#D4FF00]/30">
-                  NATIONAL DEFENSE
+                  DEFENSE PORTAL
                 </span>
               </div>
               <p className="text-[10px] text-slate-400 font-medium hidden sm:block">
-                Ministry of Home Affairs • Indian Cyber Crime Coordination Centre (I4C) Compliant
+                Ministry of Home Affairs • Indian Cyber Crime Coordination Centre (I4C)
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3.5">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setIsEmergencyHelpOpen(true)}
-              className="px-3 sm:px-4 py-2 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-xs font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-transform hover:scale-105 animate-pulse"
+              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md animate-pulse"
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">1930 Helpline</span>
+              <span>Call 1930</span>
             </button>
 
             <button
               onClick={() => openAuthModal('LOGIN', 'CITIZEN')}
-              className="text-xs font-bold text-slate-300 hover:text-white px-3 py-2 transition-colors cursor-pointer hidden md:block"
+              className="neu-btn text-xs text-slate-300 hover:text-white px-3 py-2 transition-colors hidden md:inline-flex"
             >
               Sign In
             </button>
             <button
               onClick={handleCitizenQuickStart}
-              className="px-3.5 sm:px-4 py-2 rounded-full border border-[#D4FF00]/40 text-[#D4FF00] hover:bg-[#D4FF00]/10 text-xs font-bold transition-all cursor-pointer shadow-sm"
+              className="neu-btn-outline text-xs px-3.5 sm:px-4 py-2"
             >
               Citizen Portal
             </button>
             <button
               onClick={handleOfficialQuickStart}
-              className="px-3.5 sm:px-5 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black transition-all hover:bg-lime-400 hover:scale-105 cursor-pointer shadow-lg shadow-[#D4FF00]/25"
+              className="neu-btn-lime text-xs px-3.5 sm:px-5 py-2 font-black"
             >
-              Official Access
+              Official Login
             </button>
           </div>
         </div>
       </header>
 
-      {/* 4. React Bits Pro "Hero 2": Curved Bento Grid Hero with Cursor-Following Effect */}
-      <Hero2
-        onCitizenClick={handleCitizenQuickStart}
-        onOfficialClick={handleOfficialQuickStart}
-        onDemoClick={handleExploreLiveDemo}
-        onEmergencyClick={() => setIsEmergencyHelpOpen(true)}
-      />
+      {/* 4. Hero Section: Monotone Minimalist Typography & Tactile CTAs */}
+      <section className="relative pt-12 sm:pt-20 pb-20 px-4 sm:px-8 z-10">
+        <div className="max-w-5xl mx-auto text-center space-y-7">
+          
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md shadow-inner">
+            <Sparkles className="w-3.5 h-3.5 text-[#D4FF00]" />
+            <span>Autonomous Real-Time Cybercrime Interception</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.12]">
+            Intercept Stolen Cyber Funds <br className="hidden sm:block" />
+            <span className="text-[#D4FF00]">
+              Within The Golden Hour.
+            </span>
+          </h1>
+
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
+            When cyber fraud occurs, funds hop across 15+ mule banking switches in minutes. 
+            Golden Hour tracks multi-hop velocity, predicts the cash-out ATM using spatial AI, and coordinates police beat patrols to secure 100% of your funds before withdrawal.
+          </p>
+
+          {/* Primary Tactile Action Buttons */}
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
+            <button
+              onClick={handleCitizenQuickStart}
+              className="neu-btn-lime w-full sm:w-auto px-7 py-3.5 text-sm font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,255,0,0.35)]"
+            >
+              <FileText className="w-4 h-4" />
+              <span>Track Funds</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={handleOfficialQuickStart}
+              className="neu-btn-dark w-full sm:w-auto px-6 py-3.5 text-sm font-bold flex items-center justify-center gap-2 border border-white/20"
+            >
+              <ShieldCheck className="w-4 h-4 text-[#D4FF00]" />
+              <span>Official Login</span>
+            </button>
+
+            <button
+              onClick={handleExploreLiveDemo}
+              className="neu-btn-white w-full sm:w-auto px-6 py-3.5 text-sm font-bold flex items-center justify-center gap-2 shadow-md"
+            >
+              <span>Launch Demo</span>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-600" />
+            </button>
+          </div>
+
+          {/* Trust Guarantees */}
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400 font-mono">
+            <span className="flex items-center gap-1.5 text-emerald-400">
+              <CheckCircle2 className="w-3.5 h-3.5" /> 100% Free for Citizens
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-[#D4FF00]" /> Zero PII Masking
+            </span>
+            <span className="flex items-center gap-1.5 text-slate-300">
+              <Shield className="w-3.5 h-3.5 text-white" /> Section 65B Evidence Certified
+            </span>
+          </div>
+
+          {/* 5. 3D Floating Hero Widget Preview with Neumorphic Depth */}
+          <div className="pt-10 max-w-5xl mx-auto perspective-1000">
+            <div className="neu-glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
+              
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping" />
+                  <b className="text-sm font-black font-mono text-white tracking-wide">
+                    LIVE INCIDENT INTERCEPTION FEED: CASE-2026-041 (PUNE)
+                  </b>
+                </div>
+                <div className="flex items-center gap-2 font-mono text-xs">
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">
+                    ✓ 100% SECURED (₹4,50,000)
+                  </span>
+                  <span className="text-slate-400">10:14 IST</span>
+                </div>
+              </div>
+
+              {/* 3-Column 3D Telemetry Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
+                    <span>15-Hop Trace Depth</span>
+                    <GitBranch className="w-3.5 h-3.5 text-[#D4FF00]" />
+                  </div>
+                  <b className="text-white text-sm block">16 Nodes • 15 Switches</b>
+                  <p className="text-slate-400 text-[11px]">SBI Camp &rarr; ICICI &rarr; HDFC &rarr; Axis &rarr; SBI FC Road</p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
+                    <span>KDE Thermal Radar</span>
+                    <Flame className="w-3.5 h-3.5 text-rose-500" />
+                  </div>
+                  <b className="text-rose-400 text-sm block">FC Road Epicenter (94%)</b>
+                  <p className="text-slate-400 text-[11px]">Top ATM: SBI Goodluck Chowk Kiosk #1</p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
+                    <span>Section 91 CrPC Action</span>
+                    <Send className="w-3.5 h-3.5 text-emerald-400" />
+                  </div>
+                  <b className="text-emerald-400 text-sm block">PCR Beat 3 On-Scene</b>
+                  <p className="text-slate-400 text-[11px]">Instant statutory bank freeze order executed</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* 6. Live Metrics Ticker Bar */}
-      <section className="relative z-10 border-y border-white/10 bg-[#10131A]/90 backdrop-blur-md py-8 px-4 sm:px-8">
+      <section className="relative z-10 border-y border-white/10 bg-[#0E1118]/90 backdrop-blur-md py-8 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="space-y-1">
             <div className="text-2xl sm:text-4xl font-black text-[#D4FF00] font-mono">₹4.50 Cr+</div>
@@ -199,20 +306,77 @@ export const LandingPage: React.FC = () => {
             <div className="text-xs text-slate-400 font-medium">Spatial Hotspot Prediction Accuracy</div>
           </div>
           <div className="space-y-1">
-            <div className="text-2xl sm:text-4xl font-black text-sky-400 font-mono">15 Hops</div>
+            <div className="text-2xl sm:text-4xl font-black text-[#D4FF00] font-mono">15 Hops</div>
             <div className="text-xs text-slate-400 font-medium">Multi-Bank Trace Traversal Depth</div>
           </div>
         </div>
       </section>
 
-      {/* 7. React Bits Pro "How It Works 8": Horizontal 3-Step Flow with Drawing Connector Line & Vignettes */}
-      <HowItWorks8 
-        onExploreDemo={handleExploreLiveDemo}
-        onCitizenClick={handleCitizenQuickStart}
-      />
+      {/* 7. Core Features & What We Do (3D Neumorphic Cards) */}
+      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-16">
+        <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
+            Autonomous Cyber Defense Capabilities
+          </h2>
+          <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            How Golden Hour Outsmarts Cyber Syndicates
+          </h3>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Standard cyber helplines take 24–48 hours. Golden Hour automates banking switch tracing and tactical patrol deployment in under 15 minutes.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Card 1 */}
+          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
+            <div className="w-12 h-12 rounded-2xl bg-[#D4FF00]/10 text-[#D4FF00] flex items-center justify-center font-black">
+              <GitBranch className="w-6 h-6" />
+            </div>
+            <h4 className="text-lg font-black text-white">15-Hop Multi-Bank Trace</h4>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Instantly correlates IMPS, NEFT, and UPI switch logs across ICICI, HDFC, SBI, Axis, Kotak, and 10+ regional banks to expose rapid mule money fan-outs.
+            </p>
+            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
+              <span>Real-Time Velocity Telemetry</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
+            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-black">
+              <Flame className="w-6 h-6" />
+            </div>
+            <h4 className="text-lg font-black text-white">Continuous Thermal Radar</h4>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Spatial AI Kernel Density Estimation (KDE) maps candidate ATM withdrawal clusters and pinpoints the highest-probability kiosks with 94% precision.
+            </p>
+            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-rose-400">
+              <span>Top 15 Candidate ATMs Ranked</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4 border border-white/10">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-black">
+              <Send className="w-6 h-6" />
+            </div>
+            <h4 className="text-lg font-black text-white">Section 91 CrPC Freezing</h4>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              1-click statutory hold orders dispatched directly to bank nodal desks and GPS intercept coordinates routed to the nearest PCR Beat Patrol unit.
+            </p>
+            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-emerald-400">
+              <span>Instant Legal Action Dispatch</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 8. Second Marquee: Integrated Banking & Police Network */}
-      <section className="relative z-10 bg-[#0E1118] border-y border-white/10 py-4 overflow-hidden shadow-inner">
+      <section className="relative z-10 bg-[#0B0D13] border-y border-white/10 py-4 overflow-hidden shadow-inner">
         <div className="animate-marquee-reverse whitespace-nowrap flex items-center gap-8 text-xs font-mono text-slate-400">
           {networkItems.concat(networkItems).map((bank, idx) => (
             <span key={idx} className="flex items-center gap-3">
@@ -240,10 +404,10 @@ export const LandingPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Citizen Portal Box */}
-          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-6 flex flex-col justify-between shadow-2xl">
+          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-6 flex flex-col justify-between shadow-2xl border border-white/10">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="p-3 rounded-2xl bg-[#D4FF00] text-[#111317]">
+                <div className="p-3 rounded-2xl bg-[#D4FF00] text-[#0A0C10] font-black">
                   <Users className="w-6 h-6" />
                 </div>
                 <span className="text-[10px] font-mono bg-white/10 text-slate-300 px-3 py-1 rounded-full font-bold">
@@ -279,9 +443,9 @@ export const LandingPage: React.FC = () => {
             <div className="pt-4">
               <button
                 onClick={handleCitizenQuickStart}
-                className="w-full py-4 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black hover:bg-lime-400 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02]"
+                className="neu-btn-lime w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
               >
-                <span>Enter Citizen Portal</span>
+                <span>Citizen Portal</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -291,7 +455,7 @@ export const LandingPage: React.FC = () => {
           <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card border border-[#D4FF00]/30 space-y-6 flex flex-col justify-between shadow-2xl relative overflow-hidden">
             <div className="space-y-4 relative z-10">
               <div className="flex items-center justify-between">
-                <div className="p-3 rounded-2xl bg-[#111317] text-[#D4FF00] border border-[#D4FF00]/40 shadow-md">
+                <div className="p-3 rounded-2xl bg-[#0E1118] text-[#D4FF00] border border-[#D4FF00]/40 shadow-md">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <span className="text-[10px] font-mono bg-[#D4FF00]/20 text-[#D4FF00] px-3 py-1 rounded-full font-bold border border-[#D4FF00]/30">
@@ -327,10 +491,10 @@ export const LandingPage: React.FC = () => {
             <div className="pt-4 relative z-10">
               <button
                 onClick={handleOfficialQuickStart}
-                className="w-full py-4 rounded-full bg-white text-slate-950 text-xs font-black hover:bg-slate-200 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02]"
+                className="neu-btn-white w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
               >
-                <Lock className="w-4 h-4 text-[#111317]" />
-                <span>Verify Credentials & Sign In</span>
+                <Lock className="w-4 h-4 text-[#0A0C10]" />
+                <span>Official Login</span>
               </button>
             </div>
           </div>
@@ -392,14 +556,14 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 font-mono text-[11px]">
-            <button onClick={handleCitizenQuickStart} className="hover:text-white cursor-pointer">Citizen Tracking</button>
-            <button onClick={handleOfficialQuickStart} className="hover:text-white cursor-pointer">Officer Login</button>
-            <button onClick={handleExploreLiveDemo} className="hover:text-white cursor-pointer">Demo Case 041</button>
+          <div className="flex flex-wrap items-center gap-3 font-mono text-[11px]">
+            <button onClick={handleCitizenQuickStart} className="neu-btn-outline px-3 py-1.5 text-xs">Citizen Portal</button>
+            <button onClick={handleOfficialQuickStart} className="neu-btn-outline px-3 py-1.5 text-xs">Official Login</button>
+            <button onClick={handleExploreLiveDemo} className="neu-btn-lime px-3 py-1.5 text-xs text-[#0A0C10]">Demo Case 041</button>
           </div>
 
-          <div className="text-[11px] text-slate-500">
-            © 2026 Golden Hour. Certified under Section 65B Indian Evidence Act.
+          <div className="text-[11px] text-slate-500 font-mono">
+            © 2026 Golden Hour • Certified under Section 65B Indian Evidence Act
           </div>
         </div>
       </footer>

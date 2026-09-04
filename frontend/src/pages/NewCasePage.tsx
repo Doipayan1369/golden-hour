@@ -96,7 +96,7 @@ export const NewCasePage: React.FC<NewCasePageProps> = ({ onComplete, onCancel }
           </div>
           <button
             onClick={onCancel}
-            className="px-5 py-2 bg-slate-100 text-slate-700 rounded-full text-xs font-bold hover:bg-slate-200 cursor-pointer"
+            className="neu-btn neu-btn-outline px-5 py-2 text-xs font-bold cursor-pointer"
           >
             Cancel
           </button>
@@ -164,9 +164,9 @@ export const NewCasePage: React.FC<NewCasePageProps> = ({ onComplete, onCancel }
           <div className="flex justify-end pt-4">
             <button
               onClick={() => setStep('ANCHOR')}
-              className="px-6 py-3 pill-btn-lime text-xs font-black flex items-center gap-2 cursor-pointer"
+              className="neu-btn neu-btn-lime px-6 py-3 text-xs font-black flex items-center gap-2 cursor-pointer shadow-md"
             >
-              <span>Continue to Anchor Fields</span>
+              <span>Continue</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -244,15 +244,15 @@ export const NewCasePage: React.FC<NewCasePageProps> = ({ onComplete, onCancel }
           <div className="flex items-center justify-between pt-4">
             <button
               onClick={() => setStep('SOURCE')}
-              className="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-full text-xs font-semibold cursor-pointer"
+              className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-semibold cursor-pointer"
             >
               Back
             </button>
             <button
               onClick={() => setStep('ATTACH')}
-              className="px-6 py-3 pill-btn-lime text-xs font-black flex items-center gap-2 cursor-pointer"
+              className="neu-btn neu-btn-lime px-6 py-3 text-xs font-black flex items-center gap-2 cursor-pointer shadow-md"
             >
-              <span>Continue to Evidence</span>
+              <span>Continue</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -288,16 +288,16 @@ export const NewCasePage: React.FC<NewCasePageProps> = ({ onComplete, onCancel }
           <div className="flex items-center justify-between pt-4">
             <button
               onClick={() => setStep('ANCHOR')}
-              className="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-full text-xs font-semibold cursor-pointer"
+              className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-semibold cursor-pointer"
             >
               Back
             </button>
             <button
               onClick={handleValidateAndReview}
               disabled={loading}
-              className="px-6 py-3 pill-btn-lime text-xs font-black flex items-center gap-2 cursor-pointer"
+              className="neu-btn neu-btn-lime px-6 py-3 text-xs font-black flex items-center gap-2 cursor-pointer shadow-md"
             >
-              <span>{loading ? 'Validating...' : 'Review & Ingest'}</span>
+              <span>{loading ? 'Validating...' : 'Review Case'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -357,16 +357,16 @@ export const NewCasePage: React.FC<NewCasePageProps> = ({ onComplete, onCancel }
           <div className="flex items-center justify-between pt-4">
             <button
               onClick={() => setStep('ATTACH')}
-              className="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-full text-xs font-semibold cursor-pointer"
+              className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-semibold cursor-pointer"
             >
               Back
             </button>
             <button
               onClick={handleCreateCase}
               disabled={loading}
-              className="px-8 py-3 pill-btn-lime text-xs font-black shadow-lg cursor-pointer"
+              className="neu-btn neu-btn-lime px-8 py-3 text-xs font-black shadow-lg cursor-pointer"
             >
-              {loading ? 'Creating...' : 'Confirm & Anchor Case'}
+              {loading ? 'Creating...' : 'Anchor Case'}
             </button>
           </div>
         </div>

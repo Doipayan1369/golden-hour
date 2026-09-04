@@ -59,10 +59,10 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
             </a>
             <a
               href="tel:1930"
-              className="px-5 py-2.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-xs font-black flex items-center gap-2 shadow-lg cursor-pointer transition-all hover:scale-105"
+              className="neu-btn neu-btn-red px-5 py-2.5 text-xs font-black flex items-center gap-2 shadow-lg cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Call Now</span>
+              <span>Call 1930</span>
             </a>
           </div>
 
@@ -82,7 +82,7 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
             href="https://cybercrime.gov.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-3 px-4 rounded-2xl bg-slate-900 hover:bg-black border border-white/15 flex items-center justify-between text-slate-200 hover:text-[#D4FF00] transition-all cursor-pointer group"
+            className="w-full py-3 px-4 rounded-2xl bg-[#11141A] hover:bg-[#161922] border border-white/15 flex items-center justify-between text-slate-200 hover:text-[#D4FF00] transition-all cursor-pointer group shadow-sm"
           >
             <div className="flex items-center gap-2.5">
               <Landmark className="w-4 h-4 text-[#D4FF00]" />
@@ -121,9 +121,9 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
         <div className="pt-2 border-t border-white/10">
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all cursor-pointer"
+            className="neu-btn neu-btn-dark w-full py-3 text-xs font-bold transition-all cursor-pointer"
           >
-            Close Window
+            Close
           </button>
         </div>
 

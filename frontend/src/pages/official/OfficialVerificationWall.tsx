@@ -38,7 +38,7 @@ export const OfficialVerificationWall: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0E1015] text-white flex items-center justify-center p-4 sm:p-8 font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
+    <div className="min-h-screen bg-[#0E1015] monotone-grid text-white flex items-center justify-center p-4 sm:p-8 font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
       <div className="bg-[#14171F] border border-white/15 rounded-3xl max-w-xl w-full p-6 sm:p-10 space-y-6 shadow-2xl animate-fadeIn relative text-slate-100">
         
         {/* Top Header */}
@@ -50,10 +50,10 @@ export const OfficialVerificationWall: React.FC = () => {
               </div>
               <div>
                 <h2 className="text-xl font-black text-white tracking-tight">
-                  Official Credential Verification
+                  Official Verification
                 </h2>
                 <p className="text-xs text-slate-400 font-mono">
-                  Restricted Law Enforcement & Bank Nodal Access
+                  Law Enforcement & Bank Nodal Access
                 </p>
               </div>
             </div>
@@ -67,13 +67,13 @@ export const OfficialVerificationWall: React.FC = () => {
         </div>
 
         {/* Security Alert Banner */}
-        <div className="p-4 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-xs space-y-1 text-sky-200">
-          <div className="flex items-center gap-2 font-bold text-sky-400">
+        <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs space-y-1 text-slate-200">
+          <div className="flex items-center gap-2 font-bold text-[#D4FF00]">
             <Lock className="w-4 h-4" />
-            <span>MHA I4C Clearance & Identity Check Required</span>
+            <span>MHA I4C Identity Clearance</span>
           </div>
-          <p className="text-slate-300 text-[11px] leading-relaxed">
-            Logged in as <b>{currentUser?.email || 'officer@police.gov.in'}</b>. Please verify your officer credentials and station jurisdiction to unlock full tactical tools.
+          <p className="text-slate-400 text-[11px] leading-relaxed">
+            Logged in as <b className="text-white">{currentUser?.email || 'officer@police.gov.in'}</b>. Verify officer credentials to access the command suite.
           </p>
         </div>
 
@@ -141,23 +141,23 @@ export const OfficialVerificationWall: React.FC = () => {
 
           {/* Quick Demo Pre-Fill Helper */}
           <div className="pt-1 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Official Credential Sandbox</span>
+            <span>Official Sandbox</span>
             <button
               type="button"
               onClick={handleQuickFill}
               className="text-[#D4FF00] font-bold underline cursor-pointer hover:text-lime-300"
             >
-              Reset to Pune Inspector Profile
+              Use Demo Credentials
             </button>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black flex items-center justify-center gap-2 cursor-pointer hover:bg-lime-400 transition-all shadow-lg hover:scale-105"
+            className="neu-btn neu-btn-lime w-full py-4 text-xs font-black flex items-center justify-center gap-2 cursor-pointer shadow-lg"
           >
             <ShieldCheck className="w-4 h-4" />
-            <span>{loading ? 'Verifying Official Authorization...' : 'Verify Credentials & Unlock Command Suite'}</span>
+            <span>{loading ? 'Verifying...' : 'Verify Credentials'}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>

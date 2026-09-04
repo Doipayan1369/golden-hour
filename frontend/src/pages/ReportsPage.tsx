@@ -88,10 +88,10 @@ export const ReportsPage: React.FC = () => {
 
           <button
             onClick={() => setShowExportModal(true)}
-            className="flex items-center gap-2 px-6 py-3 pill-btn-lime text-xs font-black shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
+            className="neu-btn neu-btn-lime flex items-center gap-2 px-6 py-3 text-xs font-black shadow-lg cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>Generate New Export / PDF</span>
+            <span>Generate PDF</span>
           </button>
         </div>
       </div>
@@ -134,10 +134,10 @@ export const ReportsPage: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handlePrint(r)}
-                  className="flex items-center gap-2 px-5 py-2.5 pill-btn-dark text-xs font-bold shadow-md cursor-pointer hover:bg-slate-800 transition-colors"
+                  className="neu-btn neu-btn-dark flex items-center gap-2 px-5 py-2.5 text-xs font-bold shadow-md cursor-pointer"
                 >
                   <Printer className="w-3.5 h-3.5 text-[#D4FF00]" />
-                  <span>Preview & Print PDF</span>
+                  <span>Print PDF</span>
                 </button>
               </div>
             </div>
@@ -207,16 +207,16 @@ export const ReportsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowExportModal(false)}
-                className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50 cursor-pointer"
+                className="neu-btn neu-btn-outline px-5 py-2 text-xs font-bold cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleGenerate}
-                className="px-6 py-2.5 pill-btn-lime text-xs font-black shadow-md cursor-pointer"
+                className="neu-btn neu-btn-lime px-6 py-2 text-xs font-black shadow-md cursor-pointer"
               >
-                Generate Document
+                Generate
               </button>
             </div>
           </div>
@@ -245,10 +245,10 @@ export const ReportsPage: React.FC = () => {
               <div className="flex items-center gap-2.5 sm:gap-3">
                 <button
                   onClick={() => window.print()}
-                  className="px-4 sm:px-5 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black flex items-center gap-2 cursor-pointer hover:bg-lime-400 transition-transform hover:scale-105 shadow-md"
+                  className="neu-btn neu-btn-lime px-4 sm:px-5 py-2 text-xs font-black flex items-center gap-2 cursor-pointer shadow-md"
                 >
                   <Printer className="w-4 h-4" />
-                  <span>Print to PDF</span>
+                  <span>Print PDF</span>
                 </button>
                 <button
                   onClick={() => setShowPrintModal(null)}
@@ -371,16 +371,16 @@ export const ReportsPage: React.FC = () => {
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setShowPrintModal(null)}
-                  className="px-4 py-2 rounded-full border border-slate-300 text-xs font-bold text-slate-700 hover:bg-white cursor-pointer transition-colors"
+                  className="neu-btn neu-btn-outline px-4 py-2 text-xs font-bold cursor-pointer"
                 >
                   Close
                 </button>
                 <button
                   onClick={() => window.print()}
-                  className="px-5 py-2 rounded-full bg-[#111317] text-[#D4FF00] text-xs font-black flex items-center gap-2 cursor-pointer hover:bg-slate-800 transition-colors shadow-sm"
+                  className="neu-btn neu-btn-dark px-5 py-2 text-xs font-black flex items-center gap-2 cursor-pointer shadow-sm"
                 >
-                  <Printer className="w-4 h-4" />
-                  <span>Print to PDF</span>
+                  <Printer className="w-4 h-4 text-[#D4FF00]" />
+                  <span>Print PDF</span>
                 </button>
               </div>
             </div>

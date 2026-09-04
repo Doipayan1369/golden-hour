@@ -98,9 +98,9 @@ export const CitizenCaseLookupModal: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black flex items-center justify-center gap-2 cursor-pointer hover:bg-lime-400 transition-all shadow-lg hover:scale-105"
+            className="neu-btn neu-btn-lime w-full py-3.5 text-xs font-black flex items-center justify-center gap-2 cursor-pointer shadow-lg"
           >
-            <span>{loading ? 'Retrieving Case Record...' : 'View Digital FIR & Recovery Status'}</span>
+            <span>{loading ? 'Searching...' : 'Search Case'}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>

@@ -66,7 +66,7 @@ export const SettingsPage: React.FC = () => {
               <button
                 onClick={checkDb}
                 disabled={loading}
-                className="flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-full text-xs font-bold shadow-inner cursor-pointer"
+                className="neu-btn neu-btn-outline flex items-center gap-1.5 px-4 py-2 text-xs font-bold shadow-inner cursor-pointer"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
                 <span>Check Status</span>
@@ -129,9 +129,9 @@ export const SettingsPage: React.FC = () => {
             </p>
             <button
               onClick={resetAll}
-              className="px-6 py-2.5 pill-btn-dark text-xs font-bold cursor-pointer"
+              className="neu-btn neu-btn-red px-6 py-2.5 text-xs font-bold cursor-pointer"
             >
-              Reset Seed Database
+              Reset Database
             </button>
           </div>
         </div>
@@ -276,10 +276,10 @@ export const HelpPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
           <button
             onClick={() => setIsOnboardingOpen(true)}
-            className="w-full sm:w-auto pill-btn-lime px-6 py-3 text-xs font-extrabold shadow-lg flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] transition-transform"
+            className="neu-btn neu-btn-lime w-full sm:w-auto px-6 py-3 text-xs font-black shadow-lg flex items-center justify-center gap-2 cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Restart Onboarding Tour</span>
+            <span>Restart Tour</span>
           </button>
         </div>
       </div>
@@ -401,9 +401,9 @@ export const HelpPage: React.FC = () => {
             selectCase('CASE-2026-041');
             setActiveTab('workflow');
           }}
-          className="pill-btn-dark px-6 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer shrink-0"
+          className="neu-btn neu-btn-dark px-6 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer shrink-0"
         >
-          <span>Open Case CASE-2026-041</span>
+          <span>Open Case 041</span>
           <ArrowRight className="w-4 h-4 text-[#D4FF00]" />
         </button>
       </div>

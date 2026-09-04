@@ -52,16 +52,16 @@ export const CaseListPage: React.FC<CaseListPageProps> = ({ onNewCase }) => {
           <div className="flex items-center gap-3">
             <button
               onClick={onNewCase}
-              className="flex items-center gap-2 px-6 py-3 pill-btn-lime text-xs font-black shadow-lg cursor-pointer"
+              className="neu-btn neu-btn-lime flex items-center gap-2 px-6 py-3 text-xs font-black shadow-lg cursor-pointer"
             >
               <Plus className="w-4 h-4" />
-              <span>Create / Ingest Case</span>
+              <span>Ingest Case</span>
             </button>
 
             <button
               onClick={refreshCases}
               title="Refresh case registry"
-              className="p-3 bg-[#F8FAFC] hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-full cursor-pointer shadow-sm"
+              className="neu-btn neu-btn-outline p-3 cursor-pointer"
             >
               <RefreshCw className="w-4 h-4" />
             </button>
@@ -187,9 +187,9 @@ export const CaseListPage: React.FC<CaseListPageProps> = ({ onNewCase }) => {
                           e.stopPropagation();
                           handleOpen(c.case_id);
                         }}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#111317] hover:bg-[#23272F] text-white rounded-full font-bold transition-all shadow-md text-xs cursor-pointer"
+                        className="neu-btn neu-btn-dark inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold shadow-md cursor-pointer"
                       >
-                        <span>Open Workspace</span>
+                        <span>Open Case</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-[#D4FF00]" />
                       </button>
                     </td>

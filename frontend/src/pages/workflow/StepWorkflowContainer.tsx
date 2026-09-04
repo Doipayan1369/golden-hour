@@ -144,9 +144,9 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
                 selectCase('CASE-2026-041');
                 handleNext();
               }}
-              className="pill-btn-lime px-6 py-2.5 text-xs font-black flex items-center justify-center gap-2 shrink-0 shadow-md cursor-pointer hover:scale-[1.02] transition-transform"
+              className="neu-btn neu-btn-lime px-6 py-2.5 text-xs font-black flex items-center justify-center gap-2 shrink-0 shadow-md cursor-pointer"
             >
-              <span>Investigate CASE-2026-041</span>
+              <span>Investigate Case 041</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -160,9 +160,9 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
           <div className="flex justify-end pt-2">
             <button
               onClick={handleNext}
-              className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer"
+              className="neu-btn neu-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer"
             >
-              <span>Proceed to 15-Hop Mule Trace</span>
+              <span>Proceed to Mule Trace</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -180,12 +180,12 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
           </div>
 
           <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
+            <button onClick={handlePrev} className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Intake</span>
+              <span>Back</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
-              <span>Proceed to Cash-Out Radar</span>
+            <button onClick={handleNext} className="neu-btn neu-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Radar</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -199,12 +199,12 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
           <ForecastCard />
 
           <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
+            <button onClick={handlePrev} className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Mule Trace</span>
+              <span>Back</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
-              <span>Proceed to Police Dispatch</span>
+            <button onClick={handleNext} className="neu-btn neu-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Dispatch</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -217,12 +217,12 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
           <InterventionsPage />
 
           <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
+            <button onClick={handlePrev} className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Cash-Out Radar</span>
+              <span>Back</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
-              <span>Proceed to Incident Replay</span>
+            <button onClick={handleNext} className="neu-btn neu-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Replay</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -235,12 +235,12 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
           <ReplayPage />
 
           <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
+            <button onClick={handlePrev} className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Dispatch</span>
+              <span>Back</span>
             </button>
-            <button onClick={handleNext} className="pill-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
-              <span>Proceed to Legal Audit & PDF Export</span>
+            <button onClick={handleNext} className="neu-btn neu-btn-lime flex items-center gap-2 px-7 py-3 text-xs font-black shadow-md cursor-pointer">
+              <span>Proceed to Legal PDF</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -253,15 +253,15 @@ export const StepWorkflowContainer: React.FC<StepWorkflowContainerProps> = ({ in
           <ReportsPage />
 
           <div className="flex items-center justify-between pt-4 border-t border-slate-200">
-            <button onClick={handlePrev} className="px-5 py-2.5 rounded-full border border-slate-200 text-xs font-bold text-slate-600 bg-white hover:bg-slate-50 flex items-center gap-2 cursor-pointer">
+            <button onClick={handlePrev} className="neu-btn neu-btn-outline px-5 py-2.5 text-xs font-bold flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
-              <span>Back: Incident Replay</span>
+              <span>Back</span>
             </button>
             <button
               onClick={() => setCurrentStep(1)}
-              className="px-6 py-2.5 rounded-full bg-[#111317] text-white text-xs font-black hover:bg-slate-800 transition-colors cursor-pointer"
+              className="neu-btn neu-btn-dark px-6 py-2.5 text-xs font-black cursor-pointer shadow-md"
             >
-              Start New Investigation
+              New Investigation
             </button>
           </div>
         </div>

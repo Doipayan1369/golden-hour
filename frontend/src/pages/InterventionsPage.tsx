@@ -168,15 +168,15 @@ export const InterventionsPage: React.FC = () => {
                     <>
                       <button
                         onClick={() => handleOpenCancel(act.action_id)}
-                        className="px-4 py-2 bg-rose-50 text-rose-700 border border-rose-200 rounded-full text-xs font-semibold hover:bg-rose-100 cursor-pointer"
+                        className="neu-btn neu-btn-red px-4 py-2 text-xs font-semibold cursor-pointer"
                       >
                         Cancel Dispatch
                       </button>
                       <button
                         onClick={() => handleAcknowledge(act.action_id)}
-                        className="px-5 py-2 pill-btn-lime text-xs font-bold cursor-pointer"
+                        className="neu-btn neu-btn-lime px-5 py-2 text-xs font-black cursor-pointer shadow-md"
                       >
-                        Acknowledge Receipt
+                        Acknowledge
                       </button>
                     </>
                   )}
@@ -196,8 +196,8 @@ export const InterventionsPage: React.FC = () => {
                 <XCircle className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Cancel Active Intervention</h3>
-                <p className="text-xs text-slate-500">M-09 Cancel Action Audit Requirement</p>
+                <h3 className="text-lg font-bold text-slate-900">Cancel Intervention</h3>
+                <p className="text-xs text-slate-500">M-09 Cancellation Audit</p>
               </div>
             </div>
 
@@ -215,15 +215,15 @@ export const InterventionsPage: React.FC = () => {
             <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowCancelModal(false)}
-                className="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-full text-xs font-semibold"
+                className="neu-btn neu-btn-outline px-5 py-2 text-xs font-semibold cursor-pointer"
               >
                 Back
               </button>
               <button
                 onClick={handleConfirmCancel}
-                className="px-5 py-2.5 bg-rose-600 hover:bg-rose-500 text-white rounded-full text-xs font-bold shadow-md cursor-pointer"
+                className="neu-btn neu-btn-red px-5 py-2 text-xs font-black shadow-md cursor-pointer"
               >
-                Confirm Cancellation
+                Confirm Cancel
               </button>
             </div>
           </div>

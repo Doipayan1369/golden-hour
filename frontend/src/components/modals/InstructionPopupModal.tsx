@@ -113,9 +113,9 @@ export const InstructionPopupModal: React.FC<Props> = ({ instruction, onClose })
           <span className="text-[10px] text-slate-400 font-mono">I4C STANDARD OPERATING PROCEDURE (v1.0)</span>
           <button
             onClick={onClose}
-            className="pill-btn-dark px-6 py-2 text-xs font-bold cursor-pointer"
+            className="neu-btn neu-btn-dark px-6 py-2 text-xs font-bold cursor-pointer"
           >
-            Acknowledge SOP
+            Acknowledge
           </button>
         </div>
 

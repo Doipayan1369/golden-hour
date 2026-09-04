@@ -288,9 +288,9 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose, onStartCase 
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   onClick={handleFinish}
-                  className="w-full sm:w-auto pill-btn-lime px-8 py-3.5 text-sm font-extrabold shadow-xl inline-flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] transition-transform"
+                  className="neu-btn neu-btn-lime w-full sm:w-auto px-8 py-3.5 text-xs font-black shadow-xl inline-flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>Launch Live Investigation (Case 041)</span>
+                  <span>Launch Case 041</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
@@ -299,10 +299,10 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose, onStartCase 
                     setActiveTab('help');
                     onClose();
                   }}
-                  className="w-full sm:w-auto pill-btn border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 px-5 py-3.5 text-xs font-bold shadow-sm inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="neu-btn neu-btn-outline w-full sm:w-auto px-5 py-3.5 text-xs font-bold shadow-sm inline-flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <HelpCircle className="w-4 h-4 text-slate-500" />
-                  <span>Browse FAQs & SOPs</span>
+                  <span>FAQs</span>
                 </button>
               </div>
             </div>
@@ -328,7 +328,7 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose, onStartCase 
             {slide > 1 && (
               <button
                 onClick={() => setSlide((prev) => prev - 1)}
-                className="px-4 py-2 rounded-full border border-slate-200 text-xs font-bold text-slate-700 hover:bg-white transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                className="neu-btn neu-btn-outline px-4 py-2 text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-sm"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back</span>
@@ -338,7 +338,7 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose, onStartCase 
             {slide < totalSlides ? (
               <button
                 onClick={() => setSlide((prev) => prev + 1)}
-                className="pill-btn-dark px-6 py-2 text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-md"
+                className="neu-btn neu-btn-dark px-6 py-2 text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-md"
               >
                 <span>Next</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#D4FF00]" />
@@ -346,9 +346,9 @@ export const OnboardingModal: React.FC<Props> = ({ isOpen, onClose, onStartCase 
             ) : (
               <button
                 onClick={handleFinish}
-                className="pill-btn-lime px-6 py-2 text-xs font-extrabold shadow-md cursor-pointer"
+                className="neu-btn neu-btn-lime px-6 py-2 text-xs font-black shadow-md cursor-pointer"
               >
-                <span>Start Now</span>
+                <span>Start</span>
               </button>
             )}
           </div>

@@ -63,35 +63,35 @@ export const ReplayController: React.FC = () => {
           <button
             onClick={() => handleStep(Math.max(0, currentStep - 1))}
             disabled={currentStep === 0}
-            className="px-4 py-2.5 bg-[#F8FAFC] hover:bg-slate-100 text-slate-700 border border-slate-200 rounded-full text-xs font-bold disabled:opacity-40 cursor-pointer"
+            className="neu-btn neu-btn-outline px-4 py-2 text-xs font-bold disabled:opacity-40 cursor-pointer"
           >
-            Prev Hop
+            Prev
           </button>
 
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-black transition-all shadow-md cursor-pointer ${
+            className={`neu-btn flex items-center gap-2 px-6 py-2 text-xs font-black transition-all shadow-md cursor-pointer ${
               isPlaying
-                ? 'bg-rose-500 text-white'
-                : 'pill-btn-lime'
+                ? 'neu-btn-red'
+                : 'neu-btn-lime'
             }`}
           >
             {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-            <span>{isPlaying ? 'Pause' : 'Auto-Play'}</span>
+            <span>{isPlaying ? 'Pause' : 'Auto Play'}</span>
           </button>
 
           <button
             onClick={() => handleStep(Math.min(totalSteps - 1, currentStep + 1))}
             disabled={currentStep >= totalSteps - 1}
-            className="px-4 py-2.5 bg-[#F8FAFC] hover:bg-slate-100 text-slate-700 border border-slate-200 rounded-full text-xs font-bold disabled:opacity-40 cursor-pointer"
+            className="neu-btn neu-btn-outline px-4 py-2 text-xs font-bold disabled:opacity-40 cursor-pointer"
           >
-            Next Hop
+            Next
           </button>
 
           <button
             onClick={handleReset}
-            title="Reset to 10:02"
-            className="p-2.5 bg-[#F8FAFC] hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-full cursor-pointer"
+            title="Reset to start"
+            className="neu-btn neu-btn-outline p-2.5 cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -183,9 +183,9 @@ export const ReplayController: React.FC = () => {
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setActiveTab('map')}
-                className="px-6 py-2.5 pill-btn-dark text-xs font-black cursor-pointer shadow-lg"
+                className="neu-btn neu-btn-dark px-6 py-2.5 text-xs font-black cursor-pointer shadow-lg"
               >
-                View Observed ATM on Map
+                View Map
               </button>
             </div>
           </div>

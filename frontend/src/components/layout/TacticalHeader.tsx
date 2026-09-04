@@ -69,26 +69,26 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
           </div>
 
           {/* Right: Helpful Actions, Role Indicator & Sign Out */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             
             {/* Emergency Helpline Trigger */}
             <button
               onClick={() => setIsEmergencyHelpOpen(true)}
-              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white text-xs font-black flex items-center gap-1.5 shadow-md cursor-pointer transition-transform hover:scale-105 animate-pulse"
+              className="neu-btn-red text-xs px-3 sm:px-4 py-2 flex items-center gap-1.5 shadow-md animate-pulse"
               title="Emergency 1930 Cyber Fraud Helpline"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">1930 Helpline</span>
+              <span>Call 1930</span>
             </button>
 
             {/* Citizen FIR Shortcut (if citizen) */}
             {userType === 'CITIZEN' && (
               <button
                 onClick={() => setCitizenStage('FIR_VIEW')}
-                className="px-3 sm:px-4 py-2 rounded-full bg-[#111317] text-[#D4FF00] text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-sm hover:bg-slate-800"
+                className="neu-btn-lime text-xs px-3 sm:px-4 py-2 flex items-center gap-1.5"
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Digital FIR</span>
+                <span>Digital FIR</span>
               </button>
             )}
 
@@ -96,27 +96,27 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
             {userType !== 'CITIZEN' && (
               <button
                 onClick={() => setIsOnboardingOpen(true)}
-                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
-                title="Open Official's Walkthrough & Guide"
+                className="neu-btn px-3 sm:px-3.5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center gap-1.5"
+                title="Open Official's Walkthrough"
               >
-                <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
-                <span className="hidden md:inline">Quick Tour</span>
+                <BookOpen className="w-3.5 h-3.5 text-slate-600" />
+                <span className="hidden sm:inline">Tour</span>
               </button>
             )}
 
             {/* Help & FAQ Button */}
             <button
               onClick={handleHelpClick}
-              className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-inner"
-              title="Open Help Center, FAQs & SOPs"
+              className="neu-btn px-3 sm:px-3.5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-all flex items-center gap-1.5"
+              title="Open FAQs & Help Center"
             >
-              <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-600" />
-              <span className="hidden md:inline">Help & FAQs</span>
+              <HelpCircle className="w-3.5 h-3.5 text-slate-600" />
+              <span>FAQs</span>
             </button>
 
             {/* Officer Role Indicator (if official) */}
             {userType !== 'CITIZEN' && (
-              <div className="flex items-center gap-1.5 sm:gap-2 bg-[#F8FAFC] border border-slate-200/90 rounded-full px-2.5 sm:px-3.5 py-1.5 shadow-inner">
+              <div className="flex items-center gap-1.5 bg-[#F8FAFC] border border-slate-200 rounded-full px-2.5 sm:px-3 py-1.5 shadow-inner">
                 <UserCheck className="w-3.5 h-3.5 text-slate-500 hidden sm:block" />
                 <select
                   value={role}
@@ -133,8 +133,8 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
             {/* Sign Out Button */}
             <button
               onClick={logout}
-              className="p-2 sm:p-2.5 rounded-full bg-slate-100 text-slate-600 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer shadow-inner"
-              title="Sign Out to Public Homepage"
+              className="neu-btn p-2 sm:p-2.5 rounded-full bg-slate-100 text-slate-700 hover:text-white hover:bg-rose-600 transition-all shadow-sm"
+              title="Sign Out"
             >
               <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>

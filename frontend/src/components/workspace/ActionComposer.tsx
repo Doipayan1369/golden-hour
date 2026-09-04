@@ -130,17 +130,17 @@ export const ActionComposer: React.FC<ActionComposerProps> = ({ zone, onClose })
             <div className="flex items-center justify-end gap-2.5 pt-2">
               <button
                 onClick={onClose}
-                className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full text-xs font-semibold"
+                className="neu-btn neu-btn-outline px-4 py-2.5 text-xs font-bold cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 onClick={handleApproveAndDispatch}
                 disabled={loading}
-                className="flex items-center gap-1.5 px-5 py-2.5 pill-btn-lime text-xs font-bold shadow-md"
+                className="neu-btn neu-btn-lime flex items-center gap-1.5 px-5 py-2.5 text-xs font-black shadow-md cursor-pointer"
               >
                 <Send className="w-4 h-4" />
-                <span>{loading ? 'Digitally Signing...' : 'Authorize & Dispatch'}</span>
+                <span>{loading ? 'Signing...' : 'Dispatch'}</span>
               </button>
             </div>
           </div>
@@ -150,7 +150,7 @@ export const ActionComposer: React.FC<ActionComposerProps> = ({ zone, onClose })
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-slate-900">Action Packet Dispatched & Signed</h4>
+              <h4 className="text-lg font-bold text-slate-900">Action Packet Dispatched</h4>
               <p className="text-xs text-slate-500 mt-1">
                 Ref ID: <span className="font-bold text-slate-800 font-mono">{actionId}</span> • Signed by {approverName}
               </p>
@@ -163,9 +163,9 @@ export const ActionComposer: React.FC<ActionComposerProps> = ({ zone, onClose })
             <div className="flex justify-center pt-2">
               <button
                 onClick={onClose}
-                className="px-6 py-2.5 pill-btn-dark text-xs font-bold shadow-md"
+                className="neu-btn neu-btn-dark px-6 py-2.5 text-xs font-bold shadow-md cursor-pointer"
               >
-                Return to Workspace
+                Close
               </button>
             </div>
           </div>

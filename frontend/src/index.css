@@ -14,44 +14,212 @@
   }
 }
 
-/* Modern Neumorphic & Soft UI Shadows with Generous Padding */
-.neu-card {
-  background: #FFFFFF;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* Monotone Texture & Minimal Design System */
+.monotone-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.neu-card:hover {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.07), 0 6px 16px -4px rgba(0, 0, 0, 0.03);
+.monotone-grid-light {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Tactile Neumorphic Cards & Panels */
+.neu-card {
+  background: #FFFFFF;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-card-dark {
+  background: #0E1117;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .neu-inset {
   background: #F8FAFC;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03), inset 0 -1px 2px rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04), inset 0 -1px 2px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
 }
 
-.neu-dark {
-  background: #111317;
-  color: #F8FAFC;
+.neu-inset-dark {
+  background: #080A0E;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6), inset 0 -1px 1px rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.35);
 }
 
-.neu-lime {
+/* Tactile Clickable Buttons - Highly Satisfying Visual & Physical Feel */
+.neu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: 9999px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.neu-btn:hover {
+  transform: translateY(-1px);
+}
+
+.neu-btn:active {
+  transform: translateY(2px) scale(0.97) !important;
+}
+
+.neu-btn-lime {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #D4FF00;
-  color: #0F172A;
-  box-shadow: 0 12px 28px -6px rgba(212, 255, 0, 0.35);
+  color: #0A0C10;
+  font-weight: 800;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 4px 16px rgba(212, 255, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
-/* Pill Buttons with Generous Touch Targets */
+.neu-btn-lime:hover {
+  background: #E2FF33;
+  box-shadow: 0 6px 20px rgba(212, 255, 0, 0.45);
+  transform: translateY(-1.5px);
+}
+
+.neu-btn-lime:active {
+  transform: translateY(2px) scale(0.97) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.neu-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #11141A;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.neu-btn-dark:hover {
+  background: #181C24;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.neu-btn-dark:active {
+  transform: translateY(2px) scale(0.97) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.neu-btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #DC2626;
+  color: #FFFFFF;
+  font-weight: 800;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.neu-btn-red:hover {
+  background: #EF4444;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+  transform: translateY(-1.5px);
+}
+
+.neu-btn-red:active {
+  transform: translateY(2px) scale(0.97) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.neu-btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  color: #0A0C10;
+  font-weight: 800;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.neu-btn-white:hover {
+  background: #F8FAFC;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+.neu-btn-white:active {
+  transform: translateY(2px) scale(0.97) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.neu-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.neu-btn-outline:hover {
+  border-color: #D4FF00;
+  color: #D4FF00;
+  background: rgba(212, 255, 0, 0.06);
+  transform: translateY(-1.5px);
+}
+
+.neu-btn-outline:active {
+  transform: translateY(2px) scale(0.97) !important;
+}
+
+/* Pill Buttons Legacy Support */
 .pill-btn {
   border-radius: 9999px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.625rem 1.25rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.pill-btn:active {
+  transform: translateY(2px) scale(0.97) !important;
 }
 
 .pill-btn-dark {
@@ -59,15 +227,20 @@
   color: #FFFFFF;
   border-radius: 9999px;
   padding: 0.625rem 1.25rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  font-weight: 600;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.15s ease;
+  cursor: pointer;
 }
 
 .pill-btn-dark:hover {
-  background: #1E2229;
+  background: #1C2029;
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.pill-btn-dark:active {
+  transform: translateY(2px) scale(0.97) !important;
 }
 
 .pill-btn-lime {
@@ -75,15 +248,20 @@
   color: #111317;
   border-radius: 9999px;
   padding: 0.625rem 1.25rem;
-  box-shadow: 0 6px 18px rgba(212, 255, 0, 0.35);
-  font-weight: 700;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(212, 255, 0, 0.35);
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.15s ease;
+  cursor: pointer;
 }
 
 .pill-btn-lime:hover {
-  background: #C4F000;
+  background: #E2FF33;
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(212, 255, 0, 0.45);
+}
+
+.pill-btn-lime:active {
+  transform: translateY(2px) scale(0.97) !important;
 }
 
 /* Smooth Scrollbar */

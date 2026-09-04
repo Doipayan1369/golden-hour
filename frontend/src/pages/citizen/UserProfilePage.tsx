@@ -91,10 +91,10 @@ export const UserProfilePage: React.FC<{ onBackToTracking?: () => void }> = ({ o
         {onBackToTracking && (
           <button
             onClick={onBackToTracking}
-            className="px-5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center gap-2 cursor-pointer transition-colors self-start sm:self-auto"
+            className="neu-btn px-4 py-2 text-slate-800 text-xs font-bold flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 self-start sm:self-auto"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Return to Live Case Tracker</span>
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to Tracker</span>
           </button>
         )}
       </div>
@@ -146,9 +146,9 @@ export const UserProfilePage: React.FC<{ onBackToTracking?: () => void }> = ({ o
             </div>
           </div>
 
-          <div className="pt-2 p-3 bg-slate-50 rounded-2xl border border-slate-200 text-[11px] text-slate-600 font-mono space-y-1">
+          <div className="pt-2 p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 font-mono space-y-1">
             <span className="text-slate-400 text-[10px] block uppercase font-bold">Privacy & Encryption</span>
-            <span>Zero raw banking credentials stored. All communication secured under 256-bit SHA-2 hash chain.</span>
+            <span>Zero raw banking credentials stored. Communications hashed under SHA-256 ledger.</span>
           </div>
         </div>
 
@@ -156,18 +156,18 @@ export const UserProfilePage: React.FC<{ onBackToTracking?: () => void }> = ({ o
         <div className="md:col-span-2 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             
-            <div className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-slate-500 text-xs font-bold uppercase font-mono">Total Cases Filed</span>
+                <span className="text-slate-500 text-xs font-bold uppercase font-mono">Total Cases</span>
                 <span className="p-2 rounded-xl bg-slate-100 text-slate-800">
                   <FileText className="w-4 h-4" />
                 </span>
               </div>
               <div className="text-3xl font-black text-slate-900 font-mono">1</div>
-              <span className="text-[11px] text-slate-500">Registered on 1930 Portal</span>
+              <span className="text-[11px] text-slate-500">1930 Portal Registry</span>
             </div>
 
-            <div className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-slate-500 text-xs font-bold uppercase font-mono">Active Losses</span>
                 <span className="p-2 rounded-xl bg-rose-50 text-rose-600">
@@ -175,24 +175,24 @@ export const UserProfilePage: React.FC<{ onBackToTracking?: () => void }> = ({ o
                 </span>
               </div>
               <div className="text-3xl font-black text-rose-600 font-mono">0</div>
-              <span className="text-[11px] text-slate-500">No pending unrecovered amounts</span>
+              <span className="text-[11px] text-slate-500">No unrecovered funds</span>
             </div>
 
-            <div className="p-5 rounded-3xl bg-white border border-emerald-200 shadow-sm space-y-2 bg-emerald-50/40">
+            <div className="p-5 rounded-2xl bg-white border border-emerald-200 shadow-sm space-y-2 bg-emerald-50/30">
               <div className="flex items-center justify-between">
-                <span className="text-emerald-800 text-xs font-bold uppercase font-mono">Resolved & Intercepted</span>
+                <span className="text-emerald-800 text-xs font-bold uppercase font-mono">Resolved</span>
                 <span className="p-2 rounded-xl bg-emerald-600 text-white shadow-sm">
                   <CheckCircle2 className="w-4 h-4" />
                 </span>
               </div>
               <div className="text-3xl font-black text-emerald-800 font-mono">1</div>
-              <span className="text-[11px] text-emerald-700 font-bold">100% Funds Frozen & Secured</span>
+              <span className="text-[11px] text-emerald-700 font-bold">100% Funds Secured</span>
             </div>
 
           </div>
 
           {/* Active Case Reference Card */}
-          <div className="p-5 rounded-3xl bg-[#111317] text-white border border-white/10 space-y-3 shadow-md">
+          <div className="p-5 rounded-2xl bg-[#0E1118] text-white border border-white/10 space-y-3 shadow-md">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#D4FF00] animate-pulse"></span>
@@ -234,19 +234,19 @@ export const UserProfilePage: React.FC<{ onBackToTracking?: () => void }> = ({ o
           <div className="border-b border-slate-100 pb-4">
             <div className="flex items-center gap-2 text-slate-900 font-black text-base">
               <MessageSquare className="w-5 h-5 text-slate-900" />
-              <span>Raise a Concern to Cyber Crime Department</span>
+              <span>Raise Concern to Cyber Crime Department</span>
             </div>
             <p className="text-xs text-slate-500 mt-1">
-              Submit official queries, evidence submissions, or fund release status requests directly to the investigating officer.
+              Submit formal inquiries or evidence updates directly to the investigating officer.
             </p>
           </div>
 
           {submittedSuccess && (
-            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-3">
+            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-3">
               <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
               <div>
-                <b className="block">Grievance Ticket Registered Successfully</b>
-                <span className="text-emerald-700">The assigned Cyber Cell officer has been notified. You can track progress below.</span>
+                <b className="block">Grievance Ticket Registered</b>
+                <span className="text-emerald-700">The assigned Cyber Cell officer has received your request.</span>
               </div>
             </div>
           )}
@@ -256,83 +256,83 @@ export const UserProfilePage: React.FC<{ onBackToTracking?: () => void }> = ({ o
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="space-y-1.5">
                 <label className="font-bold text-slate-700 uppercase tracking-wider font-mono text-[11px]">
-                  Associated Case ID:
+                  Case ID:
                 </label>
                 <input
                   type="text"
                   disabled
                   value={citizenCaseId || 'CASE-2026-041'}
-                  className="w-full font-mono font-bold bg-slate-100 border border-slate-200 rounded-2xl px-3.5 py-2.5 text-slate-900"
+                  className="w-full font-mono font-bold bg-slate-100 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label className="font-bold text-slate-700 uppercase tracking-wider font-mono text-[11px]">
-                  Urgency Level:
+                  Priority:
                 </label>
                 <select
                   value={priority}
                   onChange={(e) => setPriority(e.target.value as 'NORMAL' | 'URGENT')}
-                  className="w-full font-bold bg-white border border-slate-200 rounded-2xl px-3.5 py-2.5 text-slate-800 focus:outline-none focus:border-slate-900"
+                  className="w-full font-bold bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 focus:outline-none focus:border-slate-900"
                 >
-                  <option value="NORMAL">Standard Query</option>
-                  <option value="URGENT">High Priority / Urgent</option>
+                  <option value="NORMAL">Standard</option>
+                  <option value="URGENT">Urgent</option>
                 </select>
               </div>
             </div>
 
             <div className="space-y-1.5">
               <label className="font-bold text-slate-700 uppercase tracking-wider font-mono text-[11px]">
-                Grievance / Request Category:
+                Category:
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full font-bold bg-white border border-slate-200 rounded-2xl px-3.5 py-2.5 text-slate-800 focus:outline-none focus:border-slate-900"
+                className="w-full font-bold bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 focus:outline-none focus:border-slate-900"
               >
-                <option value="Fund Release / Bank Account Credit">Request for Frozen Fund Credit (Sec 457 CrPC)</option>
-                <option value="Police Investigation & Charge Sheet">Query Regarding Investigation Status & Charge Sheet</option>
-                <option value="Additional Evidence Submission">Submit Additional Transaction Proofs / Screenshots</option>
-                <option value="Update Contact / Address Particulars">Update Contact Details / Change Address</option>
-                <option value="Officer Callback Request">Request Telephonic Callback from Investigating Officer</option>
+                <option value="Fund Release / Bank Account Credit">Frozen Fund Credit Request (Sec 457 CrPC)</option>
+                <option value="Police Investigation & Charge Sheet">Investigation Status & Charge Sheet Query</option>
+                <option value="Additional Evidence Submission">Submit Additional Screenshots / Proof</option>
+                <option value="Update Contact / Address Particulars">Update Contact Details</option>
+                <option value="Officer Callback Request">Request Officer Callback</option>
               </select>
             </div>
 
             <div className="space-y-1.5">
               <label className="font-bold text-slate-700 uppercase tracking-wider font-mono text-[11px]">
-                Subject Summary:
+                Subject:
               </label>
               <input
                 type="text"
                 required
-                placeholder="e.g. Inquiring about timeline for fund reversal into my SBI account"
+                placeholder="e.g. Timeline for fund reversal into my account"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-2xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900"
+                className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900"
               />
             </div>
 
             <div className="space-y-1.5">
               <label className="font-bold text-slate-700 uppercase tracking-wider font-mono text-[11px]">
-                Detailed Statement / Query:
+                Message:
               </label>
               <textarea
                 required
                 rows={3}
-                placeholder="Provide specific details, bank branch name, or questions for the cyber crime unit..."
+                placeholder="Describe your query or provide additional transaction references..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-2xl p-3.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 resize-none"
+                className="w-full bg-white border border-slate-200 rounded-xl p-3.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-full bg-[#111317] text-[#D4FF00] text-xs font-black flex items-center justify-center gap-2 cursor-pointer hover:bg-slate-800 transition-all shadow-md"
+              className="neu-btn-lime w-full py-3.5 text-xs font-black flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
-              <span>{isSubmitting ? 'Submitting Grievance Ticket...' : 'Submit Official Concern to Cyber Crime Unit'}</span>
+              <span>{isSubmitting ? 'Submitting...' : 'Submit Concern'}</span>
             </button>
           </form>
         </div>

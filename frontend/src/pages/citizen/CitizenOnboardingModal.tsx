@@ -87,9 +87,9 @@ export const CitizenOnboardingModal: React.FC = () => {
           <span className="text-slate-500 font-mono text-[11px]">Next: Enter Case Reference</span>
           <button
             onClick={() => setCitizenStage('CASE_LOOKUP')}
-            className="px-6 py-3 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black flex items-center gap-2 hover:bg-lime-400 transition-all cursor-pointer shadow-lg hover:scale-105"
+            className="neu-btn neu-btn-lime px-6 py-3 text-xs font-black flex items-center gap-2 cursor-pointer shadow-lg"
           >
-            <span>Proceed to Enter Case Number</span>
+            <span>Enter Case ID</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
