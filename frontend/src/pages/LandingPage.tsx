@@ -3,12 +3,14 @@ import {
   Shield, ShieldCheck, Flame, GitBranch, Send, RotateCcw, 
   FileText, ArrowRight, CheckCircle2, Lock, Users, Building2, 
   MapPin, Clock, ChevronDown, ChevronUp, Sparkles, ExternalLink,
-  ShieldAlert, Activity, Award, HelpCircle, PhoneCall, Printer
+  ShieldAlert, Activity, Award, HelpCircle, PhoneCall, Printer,
+  Radio, Compass, Layers, Zap, Landmark
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import GhostFibers from '../components/common/GhostFibers';
 
 export const LandingPage: React.FC = () => {
-  const { openAuthModal, selectCase, setShowLandingPage, setActiveTab, setCitizenStage } = useApp();
+  const { openAuthModal, selectCase, setShowLandingPage, setActiveTab } = useApp();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const faqs = [
@@ -30,7 +32,7 @@ export const LandingPage: React.FC = () => {
     },
     {
       q: "Is there any fee or paywall to use the platform?",
-      a: "No. The platform is free to use for citizen victims tracking their reported cases and for law enforcement agencies coordinating fraud interception."
+      a: "No. The platform is completely free to use for citizen victims tracking their reported cases and for law enforcement agencies coordinating fraud interception."
     }
   ];
 
@@ -48,21 +50,87 @@ export const LandingPage: React.FC = () => {
     setActiveTab('workflow');
   };
 
+  // Marquee Live Incident Items
+  const incidentTicker = [
+    "🟢 [NCRP 1930 INGESTION: CASE-2026-041 PUNE ₹4,50,000 SECURED AT FC ROAD ATM]",
+    "⚡ [15-HOP MULE CHAIN TRACE COMPLETED IN 4.2 MINS ACROSS 7 BANKS]",
+    "🛡️ [SECTION 91 CrPC STATUTORY HOLD DISPATCHED TO SBI & AXIS SWITCHES]",
+    "📍 [KDE THERMAL RADAR LOCKED: SBI GOODLUCK CHOWK ATM • 94% CONFIDENCE]",
+    "🚓 [DECCAN CYBER BEAT PATROL 3 INTERCEPTED CASHOUT ON-SCENE]",
+    "📜 [SECTION 65B COURT EVIDENCE DOSSIER SEALED ON SHA-256 LEDGER]",
+    "🔒 [ZERO CITIZEN LOSS CONFIRMED • 100% RECOVERY ACHIEVED]"
+  ];
+
+  // Marquee Banking & Defense Network Items
+  const networkItems = [
+    "State Bank of India (SBI)", "HDFC Bank", "ICICI Bank", "Axis Bank", 
+    "Punjab National Bank", "Kotak Mahindra Bank", "Bank of Maharashtra", 
+    "NPCI UPI Switch", "IMPS Immediate Payment", "National Cybercrime Reporting Portal (1930)", 
+    "Indian Cyber Crime Coordination Centre (I4C)", "Maharashtra Police Cyber Cell",
+    "Section 65B Indian Evidence Act Certified", "RBI Cyber Security Framework"
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0E1015] text-slate-100 font-sans selection:bg-[#D4FF00] selection:text-[#111317]">
+    <div className="min-h-screen bg-[#0A0C10] text-slate-100 font-sans selection:bg-[#D4FF00] selection:text-[#111317] relative overflow-x-hidden">
       
-      {/* 1. Sticky Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-[#0E1015]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-8 py-3.5">
+      {/* 1. React Bits <GhostFibers /> Dynamic WebGL Background with Consumer-Friendly SaaS Gradient */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-35">
+        <GhostFibers
+          lineColor="#0c3a03"
+          glowColor="#088022"
+          speed={0.2}
+          scale={2}
+          rotation={0}
+          rotationSpeed={0.25}
+          layers={4}
+          waveAmplitude={0.015}
+          waveFrequency={3}
+          waveSpeed={0.15}
+          layerSpeed={0.08}
+          twist={0.1}
+          twistFrequency={5}
+          twistSpeed={1.2}
+          lineFrequency={5}
+          lineSpacing={2}
+          lineSharpness={16}
+          glowFalloff={10}
+          glowIntensity={1.6}
+          brightness={2}
+          blueBoost={1.25}
+          vignette={0.8}
+          grain={0.05}
+          dpr={1}
+        />
+      </div>
+
+      {/* Consumer SaaS Radial Vignette Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_50%_15%,rgba(212,255,0,0.12)_0%,rgba(14,16,21,0.75)_50%,#0A0C10_100%)]" />
+
+      {/* 2. Top Live Real-Time Incident Marquee Ticker */}
+      <div className="relative z-30 bg-[#111317]/95 border-b border-white/10 overflow-hidden py-2 px-4 shadow-sm backdrop-blur-md">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] font-mono text-slate-300">
+          {incidentTicker.concat(incidentTicker).map((item, idx) => (
+            <span key={idx} className="flex items-center gap-3">
+              <span className="text-[#D4FF00] font-black">•</span>
+              <span className="hover:text-white transition-colors">{item}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. Sticky Main Navigation Bar */}
+      <header className="sticky top-0 z-40 bg-[#0A0C10]/85 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-3.5">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+          
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#D4FF00] text-[#111317] flex items-center justify-center font-black shadow-[0_0_20px_rgba(212,255,0,0.35)]">
+            <div className="w-10 h-10 rounded-2xl bg-[#D4FF00] text-[#111317] flex items-center justify-center font-black shadow-[0_0_24px_rgba(212,255,0,0.4)]">
               <Shield className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-lg tracking-tight text-white">Golden Hour</span>
-                <span className="text-[10px] bg-[#D4FF00]/15 text-[#D4FF00] px-2 py-0.5 rounded-full font-mono font-bold border border-[#D4FF00]/30">
-                  NATIONAL CYBER DEFENSE
+                <span className="font-black text-lg tracking-tight text-white">Golden Hour</span>
+                <span className="text-[10px] bg-[#D4FF00]/15 text-[#D4FF00] px-2.5 py-0.5 rounded-full font-mono font-bold border border-[#D4FF00]/30">
+                  NATIONAL DEFENSE
                 </span>
               </div>
               <p className="text-[10px] text-slate-400 font-medium hidden sm:block">
@@ -80,13 +148,13 @@ export const LandingPage: React.FC = () => {
             </button>
             <button
               onClick={handleCitizenQuickStart}
-              className="px-4 py-2 rounded-full border border-[#D4FF00]/40 text-[#D4FF00] hover:bg-[#D4FF00]/10 text-xs font-bold transition-all cursor-pointer"
+              className="px-4 py-2 rounded-full border border-[#D4FF00]/40 text-[#D4FF00] hover:bg-[#D4FF00]/10 text-xs font-bold transition-all cursor-pointer shadow-sm"
             >
               Citizen Portal
             </button>
             <button
               onClick={handleOfficialQuickStart}
-              className="px-4 sm:px-5 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black transition-all hover:bg-lime-400 hover:scale-105 cursor-pointer shadow-lg shadow-[#D4FF00]/20"
+              className="px-4 sm:px-5 py-2 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black transition-all hover:bg-lime-400 hover:scale-105 cursor-pointer shadow-lg shadow-[#D4FF00]/25"
             >
               Official Access
             </button>
@@ -94,22 +162,19 @@ export const LandingPage: React.FC = () => {
         </div>
       </header>
 
-      {/* 2. Hero Section: High-Converting Headline & Dual CTA */}
-      <section className="relative pt-12 sm:pt-20 pb-16 px-4 sm:px-8 overflow-hidden">
-        {/* Background Ambient Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#D4FF00]/10 blur-[140px] pointer-events-none rounded-full" />
-        <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-rose-600/10 blur-[120px] pointer-events-none rounded-full" />
-
-        <div className="max-w-5xl mx-auto text-center space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Autonomous Real-Time Cyber Fraud Recovery System</span>
+      {/* 4. Hero Section: 3D Depth, Floating UI Preview & High-Converting Headline */}
+      <section className="relative pt-12 sm:pt-20 pb-20 px-4 sm:px-8 z-10">
+        <div className="max-w-6xl mx-auto text-center space-y-8">
+          
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md shadow-inner">
+            <Sparkles className="w-3.5 h-3.5 text-[#D4FF00]" />
+            <span>Autonomous Real-Time Cybercrime Interception Platform</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.12]">
             Intercept Stolen Cyber Funds <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4FF00] via-lime-300 to-emerald-400">
-              Within The Golden Hour.
+              Within The Critical Golden Hour.
             </span>
           </h1>
 
@@ -119,7 +184,7 @@ export const LandingPage: React.FC = () => {
           </p>
 
           {/* Primary Action Buttons */}
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
             <button
               onClick={handleCitizenQuickStart}
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#D4FF00] text-[#111317] text-sm font-black flex items-center justify-center gap-2.5 shadow-[0_0_30px_rgba(212,255,0,0.35)] hover:bg-lime-400 hover:scale-105 transition-all cursor-pointer"
@@ -131,7 +196,7 @@ export const LandingPage: React.FC = () => {
 
             <button
               onClick={handleOfficialQuickStart}
-              className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer hover:border-white/30"
             >
               <ShieldCheck className="w-4 h-4 text-[#D4FF00]" />
               <span>Law Enforcement Portal</span>
@@ -147,7 +212,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Trust Guarantees */}
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400 font-mono">
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400 font-mono">
             <span className="flex items-center gap-1.5 text-emerald-400">
               <CheckCircle2 className="w-3.5 h-3.5" /> 100% Free for Citizen Victims
             </span>
@@ -158,11 +223,64 @@ export const LandingPage: React.FC = () => {
               <Shield className="w-3.5 h-3.5 text-sky-400" /> Section 65B Evidence Certified
             </span>
           </div>
+
+          {/* 5. 3D Floating Hero Widget Preview with Neumorphic Depth */}
+          <div className="pt-10 max-w-5xl mx-auto perspective-1000">
+            <div className="neu-glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
+              
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping" />
+                  <b className="text-sm font-black font-mono text-white tracking-wide">
+                    LIVE INCIDENT INTERCEPTION FEED: CASE-2026-041 (PUNE)
+                  </b>
+                </div>
+                <div className="flex items-center gap-2 font-mono text-xs">
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">
+                    ✓ 100% SECURED (₹4,50,000)
+                  </span>
+                  <span className="text-slate-400">10:14 IST</span>
+                </div>
+              </div>
+
+              {/* 3-Column 3D Telemetry Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
+                    <span>15-Hop Trace Depth</span>
+                    <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
+                  </div>
+                  <b className="text-white text-sm block">16 Nodes • 15 Switches</b>
+                  <p className="text-slate-400 text-[11px]">SBI Camp &rarr; ICICI &rarr; HDFC &rarr; Axis &rarr; SBI FC Road</p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
+                    <span>KDE Thermal Radar</span>
+                    <Flame className="w-3.5 h-3.5 text-rose-500" />
+                  </div>
+                  <b className="text-rose-400 text-sm block">FC Road Epicenter (94%)</b>
+                  <p className="text-slate-400 text-[11px]">Top ATM: SBI Goodluck Chowk Kiosk #1</p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                  <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
+                    <span>Section 91 CrPC Action</span>
+                    <Send className="w-3.5 h-3.5 text-emerald-400" />
+                  </div>
+                  <b className="text-emerald-400 text-sm block">PCR Beat 3 On-Scene</b>
+                  <p className="text-slate-400 text-[11px]">Instant statutory bank freeze order executed</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* 3. Live Metrics Ticker Bar */}
-      <section className="border-y border-white/10 bg-[#12141A] py-8 px-4 sm:px-8">
+      {/* 6. Live Metrics Ticker Bar */}
+      <section className="relative z-10 border-y border-white/10 bg-[#10131A]/90 backdrop-blur-md py-8 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="space-y-1">
             <div className="text-2xl sm:text-4xl font-black text-[#D4FF00] font-mono">₹4.50 Cr+</div>
@@ -183,8 +301,8 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Core Features & What We Do */}
-      <section className="py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-16">
+      {/* 7. Core Features & What We Do (3D Neumorphic Cards) */}
+      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
             Autonomous Cyber Defense Capabilities
@@ -198,8 +316,9 @@ export const LandingPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
           {/* Card 1 */}
-          <div className="p-8 rounded-3xl bg-[#14171F] border border-white/10 space-y-4 hover:border-[#D4FF00]/40 transition-all">
+          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-[#D4FF00]/10 text-[#D4FF00] flex items-center justify-center font-black">
               <GitBranch className="w-6 h-6" />
             </div>
@@ -214,7 +333,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="p-8 rounded-3xl bg-[#14171F] border border-white/10 space-y-4 hover:border-[#D4FF00]/40 transition-all">
+          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-black">
               <Flame className="w-6 h-6" />
             </div>
@@ -229,7 +348,7 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="p-8 rounded-3xl bg-[#14171F] border border-white/10 space-y-4 hover:border-[#D4FF00]/40 transition-all">
+          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-black">
               <Send className="w-6 h-6" />
             </div>
@@ -245,127 +364,135 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Dual Role Portals (Citizen vs Official) */}
-      <section className="py-16 px-4 sm:px-8 bg-[#111317] border-y border-white/10">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
-              Tailored User Portals
-            </h2>
-            <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              Choose Your Platform Experience
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Whether you are a citizen tracking your reported incident or an authorized officer solving cases.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            {/* Citizen Portal Box */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#181B24] border border-white/10 space-y-6 flex flex-col justify-between hover:border-white/20 transition-all shadow-xl">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-2xl bg-[#D4FF00] text-[#111317]">
-                    <Users className="w-6 h-6" />
-                  </div>
-                  <span className="text-[10px] font-mono bg-white/10 text-slate-300 px-3 py-1 rounded-full font-bold">
-                    PUBLIC / CITIZEN
-                  </span>
-                </div>
-
-                <h4 className="text-2xl font-black text-white">Citizen & Victim Portal</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Sign up with email to monitor the recovery progress of your defrauded funds in real time without confusing jargon.
-                </p>
-
-                <ul className="space-y-2.5 text-xs text-slate-300 pt-2">
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>View & Download Official Digital FIR (Section 154 CrPC)</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Print Court Evidence Dossier with Official Seals</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Track Money Movement Across 15 Banking Hops</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Direct Contact with Assigned Cyber Beat Officer</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-4">
-                <button
-                  onClick={handleCitizenQuickStart}
-                  className="w-full py-3.5 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black hover:bg-lime-400 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
-                >
-                  <span>Enter Citizen Portal</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Law Enforcement Portal Box */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-[#181B24] border border-[#D4FF00]/30 space-y-6 flex flex-col justify-between hover:border-[#D4FF00]/50 transition-all shadow-xl relative overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#D4FF00]/10 rounded-full blur-2xl" />
-
-              <div className="space-y-4 relative z-10">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-2xl bg-[#111317] text-[#D4FF00] border border-[#D4FF00]/40">
-                    <ShieldCheck className="w-6 h-6" />
-                  </div>
-                  <span className="text-[10px] font-mono bg-[#D4FF00]/20 text-[#D4FF00] px-3 py-1 rounded-full font-bold border border-[#D4FF00]/30">
-                    LAW ENFORCEMENT & BANKS
-                  </span>
-                </div>
-
-                <h4 className="text-2xl font-black text-white">Officer Tactical Command Suite</h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Verified access for Police Cyber Cells, I4C Analysts, and Bank Nodal Officers to execute fast-track fund recovery operations.
-                </p>
-
-                <ul className="space-y-2.5 text-xs text-slate-300 pt-2">
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
-                    <span>Real-Time 15-Hop Banking Switch Telemetry & Velocity</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
-                    <span>Dynamic Thermal KDE Radar with Top 15 ATM Pins</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
-                    <span>1-Click Police Beat Interception & Section 91 CrPC Hold</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
-                    <span>Cryptographic Merkle Hash Chain Audit Ledger</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pt-4 relative z-10">
-                <button
-                  onClick={handleOfficialQuickStart}
-                  className="w-full py-3.5 rounded-full bg-white text-slate-950 text-xs font-black hover:bg-slate-200 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
-                >
-                  <Lock className="w-4 h-4 text-[#111317]" />
-                  <span>Verify Credentials & Sign In</span>
-                </button>
-              </div>
-            </div>
-
-          </div>
+      {/* 8. Second Marquee: Integrated Banking & Police Network */}
+      <section className="relative z-10 bg-[#0E1118] border-y border-white/10 py-4 overflow-hidden shadow-inner">
+        <div className="animate-marquee-reverse whitespace-nowrap flex items-center gap-8 text-xs font-mono text-slate-400">
+          {networkItems.concat(networkItems).map((bank, idx) => (
+            <span key={idx} className="flex items-center gap-3">
+              <span className="text-[#D4FF00] font-black">✦</span>
+              <span className="hover:text-white transition-colors">{bank}</span>
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* 6. Frequently Asked Questions */}
-      <section className="py-20 px-4 sm:px-8 max-w-4xl mx-auto space-y-12">
+      {/* 9. Dual Role Portals (Citizen vs Official) */}
+      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-12">
+        <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
+            Tailored User Portals
+          </h2>
+          <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            Choose Your Platform Experience
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-400">
+            Whether you are a citizen tracking your reported incident or an authorized officer solving cases.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* Citizen Portal Box */}
+          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card space-y-6 flex flex-col justify-between shadow-2xl">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="p-3 rounded-2xl bg-[#D4FF00] text-[#111317]">
+                  <Users className="w-6 h-6" />
+                </div>
+                <span className="text-[10px] font-mono bg-white/10 text-slate-300 px-3 py-1 rounded-full font-bold">
+                  PUBLIC / CITIZEN
+                </span>
+              </div>
+
+              <h4 className="text-2xl font-black text-white">Citizen & Victim Portal</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Sign up with email to monitor the recovery progress of your defrauded funds in real time without confusing jargon.
+              </p>
+
+              <ul className="space-y-2.5 text-xs text-slate-300 pt-2">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>View & Download Official Digital FIR (Section 154 CrPC)</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Print Court Evidence Dossier with Official Seals</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Track Money Movement Across 15 Banking Hops</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Direct Contact with Assigned Cyber Beat Officer</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-4">
+              <button
+                onClick={handleCitizenQuickStart}
+                className="w-full py-4 rounded-full bg-[#D4FF00] text-[#111317] text-xs font-black hover:bg-lime-400 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02]"
+              >
+                <span>Enter Citizen Portal</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Law Enforcement Portal Box */}
+          <div className="p-8 sm:p-10 rounded-3xl neu-glass-panel neu-3d-card border border-[#D4FF00]/30 space-y-6 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+            <div className="space-y-4 relative z-10">
+              <div className="flex items-center justify-between">
+                <div className="p-3 rounded-2xl bg-[#111317] text-[#D4FF00] border border-[#D4FF00]/40 shadow-md">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <span className="text-[10px] font-mono bg-[#D4FF00]/20 text-[#D4FF00] px-3 py-1 rounded-full font-bold border border-[#D4FF00]/30">
+                  LAW ENFORCEMENT & BANKS
+                </span>
+              </div>
+
+              <h4 className="text-2xl font-black text-white">Officer Tactical Command Suite</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Verified access for Police Cyber Cells, I4C Analysts, and Bank Nodal Officers to execute fast-track fund recovery operations.
+              </p>
+
+              <ul className="space-y-2.5 text-xs text-slate-300 pt-2">
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
+                  <span>Real-Time 15-Hop Banking Switch Telemetry & Velocity</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
+                  <span>Dynamic Thermal KDE Radar with Top 15 ATM Pins</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
+                  <span>1-Click Police Beat Interception & Section 91 CrPC Hold</span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#D4FF00] shrink-0" />
+                  <span>Cryptographic Merkle Hash Chain Audit Ledger</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-4 relative z-10">
+              <button
+                onClick={handleOfficialQuickStart}
+                className="w-full py-4 rounded-full bg-white text-slate-950 text-xs font-black hover:bg-slate-200 transition-all cursor-pointer shadow-md flex items-center justify-center gap-2 hover:scale-[1.02]"
+              >
+                <Lock className="w-4 h-4 text-[#111317]" />
+                <span>Verify Credentials & Sign In</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 10. Frequently Asked Questions */}
+      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-4xl mx-auto space-y-12">
         <div className="text-center space-y-3">
           <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
             Clear Answers
@@ -381,7 +508,7 @@ export const LandingPage: React.FC = () => {
             return (
               <div 
                 key={idx}
-                className="rounded-2xl bg-[#14171F] border border-white/10 overflow-hidden transition-all"
+                className="rounded-2xl neu-glass-panel overflow-hidden transition-all border border-white/10"
               >
                 <button
                   onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
@@ -405,8 +532,8 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. Footer */}
-      <footer className="border-t border-white/10 bg-[#0A0C0F] py-12 px-4 sm:px-8 text-xs text-slate-500">
+      {/* 11. Footer */}
+      <footer className="relative z-10 border-t border-white/10 bg-[#07090D] py-12 px-4 sm:px-8 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-xl bg-[#D4FF00] text-[#111317] flex items-center justify-center font-black">
