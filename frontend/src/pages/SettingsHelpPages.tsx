@@ -4,13 +4,14 @@ import {
   BookOpen, Key, RefreshCw, Database, 
   CheckCircle2, AlertCircle, ExternalLink, Sparkles,
   ChevronDown, ChevronUp, Search, Clock, Send, Flame, GitBranch, ShieldAlert,
-  PlayCircle, FileText, ArrowRight, RotateCcw
+  PlayCircle, FileText, ArrowRight, RotateCcw, PhoneCall
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { TacticalBadge } from '../components/common/TacticalBadge';
 import { api } from '../services/api';
 import { InstructionPopupModal, SOPInstruction } from '../components/modals/InstructionPopupModal';
 import { OnboardingModal } from '../components/onboarding/OnboardingModal';
+import { EmergencyHelpModal } from '../components/modals/EmergencyHelpModal';
 
 export const SettingsPage: React.FC = () => {
   const { role, resetAll } = useApp();
@@ -247,6 +248,7 @@ const FAQS = [
 export const HelpPage: React.FC = () => {
   const { selectCase, setActiveTab } = useApp();
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
+  const [isEmergencyHelpOpen, setIsEmergencyHelpOpen] = useState(false);
   const [activeSOP, setActiveSOP] = useState<SOPInstruction | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(0);
@@ -274,6 +276,15 @@ export const HelpPage: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+          <button
+            onClick={() => setIsEmergencyHelpOpen(true)}
+            className="neu-btn neu-btn-outline w-full sm:w-auto px-5 py-3 text-xs font-bold flex items-center justify-center gap-2 cursor-pointer border border-white/25 text-white hover:bg-white/10 transition-colors"
+            title="National Cyber Crime Helpline (1930)"
+          >
+            <PhoneCall className="w-4 h-4 text-[#D4FF00]" />
+            <span>Helpline (1930)</span>
+          </button>
+
           <button
             onClick={() => setIsOnboardingOpen(true)}
             className="neu-btn neu-btn-lime w-full sm:w-auto px-6 py-3 text-xs font-black shadow-lg flex items-center justify-center gap-2 cursor-pointer"
@@ -422,6 +433,12 @@ export const HelpPage: React.FC = () => {
       <InstructionPopupModal
         instruction={activeSOP}
         onClose={() => setActiveSOP(null)}
+      />
+
+      {/* Emergency Helpline Modal */}
+      <EmergencyHelpModal
+        isOpen={isEmergencyHelpOpen}
+        onClose={() => setIsEmergencyHelpOpen(false)}
       />
     </div>
   );

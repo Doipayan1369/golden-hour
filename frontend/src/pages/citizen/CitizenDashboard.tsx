@@ -50,13 +50,6 @@ export const CitizenDashboard: React.FC = () => {
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setIsEmergencyHelpOpen(true)}
-            className="neu-btn-red text-xs px-3.5 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
-          >
-            <PhoneCall className="w-3.5 h-3.5" />
-            <span>1930</span>
-          </button>
-          <button
             onClick={() => setCitizenStage('ONBOARDING_FAQ')}
             className="neu-btn px-3.5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center gap-1.5"
           >

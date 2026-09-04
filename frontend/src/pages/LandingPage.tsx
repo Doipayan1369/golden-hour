@@ -132,15 +132,6 @@ export const LandingPage: React.FC = () => {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <button
-              onClick={() => setIsEmergencyHelpOpen(true)}
-              className="neu-btn-red text-xs px-3.5 sm:px-4 py-2.5 flex items-center gap-1.5 shadow-md"
-              title="Emergency 1930 Cyber Fraud Helpline"
-            >
-              <PhoneCall className="w-3.5 h-3.5" />
-              <span>1930</span>
-            </button>
-
-            <button
               onClick={() => openAuthModal('LOGIN', 'CITIZEN')}
               className="neu-btn text-xs text-slate-300 hover:text-white px-3.5 py-2.5 transition-colors hidden md:inline-flex"
             >

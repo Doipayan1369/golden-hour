@@ -68,16 +68,6 @@ export const TacticalHeader: React.FC<{ onToggleMobileMenu?: () => void }> = ({ 
           {/* Right: Helpful Actions, Role Indicator & Sign Out */}
           <div className="flex items-center gap-2 sm:gap-2.5">
             
-            {/* Emergency Helpline Trigger */}
-            <button
-              onClick={() => setIsEmergencyHelpOpen(true)}
-              className="neu-btn-red text-xs px-3 sm:px-4 py-2 flex items-center gap-1.5 shadow-md"
-              title="Emergency 1930 Cyber Fraud Helpline"
-            >
-              <PhoneCall className="w-3.5 h-3.5" />
-              <span>1930</span>
-            </button>
-
             {/* Citizen FIR Shortcut (if citizen) */}
             {userType === 'CITIZEN' && (
               <button

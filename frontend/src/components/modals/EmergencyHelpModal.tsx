@@ -19,14 +19,14 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
         {/* Header */}
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-2xl bg-rose-600 text-white shadow-lg">
+            <div className="p-3 rounded-2xl bg-[#1A1E26] text-[#D4FF00] border border-white/10 shadow-inner">
               <PhoneCall className="w-6 h-6" />
             </div>
             <div>
               <h3 className="text-lg font-black text-white">
                 Emergency Cyber Fraud Helpline
               </h3>
-              <p className="text-xs text-rose-400 font-mono font-bold">
+              <p className="text-xs text-[#D4FF00] font-mono font-bold">
                 National Cyber Crime Reporting Portal (1930)
               </p>
             </div>
@@ -40,13 +40,13 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
         </div>
 
         {/* 1930 Number Card */}
-        <div className="p-5 rounded-2xl bg-gradient-to-r from-rose-950/80 to-[#181B24] border border-rose-500/40 space-y-3 shadow-inner">
+        <div className="p-5 rounded-2xl bg-[#181C26] border border-white/15 space-y-3 shadow-inner">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-black text-rose-300 uppercase tracking-wider">
+            <span className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-wider">
               24x7 NATIONAL TOLL-FREE HELPLINE
             </span>
-            <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-rose-500 text-white font-bold font-mono">
-              IMMEDIATE ASSISTANCE
+            <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#D4FF00] text-[#111317] font-black font-mono">
+              OFFICIAL ASSISTANCE
             </span>
           </div>
 
@@ -59,15 +59,15 @@ export const EmergencyHelpModal: React.FC<EmergencyHelpModalProps> = ({ isOpen, 
             </a>
             <a
               href="tel:1930"
-              className="neu-btn neu-btn-red px-5 py-2.5 text-xs font-black flex items-center gap-2 shadow-lg cursor-pointer"
+              className="neu-btn neu-btn-lime px-5 py-2.5 text-xs font-black flex items-center gap-2 shadow-lg cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Call</span>
+              <span>Call 1930</span>
             </a>
           </div>
 
           <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
-            Dial <b>1930</b> immediately from any phone in India to report unauthorized financial transactions, online extortion, or digital arrest fraud.
+            Dial <b>1930</b> directly from any telephone in India to immediately register financial cybercrime complaints under Ministry of Home Affairs jurisdiction.
           </p>
         </div>
 
