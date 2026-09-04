@@ -10,6 +10,7 @@ import { useApp } from '../context/AppContext';
 import GhostFibers from '../components/common/GhostFibers';
 import { EmergencyHelpModal } from '../components/modals/EmergencyHelpModal';
 import { Hero2 } from '../components/blocks/Hero2';
+import { HowItWorks8 } from '../components/blocks/HowItWorks8';
 
 export const LandingPage: React.FC = () => {
   const { openAuthModal, selectCase, setShowLandingPage, setActiveTab } = useApp();
@@ -204,68 +205,11 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. Core Features & What We Do (3D Neumorphic Cards) */}
-      <section className="relative z-10 py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-16">
-        <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <h2 className="text-xs uppercase font-mono font-extrabold text-[#D4FF00] tracking-wider">
-            Autonomous Cyber Defense Capabilities
-          </h2>
-          <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            How Golden Hour Outsmarts Cyber Syndicates
-          </h3>
-          <p className="text-sm text-slate-400 leading-relaxed">
-            Standard cyber helplines take 24–48 hours. Golden Hour automates banking switch tracing and tactical patrol deployment in under 15 minutes.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Card 1 */}
-          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#D4FF00]/10 text-[#D4FF00] flex items-center justify-center font-black">
-              <GitBranch className="w-6 h-6" />
-            </div>
-            <h4 className="text-lg font-black text-white">15-Hop Multi-Bank Trace</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Instantly correlates IMPS, NEFT, and UPI switch logs across ICICI, HDFC, SBI, Axis, Kotak, and 10+ regional banks to expose rapid mule money fan-outs.
-            </p>
-            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#D4FF00]">
-              <span>Real-Time Velocity Telemetry</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-black">
-              <Flame className="w-6 h-6" />
-            </div>
-            <h4 className="text-lg font-black text-white">Continuous Thermal Radar</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Spatial AI Kernel Density Estimation (KDE) maps candidate ATM withdrawal clusters and pinpoints the highest-probability kiosks with 94% precision.
-            </p>
-            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-rose-400">
-              <span>Top 15 Candidate ATMs Ranked</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="p-8 rounded-3xl neu-glass-panel neu-3d-card space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-black">
-              <Send className="w-6 h-6" />
-            </div>
-            <h4 className="text-lg font-black text-white">Section 91 CrPC Freezing</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              1-click statutory hold orders dispatched directly to bank nodal desks and GPS intercept coordinates routed to the nearest PCR Beat Patrol unit.
-            </p>
-            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-emerald-400">
-              <span>Instant Legal Action Dispatch</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 7. React Bits Pro "How It Works 8": Horizontal 3-Step Flow with Drawing Connector Line & Vignettes */}
+      <HowItWorks8 
+        onExploreDemo={handleExploreLiveDemo}
+        onCitizenClick={handleCitizenQuickStart}
+      />
 
       {/* 8. Second Marquee: Integrated Banking & Police Network */}
       <section className="relative z-10 bg-[#0E1118] border-y border-white/10 py-4 overflow-hidden shadow-inner">
