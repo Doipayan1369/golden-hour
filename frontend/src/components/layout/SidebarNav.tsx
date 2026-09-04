@@ -121,7 +121,7 @@ export const SidebarNav: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <>
       {/* Desktop Persistent Sidebar */}
-      <aside className="hidden lg:flex w-72 flex-col shrink-0 self-stretch min-h-full">
+      <aside className="hidden lg:flex w-72 flex-col shrink-0 self-start sticky top-24">
         {navContent}
       </aside>
 

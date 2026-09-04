@@ -28,7 +28,7 @@ export const ForecastCard: React.FC = () => {
   const topZone = selectedZone || forecast.top_zones[0];
 
   return (
-    <div className="bg-[#0E1117] border border-white/10 text-white rounded-3xl p-6 sm:p-7 space-y-5 relative overflow-hidden shadow-2xl">
+    <div className="bg-[#0E1117] border border-white/10 text-white rounded-3xl p-6 sm:p-7 space-y-5 relative overflow-hidden shadow-2xl h-full flex flex-col justify-between">
       {/* Ambient background glow */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-[#D4FF00]/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
 
