@@ -173,115 +173,154 @@ export const LandingPage: React.FC = () => {
         </div>
       </header>
 
-      {/* 4. Hero Section: Monotone Minimalist Typography & Tactile CTAs */}
-      <section className="relative pt-12 sm:pt-20 pb-20 px-4 sm:px-8 z-10">
-        <div className="max-w-5xl mx-auto text-center space-y-7">
+      {/* 4. Hero Section: 2-Column Layout (Header on Left, Live Incident Feed on Right) */}
+      <section className="relative pt-10 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 px-4 sm:px-8 z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md shadow-inner">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4FF00]" />
-            <span>Autonomous Real-Time Cybercrime Interception</span>
+          {/* Left Column: Hero Typography, Header & Tactile CTAs */}
+          <div className="lg:col-span-6 space-y-6 text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#D4FF00] backdrop-blur-md shadow-inner">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4FF00]" />
+              <span>Autonomous Real-Time Cybercrime Interception</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.12]">
+              Intercept Stolen Cyber Funds <br className="hidden sm:block" />
+              <span className="text-[#D4FF00]">
+                Within The Golden Hour.
+              </span>
+            </h1>
+
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed font-normal">
+              When cyber fraud occurs, funds hop across 15+ mule banking switches in minutes. 
+              Golden Hour tracks multi-hop velocity, predicts the cash-out ATM using spatial AI, and coordinates police beat patrols to secure 100% of your funds before withdrawal.
+            </p>
+
+            {/* Primary Tactile Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <button
+                onClick={handleCitizenQuickStart}
+                className="neu-btn-lime px-7 py-3.5 text-xs font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,255,0,0.35)]"
+              >
+                <FileText className="w-4 h-4" />
+                <span>Track Funds</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={handleOfficialQuickStart}
+                className="neu-btn-dark px-6 py-3.5 text-xs font-bold flex items-center justify-center gap-2 border border-white/20"
+              >
+                <ShieldCheck className="w-4 h-4 text-[#D4FF00]" />
+                <span>Official Login</span>
+              </button>
+
+              <button
+                onClick={handleExploreLiveDemo}
+                className="neu-btn-white px-6 py-3.5 text-xs font-bold flex items-center justify-center gap-2 shadow-md"
+              >
+                <span>Launch Demo</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-600" />
+              </button>
+            </div>
+
+            {/* Trust Guarantees */}
+            <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-400 font-mono">
+              <span className="flex items-center gap-1.5 text-emerald-400">
+                <CheckCircle2 className="w-3.5 h-3.5" /> 100% Free for Citizens
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5 text-[#D4FF00]" /> Zero PII Masking
+              </span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <Shield className="w-3.5 h-3.5 text-white" /> Section 65B Certified
+              </span>
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.12]">
-            Intercept Stolen Cyber Funds <br className="hidden sm:block" />
-            <span className="text-[#D4FF00]">
-              Within The Golden Hour.
-            </span>
-          </h1>
-
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-            When cyber fraud occurs, funds hop across 15+ mule banking switches in minutes. 
-            Golden Hour tracks multi-hop velocity, predicts the cash-out ATM using spatial AI, and coordinates police beat patrols to secure 100% of your funds before withdrawal.
-          </p>
-
-          {/* Primary Tactile Action Buttons */}
-          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
-            <button
-              onClick={handleCitizenQuickStart}
-              className="neu-btn-lime w-full sm:w-auto px-7 py-3.5 text-sm font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(212,255,0,0.35)]"
-            >
-              <FileText className="w-4 h-4" />
-              <span>Track Funds</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={handleOfficialQuickStart}
-              className="neu-btn-dark w-full sm:w-auto px-6 py-3.5 text-sm font-bold flex items-center justify-center gap-2 border border-white/20"
-            >
-              <ShieldCheck className="w-4 h-4 text-[#D4FF00]" />
-              <span>Official Login</span>
-            </button>
-
-            <button
-              onClick={handleExploreLiveDemo}
-              className="neu-btn-white w-full sm:w-auto px-6 py-3.5 text-sm font-bold flex items-center justify-center gap-2 shadow-md"
-            >
-              <span>Launch Demo</span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-600" />
-            </button>
-          </div>
-
-          {/* Trust Guarantees */}
-          <div className="pt-3 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-slate-400 font-mono">
-            <span className="flex items-center gap-1.5 text-emerald-400">
-              <CheckCircle2 className="w-3.5 h-3.5" /> 100% Free for Citizens
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-[#D4FF00]" /> Zero PII Masking
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <Shield className="w-3.5 h-3.5 text-white" /> Section 65B Evidence Certified
-            </span>
-          </div>
-
-          {/* 5. 3D Floating Hero Widget Preview with Neumorphic Depth */}
-          <div className="pt-10 max-w-5xl mx-auto perspective-1000">
-            <div className="neu-glass-panel rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
+          {/* Right Column: LIVE INCIDENT INTERCEPTION FEED: CASE-2026-041 (PUNE) */}
+          <div className="lg:col-span-6 perspective-1000">
+            <div className="neu-glass-panel rounded-3xl p-6 sm:p-7 space-y-5 shadow-2xl border border-white/15 text-left transform-gpu hover:scale-[1.01] transition-transform duration-500 relative">
               
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping" />
-                  <b className="text-sm font-black font-mono text-white tracking-wide">
-                    LIVE INCIDENT INTERCEPTION FEED: CASE-2026-041 (PUNE)
-                  </b>
+                  <div className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+                  </div>
+                  <div>
+                    <b className="text-xs sm:text-sm font-black font-mono text-white tracking-wide block">
+                      LIVE INCIDENT INTERCEPTION FEED
+                    </b>
+                    <span className="text-[11px] text-[#D4FF00] font-mono font-bold">
+                      CASE-2026-041 (PUNE CITY)
+                    </span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 font-mono text-xs">
-                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">
-                    ✓ 100% SECURED (₹4,50,000)
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold text-[11px]">
+                    ✓ 100% SECURED
                   </span>
-                  <span className="text-slate-400">10:14 IST</span>
+                  <span className="text-slate-400 text-[11px]">10:14 IST</span>
                 </div>
               </div>
 
-              {/* 3-Column 3D Telemetry Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+              {/* Loss vs Recovery Summary */}
+              <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                  <span className="text-slate-400 text-[10px] uppercase font-bold block">Victim Loss Debited</span>
+                  <b className="text-rose-400 text-base font-black">₹4,50,000</b>
+                  <span className="text-[10px] text-slate-500 block">SBI Camp Branch</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-1">
+                  <span className="text-emerald-400 text-[10px] uppercase font-bold block">Secured Prior to Cashout</span>
+                  <b className="text-emerald-400 text-base font-black">₹4,50,000 (100%)</b>
+                  <span className="text-[10px] text-emerald-300/80 block">FC Road Goodluck Kiosk</span>
+                </div>
+              </div>
+
+              {/* 3 Telemetry Pillars */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
                   <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>15-Hop Trace Depth</span>
+                    <span>15-Hop Trace</span>
                     <GitBranch className="w-3.5 h-3.5 text-[#D4FF00]" />
                   </div>
-                  <b className="text-white text-sm block">16 Nodes • 15 Switches</b>
-                  <p className="text-slate-400 text-[11px]">SBI Camp &rarr; ICICI &rarr; HDFC &rarr; Axis &rarr; SBI FC Road</p>
+                  <b className="text-white text-xs block font-bold">16 Nodes • 7 Banks</b>
+                  <p className="text-slate-400 text-[10px]">SBI &rarr; ICICI &rarr; HDFC &rarr; Axis</p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
                   <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>KDE Thermal Radar</span>
+                    <span>Thermal Radar</span>
                     <Flame className="w-3.5 h-3.5 text-rose-500" />
                   </div>
-                  <b className="text-rose-400 text-sm block">FC Road Epicenter (94%)</b>
-                  <p className="text-slate-400 text-[11px]">Top ATM: SBI Goodluck Chowk Kiosk #1</p>
+                  <b className="text-rose-400 text-xs block font-bold">FC Road (94%)</b>
+                  <p className="text-slate-400 text-[10px]">Goodluck Chowk ATM</p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
                   <div className="flex items-center justify-between text-slate-400 text-[10px] uppercase font-bold">
-                    <span>Section 91 CrPC Action</span>
+                    <span>Section 91 Hold</span>
                     <Send className="w-3.5 h-3.5 text-emerald-400" />
                   </div>
-                  <b className="text-emerald-400 text-sm block">PCR Beat 3 On-Scene</b>
-                  <p className="text-slate-400 text-[11px]">Instant statutory bank freeze order executed</p>
+                  <b className="text-emerald-400 text-xs block font-bold">PCR Beat 3 Lock</b>
+                  <p className="text-slate-400 text-[10px]">Instant statutory hold</p>
                 </div>
+              </div>
+
+              {/* Live Status Bar */}
+              <div className="p-3 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#D4FF00] animate-pulse" />
+                  <span>Lead Time: <b className="text-white">15 Mins Advance Interception</b></span>
+                </div>
+                <button
+                  onClick={handleExploreLiveDemo}
+                  className="text-[#D4FF00] hover:text-lime-300 font-bold underline cursor-pointer text-[11px]"
+                >
+                  View Case 041 &rarr;
+                </button>
               </div>
 
             </div>
